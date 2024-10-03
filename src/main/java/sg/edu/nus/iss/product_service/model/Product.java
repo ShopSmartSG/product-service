@@ -7,11 +7,12 @@ import lombok.Data;
 import org.hibernate.annotations.UuidGenerator;
 
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.UUID;
 
 @Entity
 @Data
-public class Product {
+public class Product{
     @Id
     @GeneratedValue
     @UuidGenerator
@@ -29,4 +30,16 @@ public class Product {
     private UUID merchantId;
     @JsonIgnore
     private boolean deleted;
+
+    @Column(name = "created_at")
+    private Date createdAt;
+
+    @Column(name = "updated_at")
+    private Date updatedAt;
+
+    @Column(name = "created_by")
+    private String createdBy;
+
+    @Column(name = "updated_by")
+    private String updatedBy;
 }
