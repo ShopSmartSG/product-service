@@ -6,8 +6,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import sg.edu.nus.iss.product_service.dto.ProductDTO;
-import sg.edu.nus.iss.product_service.model.Category;
 import sg.edu.nus.iss.product_service.model.Product;
 import sg.edu.nus.iss.product_service.repository.CategoryRepository;
 import sg.edu.nus.iss.product_service.repository.ProductRepository;
@@ -49,8 +47,8 @@ public class ProductService {
         return productRepository.findByDeletedFalse();
     }
 
-    public Page<Product> getAllProducts(Pageable pageable) {
-        return productRepository.findByDeletedFalse(pageable);
+    public Page<Product> getAllProducts(UUID merchantId, Pageable pageable) {
+        return productRepository.findByMerchantIdAndDeletedFalse(merchantId,pageable);
     }
 
     public List<Product> getProductsByMerchantId(UUID merchantId) {
@@ -77,8 +75,8 @@ public class ProductService {
         return productRepository.findByMerchantIdAndCategory_CategoryIdAndDeletedFalse(merchantId,categoryId);
     }
 
-    public Product getProductById(UUID productId) {
-        return productRepository.findByProductIdAndDeletedFalse(productId);
+    public Product getProductByIdAndMerchantId(UUID productId,UUID merchantID) {
+        return productRepository.findByMerchantIdAndProductIdAndDeletedFalse(merchantID,productId);
     }
 
 

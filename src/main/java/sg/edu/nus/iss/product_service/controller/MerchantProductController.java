@@ -25,8 +25,10 @@ import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
 
+// view (all kinds) , update , delete : should have a merchant check
+
 @RestController
-@RequestMapping("/merchants/products/")
+@RequestMapping("/merchants")
 @Tag(name = "Merchant Product API", description = "APIs for merchants to create, read, update, and delete products")
 public class MerchantProductController {
     private final ProductService productService;
@@ -42,35 +44,12 @@ public class MerchantProductController {
         this.categoryService = categoryService;
     }
 
-    @GetMapping
+    @GetMapping("/{merchantId}/products/")
     @Operation(summary = "Retrieve all products")
-    public ResponseEntity<?> getAllProducts(@RequestParam(required = false) Integer page, @RequestParam(required = false) Integer size) {
+    public ResponseEntity<?> getAllProducts(@PathVariable UUID merchantId, @RequestParam(required = false) Integer page, @RequestParam(required = false) Integer size) {
         if (page != null && size != null) {
             Pageable pageable = PageRequest.of(page, size);
-            Page<Product> products = productService.getAllProducts(pageable);
-            return ResponseEntity.ok(products);
-        } else {
-            List<Product> products = productService.getAllProducts();
-            return ResponseEntity.ok(products);
-        }
-    }
-
-    @GetMapping("/{productId}")
-    @Operation(summary = "Retrieve product By ID")
-    public ResponseEntity<?> getProductById(@PathVariable UUID productId) {
-        Product product = productService.getProductById(productId);
-        if (product == null) {
-            throw new ResourceNotFoundException("Product not found");
-        }
-        return ResponseEntity.ok(product);
-    }
-
-    @GetMapping("/{merchantId}")
-    @Operation(summary = "Retrieve products by merchant ID")
-    public ResponseEntity<?> getProductsByMerchantId(@PathVariable UUID merchantId, @RequestParam(required = false) Integer page, @RequestParam(required = false) Integer size) {
-        if (page != null && size != null) {
-            Pageable pageable = PageRequest.of(page, size);
-            Page<Product> products = productService.getProductsByMerchantId(merchantId, pageable);
+            Page<Product> products = productService.getAllProducts(merchantId, pageable);
             return ResponseEntity.ok(products);
         } else {
             List<Product> products = productService.getProductsByMerchantId(merchantId);
@@ -78,20 +57,18 @@ public class MerchantProductController {
         }
     }
 
-    @GetMapping("/category/{categoryId}")
-    @Operation(summary = "Retrieve products by category ID")
-    public ResponseEntity<?> getProductsByCategoryId(@PathVariable UUID categoryId, @RequestParam(required = false) Integer page, @RequestParam(required = false) Integer size) {
-        if (page != null && size != null) {
-            Pageable pageable = PageRequest.of(page, size);
-            Page<Product> products = productService.getProductsByCategoryId(categoryId, pageable);
-            return ResponseEntity.ok(products);
-        } else {
-            List<Product> products = productService.getProductsByCategoryId(categoryId);
-            return ResponseEntity.ok(products);
+    @GetMapping("/{merchantId}/products/{productId}")
+    @Operation(summary = "Retrieve product By ID")
+    public ResponseEntity<?> getProductById(@PathVariable UUID merchantId, @PathVariable UUID productId) {
+        Product product = productService.getProductByIdAndMerchantId(merchantId, productId);
+        if (product == null) {
+            throw new ResourceNotFoundException("Product not found");
         }
+        return ResponseEntity.ok(product);
     }
 
-    @GetMapping("/{merchantId}/category/{categoryId}")
+
+    @GetMapping("/{merchantId}/categories/{categoryId}")
     @Operation(summary = "Retrieve products by merchant ID and category ID")
     public ResponseEntity<?> getProductByMerchantIdAndCategoryId(@PathVariable UUID merchantId, @PathVariable UUID categoryId, @RequestParam(required = false) Integer page, @RequestParam(required = false) Integer size) {
         if (page != null && size != null) {
@@ -134,11 +111,10 @@ public class MerchantProductController {
         return ResponseEntity.ok(fileUrl);
     }
 
-    @DeleteMapping("/{productId}")
+    @DeleteMapping("/{merchantId}/products/{productId}")
     @Operation(summary = "Delete product by Product ID")
-    public ResponseEntity<String> deleteProduct(@PathVariable UUID productId) {
-        // get existing data and delete it
-        Product existingProduct = productService.getProductById(productId);
+    public ResponseEntity<String> deleteProduct(@PathVariable UUID merchantId, @PathVariable UUID productId) {
+        Product existingProduct = productService.getProductByIdAndMerchantId(merchantId, productId);
         if (existingProduct == null) {
             throw new ResourceNotFoundException("Product not found");
         }
@@ -146,10 +122,10 @@ public class MerchantProductController {
         return ResponseEntity.ok("Delete: successful");
     }
 
-    @PutMapping("/{productId}")
+    @PutMapping("/{merchantId}/products/{productId}")
     @Operation(summary = "Update product")
-    public ResponseEntity<?> updateProduct(@PathVariable UUID productId,@Valid @RequestBody ProductDTO dto) {
-        Product existingProduct = productService.getProductById(productId);
+    public ResponseEntity<?> updateProduct(@PathVariable UUID merchantId, @PathVariable UUID productId, @Valid @RequestBody ProductDTO dto) {
+        Product existingProduct = productService.getProductByIdAndMerchantId(merchantId, productId);
         if (existingProduct == null) {
             throw new ResourceNotFoundException("Product not found");
         }
@@ -160,6 +136,6 @@ public class MerchantProductController {
         existingProduct = objectMapper.convertValue(dto, Product.class);
         existingProduct.setProductId(productId);
         existingProduct.setCategory(categoryService.getCategoryById(dto.getCategoryId()));
-        return  ResponseEntity.ok(productService.updateProduct(existingProduct));
+        return ResponseEntity.ok(productService.updateProduct(existingProduct));
     }
 }
