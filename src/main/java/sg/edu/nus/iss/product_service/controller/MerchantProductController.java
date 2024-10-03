@@ -27,7 +27,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/merchants/products/")
-@Tag(name = "Products", description = "Manage products in Shopsmart Application")
+@Tag(name = "Merchant Product API", description = "APIs for merchants to create, read, update, and delete products")
 public class MerchantProductController {
     private final ProductService productService;
     private final S3Service s3Service;
