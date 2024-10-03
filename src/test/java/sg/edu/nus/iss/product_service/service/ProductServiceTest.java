@@ -21,6 +21,7 @@ import java.util.List;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
 public class ProductServiceTest {
@@ -42,9 +43,9 @@ public class ProductServiceTest {
     @Test
     public void testGetFilteredProducts_WithPincode() {
         // Given
-        Product product1 = createProduct("Product1", "12345", BigDecimal.valueOf(10.00), BigDecimal.valueOf(8.00));
-        Product product2 = createProduct("Product2", "12345", BigDecimal.valueOf(20.00), BigDecimal.valueOf(18.00));
-        Product product3 = createProduct("Product3", "54321", BigDecimal.valueOf(30.00), BigDecimal.valueOf(28.00));
+        Product product1 = createProduct( "Product1", "12345", BigDecimal.valueOf(10.00), BigDecimal.valueOf(8.00));
+        Product product2 = createProduct( "Product2", "12345", BigDecimal.valueOf(20.00), BigDecimal.valueOf(18.00));
+        Product product3 = createProduct( "Product3", "54321", BigDecimal.valueOf(30.00), BigDecimal.valueOf(28.00));
 
         // Ensure that the repository returns the correct products
         when(productRepository.findAll()).thenReturn(Arrays.asList(product1, product2, product3));
@@ -128,8 +129,10 @@ public class ProductServiceTest {
         product.setOriginalPrice(originalPrice);
         product.setListingPrice(listingPrice);
         product.setMerchantId(UUID.randomUUID()); // Set a random merchant ID
+        // Set other attributes as needed
         return product;
     }
+
 
     private Product createProduct(String name, Category category, BigDecimal originalPrice, BigDecimal listingPrice) {
         Product product = new Product();

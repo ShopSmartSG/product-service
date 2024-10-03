@@ -60,6 +60,8 @@ public class ProductService {
         return productRepository.save(product);
     }
 
+    @Autowired
+    private ProductRepository productRepository;
     public Page<Product> getAllProducts (UUID merchantId, Pageable pageable){
         return productRepository.findByMerchantIdAndDeletedFalse(merchantId, pageable);
     }
@@ -98,6 +100,7 @@ public class ProductService {
         for (FilterStrategy strategy : strategies) {
             allProducts = strategy.filter(allProducts);
         }
+
         return allProducts;
     }
 }

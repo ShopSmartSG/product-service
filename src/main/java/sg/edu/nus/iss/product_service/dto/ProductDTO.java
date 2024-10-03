@@ -18,6 +18,7 @@ public class ProductDTO {
     private UUID productId;
     @NotBlank(message = "Product name is mandatory")
     private String productName;
+    // small object for transfer
     @NonNull
     private UUID categoryId;
     @NotBlank(message = "Please provide an image URL")

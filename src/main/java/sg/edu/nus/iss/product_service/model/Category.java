@@ -10,8 +10,8 @@ import org.hibernate.annotations.UuidGenerator;
 import java.util.UUID;
 import java.util.List;
 
-@Data
 @Entity
+@Data
 public class Category {
 
     @Id
