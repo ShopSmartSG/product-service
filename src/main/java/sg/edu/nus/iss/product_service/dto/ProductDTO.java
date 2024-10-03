@@ -14,6 +14,7 @@ import java.util.UUID;
 @Data
 public class ProductDTO {
 
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private UUID productId;
     @NotBlank(message = "Product name is mandatory")
     private String productName;
@@ -28,6 +29,7 @@ public class ProductDTO {
     private BigDecimal listingPrice;
     @Positive(message = "Please provide a valid available stock")
     private int availableStock;
+    private String pincode;
     @NonNull
     private UUID merchantId;
 

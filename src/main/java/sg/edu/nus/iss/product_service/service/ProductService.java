@@ -1,6 +1,10 @@
 package sg.edu.nus.iss.product_service.service;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import sg.edu.nus.iss.product_service.dto.ProductFilterDTO;
+import sg.edu.nus.iss.product_service.model.Product;
+import sg.edu.nus.iss.product_service.repository.ProductRepository;
+import sg.edu.nus.iss.product_service.service.strategy.*;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -10,6 +14,7 @@ import sg.edu.nus.iss.product_service.model.Product;
 import sg.edu.nus.iss.product_service.repository.CategoryRepository;
 import sg.edu.nus.iss.product_service.repository.ProductRepository;
 
+import java.util.ArrayList;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
@@ -23,6 +28,7 @@ public class ProductService {
     private final ObjectMapper mapper;
 
     @Autowired
+    private ProductRepository productRepository;
     public ProductService(CategoryRepository categoryRepository, ProductRepository productRepository, ObjectMapper mapper) {
         this.mapper = mapper;
         this.productRepository = productRepository;
@@ -37,6 +43,9 @@ public class ProductService {
         return productRepository.save(product);
     }
 
+    public List<Product> getFilteredProducts(ProductFilterDTO filterDTO) {
+        List<Product> allProducts = productRepository.findAll();
+        List<FilterStrategy> strategies = new ArrayList<>();
     @Transactional
     public Product deleteProduct(Product product) {
         product.setUpdatedBy("merchant");
@@ -45,6 +54,15 @@ public class ProductService {
         return productRepository.save(product);
     }
 
+        if (filterDTO.getPincode() != null) {
+            strategies.add(new PincodeFilterStrategy(filterDTO.getPincode()));
+        }
+        if (filterDTO.getCategoryId() != null) {
+            strategies.add(new CategoryFilterStrategy(filterDTO.getCategoryId()));
+        }
+        if (filterDTO.getMinPrice() != null || filterDTO.getMaxPrice() != null) {
+            strategies.add(new PriceFilterStrategy(filterDTO.getMinPrice(), filterDTO.getMaxPrice()));
+        }
     @Transactional
     public Product addProduct(Product product) {
         product.setCreatedBy("merchant");
@@ -61,10 +79,15 @@ public class ProductService {
         return productRepository.findByMerchantIdAndDeletedFalse(merchantId);
     }
 
+        // Apply each strategy
+        for (FilterStrategy strategy : strategies) {
+            allProducts = strategy.filter(allProducts);
+        }
     public Page<Product> getProductsByMerchantIdAndCategoryId(UUID merchantId, UUID categoryId, Pageable pageable) {
         return productRepository.findByMerchantIdAndCategory_CategoryIdAndDeletedFalse(merchantId,categoryId, pageable);
     }
 
+        return allProducts;
     public List<Product> getProductsByMerchantIdAndCategoryId(UUID merchantId, UUID categoryId) {
         return productRepository.findByMerchantIdAndCategory_CategoryIdAndDeletedFalse(merchantId,categoryId);
     }
