@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Data;
+import sg.edu.nus.iss.product_service.model.Category;
 import org.hibernate.annotations.UuidGenerator;
 
 import java.math.BigDecimal;
@@ -28,8 +29,10 @@ public class Product{
     private BigDecimal listingPrice;
     private int availableStock;
     private UUID merchantId;
+    private String pincode;
     @JsonIgnore
     private boolean deleted;
+}
 
     @Column(name = "created_at")
     @JsonIgnore
