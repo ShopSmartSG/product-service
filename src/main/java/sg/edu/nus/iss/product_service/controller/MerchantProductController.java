@@ -25,8 +25,6 @@ import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
 
-// view (all kinds) , update , delete : should have a merchant check
-
 @RestController
 @RequestMapping("/merchants")
 @Tag(name = "Merchant Product API", description = "APIs for merchants to create, read, update, and delete products")
@@ -44,7 +42,7 @@ public class MerchantProductController {
         this.categoryService = categoryService;
     }
 
-    @GetMapping("/{merchantId}/products/")
+    @GetMapping("/{merchantId}/products")
     @Operation(summary = "Retrieve all products")
     public ResponseEntity<?> getAllProducts(@PathVariable UUID merchantId, @RequestParam(required = false) Integer page, @RequestParam(required = false) Integer size) {
         if (page != null && size != null) {
@@ -81,7 +79,7 @@ public class MerchantProductController {
         }
     }
 
-    @PostMapping
+    @PostMapping("/products")
     @Operation(summary = "Add a new product")
     public ResponseEntity<?> addProduct( @Valid @RequestBody Product product) {
         // check if category exists
@@ -95,7 +93,7 @@ public class MerchantProductController {
         return ResponseEntity.ok(newProduct);
     }
 
-    @PostMapping("/upload")
+    @PostMapping("/images/upload")
     @Operation(summary = "Upload a product image", description = "Uploads a product image to S3")
     public ResponseEntity<String> uploadImage(
             @io.swagger.v3.oas.annotations.parameters.RequestBody(

@@ -10,6 +10,9 @@ import sg.edu.nus.iss.product_service.model.Product;
 import sg.edu.nus.iss.product_service.repository.CategoryRepository;
 import sg.edu.nus.iss.product_service.repository.ProductRepository;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -29,17 +32,23 @@ public class ProductService {
 
     @Transactional
     public Product updateProduct(Product product) {
+        product.setUpdatedBy("merchant");
+        product.setUpdatedAt(Date.from(LocalDateTime.now().atZone(ZoneId.of("Asia/Singapore")).toInstant()));
         return productRepository.save(product);
     }
 
     @Transactional
     public Product deleteProduct(Product product) {
+        product.setUpdatedBy("merchant");
+        product.setUpdatedAt(Date.from(LocalDateTime.now().atZone(ZoneId.of("Asia/Singapore")).toInstant()));
         product.setDeleted(true);
         return productRepository.save(product);
     }
 
     @Transactional
     public Product addProduct(Product product) {
+        product.setCreatedBy("merchant");
+        product.setCreatedAt(Date.from(LocalDateTime.now().atZone(ZoneId.of("Asia/Singapore")).toInstant()));
         return productRepository.save(product);
     }
 
@@ -75,7 +84,7 @@ public class ProductService {
         return productRepository.findByMerchantIdAndCategory_CategoryIdAndDeletedFalse(merchantId,categoryId);
     }
 
-    public Product getProductByIdAndMerchantId(UUID productId,UUID merchantID) {
+    public Product getProductByIdAndMerchantId(UUID merchantID,UUID productId) {
         return productRepository.findByMerchantIdAndProductIdAndDeletedFalse(merchantID,productId);
     }
 

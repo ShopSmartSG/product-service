@@ -32,14 +32,18 @@ public class Product{
     private boolean deleted;
 
     @Column(name = "created_at")
+    @JsonIgnore
     private Date createdAt;
 
     @Column(name = "updated_at")
+    @JsonIgnore
     private Date updatedAt;
 
     @Column(name = "created_by")
+    @JsonIgnore
     private String createdBy;
 
     @Column(name = "updated_by")
+    @JsonIgnore
     private String updatedBy;
 }
