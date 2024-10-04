@@ -14,13 +14,13 @@ import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
 @Service
-public class S3Service {
+public class S3Utility {
     @Value("${aws.s3.bucket-name}")
     private String bucketName;
 
     private final S3Client s3Client;
 
-    public S3Service(S3Client s3Client) {
+    public S3Utility(S3Client s3Client) {
         this.s3Client = s3Client;
     }
 

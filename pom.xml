@@ -140,10 +140,14 @@
 				<version>0.8.12</version>
 				<configuration>
 					<excludes>
-						// excluded the main class from code coverage
 						<exclude>sg/edu/nus/iss/product_service/ProductServiceApplication.class</exclude>
+<<<<<<< HEAD
 						<!-- Exclude all classes in the model package from code coverage -->
 						<exclude>sg/edu/nus/iss/product_service/model/**</exclude>
+=======
+						<exclude>sg/edu/nus/iss/product_service/utility/**</exclude>
+						<exclude>sg/edu/nus/iss/product_service/exception/**</exclude>
+>>>>>>> 976034c (added Unit tests)
 					</excludes>
 				</configuration>
 				<executions>
