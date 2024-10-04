@@ -19,7 +19,7 @@ import sg.edu.nus.iss.product_service.model.Category;
 import sg.edu.nus.iss.product_service.model.Product;
 import sg.edu.nus.iss.product_service.service.CategoryService;
 import sg.edu.nus.iss.product_service.service.ProductService;
-import sg.edu.nus.iss.product_service.utility.S3Service;
+import sg.edu.nus.iss.product_service.utility.S3Utility;
 
 import java.io.IOException;
 import java.util.List;
@@ -30,12 +30,12 @@ import java.util.UUID;
 @Tag(name = "Merchant Product API", description = "APIs for merchants to create, read, update, and delete products")
 public class MerchantProductController {
     private final ProductService productService;
-    private final S3Service s3Service;
+    private final S3Utility s3Service;
     private final ObjectMapper objectMapper;
     private final CategoryService categoryService;
 
     @Autowired
-    public MerchantProductController(ProductService productService, ObjectMapper objectMapper, S3Service s3Service, CategoryService categoryService) {
+    public MerchantProductController(ProductService productService, ObjectMapper objectMapper, S3Utility s3Service, CategoryService categoryService) {
         this.productService = productService;
         this.objectMapper = objectMapper;
         this.s3Service = s3Service;

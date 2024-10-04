@@ -52,9 +52,6 @@ public class ProductService {
         return productRepository.save(product);
     }
 
-    public List<Product> getAllProducts() {
-        return productRepository.findByDeletedFalse();
-    }
 
     public Page<Product> getAllProducts(UUID merchantId, Pageable pageable) {
         return productRepository.findByMerchantIdAndDeletedFalse(merchantId,pageable);
@@ -62,18 +59,6 @@ public class ProductService {
 
     public List<Product> getProductsByMerchantId(UUID merchantId) {
         return productRepository.findByMerchantIdAndDeletedFalse(merchantId);
-    }
-
-    public Page<Product> getProductsByMerchantId(UUID merchantId, Pageable pageable) {
-        return productRepository.findByMerchantIdAndDeletedFalse(merchantId, pageable);
-    }
-
-    public List<Product> getProductsByCategoryId(UUID categoryId) {
-        return productRepository.findByCategory_CategoryIdAndDeletedFalse(categoryId);
-    }
-
-    public Page<Product> getProductsByCategoryId(UUID categoryId, Pageable pageable) {
-        return productRepository.findByCategory_CategoryIdAndDeletedFalse(categoryId, pageable);
     }
 
     public Page<Product> getProductsByMerchantIdAndCategoryId(UUID merchantId, UUID categoryId, Pageable pageable) {
