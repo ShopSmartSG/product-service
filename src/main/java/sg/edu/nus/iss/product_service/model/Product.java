@@ -32,7 +32,6 @@ public class Product{
     private String pincode;
     @JsonIgnore
     private boolean deleted;
-}
 
     @Column(name = "created_at")
     @JsonIgnore
