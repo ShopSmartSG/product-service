@@ -1,5 +1,6 @@
 package sg.edu.nus.iss.product_service.service;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import sg.edu.nus.iss.product_service.dto.ProductFilterDTO;
 import sg.edu.nus.iss.product_service.model.Product;
 import sg.edu.nus.iss.product_service.repository.ProductRepository;
@@ -27,8 +28,9 @@ public class ProductService {
     private final CategoryRepository categoryRepository;
     private final ObjectMapper mapper;
 
-    @Autowired
-    private ProductRepository productRepository;
+//    @Autowired
+//    private ProductRepository productRepository;
+
     public ProductService(CategoryRepository categoryRepository, ProductRepository productRepository, ObjectMapper mapper) {
         this.mapper = mapper;
         this.productRepository = productRepository;
@@ -43,16 +45,44 @@ public class ProductService {
         return productRepository.save(product);
     }
 
-    public List<Product> getFilteredProducts(ProductFilterDTO filterDTO) {
-        List<Product> allProducts = productRepository.findAll();
-        List<FilterStrategy> strategies = new ArrayList<>();
     @Transactional
-    public Product deleteProduct(Product product) {
+    public Product deleteProduct (Product product){
         product.setUpdatedBy("merchant");
         product.setUpdatedAt(Date.from(LocalDateTime.now().atZone(ZoneId.of("Asia/Singapore")).toInstant()));
         product.setDeleted(true);
         return productRepository.save(product);
     }
+
+    @Transactional
+    public Product addProduct (Product product){
+        product.setCreatedBy("merchant");
+        product.setCreatedAt(Date.from(LocalDateTime.now().atZone(ZoneId.of("Asia/Singapore")).toInstant()));
+        return productRepository.save(product);
+    }
+
+    public Page<Product> getAllProducts (UUID merchantId, Pageable pageable){
+        return productRepository.findByMerchantIdAndDeletedFalse(merchantId, pageable);
+    }
+
+    public List<Product> getProductsByMerchantId (UUID merchantId){
+        return productRepository.findByMerchantIdAndDeletedFalse(merchantId);
+    }
+
+    public Page<Product> getProductsByMerchantIdAndCategoryId (UUID merchantId, UUID categoryId, Pageable pageable){
+        return productRepository.findByMerchantIdAndCategory_CategoryIdAndDeletedFalse(merchantId, categoryId, pageable);
+    }
+
+    public List<Product> getProductsByMerchantIdAndCategoryId (UUID merchantId, UUID categoryId){
+        return productRepository.findByMerchantIdAndCategory_CategoryIdAndDeletedFalse(merchantId, categoryId);
+    }
+
+    public Product getProductByIdAndMerchantId (UUID merchantID, UUID productId){
+        return productRepository.findByMerchantIdAndProductIdAndDeletedFalse(merchantID, productId);
+    }
+
+    public List<Product> getFilteredProducts(ProductFilterDTO filterDTO) {
+        List<Product> allProducts = productRepository.findAll();
+        List<FilterStrategy> strategies = new ArrayList<>();
 
         if (filterDTO.getPincode() != null) {
             strategies.add(new PincodeFilterStrategy(filterDTO.getPincode()));
@@ -63,39 +93,11 @@ public class ProductService {
         if (filterDTO.getMinPrice() != null || filterDTO.getMaxPrice() != null) {
             strategies.add(new PriceFilterStrategy(filterDTO.getMinPrice(), filterDTO.getMaxPrice()));
         }
-    @Transactional
-    public Product addProduct(Product product) {
-        product.setCreatedBy("merchant");
-        product.setCreatedAt(Date.from(LocalDateTime.now().atZone(ZoneId.of("Asia/Singapore")).toInstant()));
-        return productRepository.save(product);
-    }
-
-
-    public Page<Product> getAllProducts(UUID merchantId, Pageable pageable) {
-        return productRepository.findByMerchantIdAndDeletedFalse(merchantId,pageable);
-    }
-
-    public List<Product> getProductsByMerchantId(UUID merchantId) {
-        return productRepository.findByMerchantIdAndDeletedFalse(merchantId);
-    }
 
         // Apply each strategy
         for (FilterStrategy strategy : strategies) {
             allProducts = strategy.filter(allProducts);
         }
-    public Page<Product> getProductsByMerchantIdAndCategoryId(UUID merchantId, UUID categoryId, Pageable pageable) {
-        return productRepository.findByMerchantIdAndCategory_CategoryIdAndDeletedFalse(merchantId,categoryId, pageable);
-    }
-
         return allProducts;
-    public List<Product> getProductsByMerchantIdAndCategoryId(UUID merchantId, UUID categoryId) {
-        return productRepository.findByMerchantIdAndCategory_CategoryIdAndDeletedFalse(merchantId,categoryId);
     }
-
-    public Product getProductByIdAndMerchantId(UUID merchantID,UUID productId) {
-        return productRepository.findByMerchantIdAndProductIdAndDeletedFalse(merchantID,productId);
-    }
-
-
-
 }
