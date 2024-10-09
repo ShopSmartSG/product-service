@@ -28,9 +28,6 @@ public class ProductService {
     private final CategoryRepository categoryRepository;
     private final ObjectMapper mapper;
 
-//    @Autowired
-//    private ProductRepository productRepository;
-
     public ProductService(CategoryRepository categoryRepository, ProductRepository productRepository, ObjectMapper mapper) {
         this.mapper = mapper;
         this.productRepository = productRepository;
@@ -60,8 +57,6 @@ public class ProductService {
         return productRepository.save(product);
     }
 
-    @Autowired
-    private ProductRepository productRepository;
     public Page<Product> getAllProducts (UUID merchantId, Pageable pageable){
         return productRepository.findByMerchantIdAndDeletedFalse(merchantId, pageable);
     }
