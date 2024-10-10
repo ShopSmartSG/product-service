@@ -1,6 +1,5 @@
 package sg.edu.nus.iss.product_service.service;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -133,9 +132,23 @@ public class ProductServiceTest {
     @Test
     public void testGetFilteredProducts_WithPincode() {
         // Given
-        Product product1 = createProduct("Product1", "12345", BigDecimal.valueOf(10.00), BigDecimal.valueOf(8.00));
-        Product product2 = createProduct("Product2", "12345", BigDecimal.valueOf(20.00), BigDecimal.valueOf(18.00));
-        Product product3 = createProduct("Product3", "54321", BigDecimal.valueOf(30.00), BigDecimal.valueOf(28.00));
+        Product product1 = new Product();
+        product1.setProductId(UUID.randomUUID());
+        product1.setPincode("12345");
+        product1.setOriginalPrice(BigDecimal.valueOf(10.00));
+        product1.setListingPrice(BigDecimal.valueOf(8.00));
+
+        Product product2 = new Product();
+        product2.setProductId(UUID.randomUUID());
+        product2.setPincode("12345");
+        product2.setOriginalPrice(BigDecimal.valueOf(20.00));
+        product2.setListingPrice(BigDecimal.valueOf(18.00));
+
+        Product product3 = new Product();
+        product3.setProductId(UUID.randomUUID());
+        product3.setPincode("54321");
+        product3.setOriginalPrice(BigDecimal.valueOf(30.00));
+        product3.setListingPrice(BigDecimal.valueOf(28.00));
 
         // Ensure that the repository returns the correct products
         when(productRepository.findAll()).thenReturn(Arrays.asList(product1, product2, product3));
@@ -158,8 +171,17 @@ public class ProductServiceTest {
         Category category = new Category();
         category.setCategoryId(categoryId);
 
-        Product product1 = createProduct("Product1", category, BigDecimal.valueOf(10.00), BigDecimal.valueOf(8.00));
-        Product product2 = createProduct("Product2", category, BigDecimal.valueOf(20.00), BigDecimal.valueOf(18.00));
+        Product product1 = new Product();
+        product1.setProductId(UUID.randomUUID());
+        product1.setCategory(category);
+        product1.setOriginalPrice(BigDecimal.valueOf(10.00));
+        product1.setListingPrice(BigDecimal.valueOf(8.00));
+
+        Product product2 = new Product();
+        product2.setProductId(UUID.randomUUID());
+        product2.setCategory(category);
+        product2.setOriginalPrice(BigDecimal.valueOf(20.00));
+        product2.setListingPrice(BigDecimal.valueOf(18.00));
 
         // Ensure that the repository returns the correct products
         when(productRepository.findAll()).thenReturn(Arrays.asList(product1, product2));
@@ -178,9 +200,23 @@ public class ProductServiceTest {
     @Test
     public void testGetFilteredProducts_WithPriceRange() {
         // Given
-        Product product1 = createProduct("Product1", "12345", BigDecimal.valueOf(10.00), BigDecimal.valueOf(8.00));
-        Product product2 = createProduct("Product2", "12345", BigDecimal.valueOf(20.00), BigDecimal.valueOf(18.00));
-        Product product3 = createProduct("Product3", "54321", BigDecimal.valueOf(30.00), BigDecimal.valueOf(28.00));
+        Product product1 = new Product();
+        product1.setProductId(UUID.randomUUID());
+        product1.setPincode("12345");
+        product1.setOriginalPrice(BigDecimal.valueOf(10.00));
+        product1.setListingPrice(BigDecimal.valueOf(8.00));
+
+        Product product2 = new Product();
+        product2.setProductId(UUID.randomUUID());
+        product2.setPincode("12345");
+        product2.setOriginalPrice(BigDecimal.valueOf(20.00));
+        product2.setListingPrice(BigDecimal.valueOf(18.00));
+
+        Product product3 = new Product();
+        product3.setProductId(UUID.randomUUID());
+        product3.setPincode("54321");
+        product3.setOriginalPrice(BigDecimal.valueOf(30.00));
+        product3.setListingPrice(BigDecimal.valueOf(28.00));
 
         when(productRepository.findAll()).thenReturn(Arrays.asList(product1, product2, product3));
 
@@ -193,28 +229,5 @@ public class ProductServiceTest {
 
         // Then
         assertEquals(1, filteredProducts.size()); // Only product2 should match
-    }
-
-    private Product createProduct(String name, String pincode, BigDecimal originalPrice, BigDecimal listingPrice) {
-        Product product = new Product();
-        product.setProductId(UUID.randomUUID());
-        product.setProductName(name);
-        product.setAvailableStock(10);
-        product.setPincode(pincode);
-        product.setOriginalPrice(originalPrice);
-        product.setListingPrice(listingPrice);
-        product.setMerchantId(UUID.randomUUID()); // Set a random merchant ID
-        return product;
-    }
-
-    private Product createProduct(String name, Category category, BigDecimal originalPrice, BigDecimal listingPrice) {
-        Product product = new Product();
-        product.setProductId(UUID.randomUUID());
-        product.setProductName(name);
-        product.setAvailableStock(10);
-        product.setOriginalPrice(originalPrice);
-        product.setListingPrice(listingPrice);
-        product.setCategory(category);
-        return product;
     }
 }
