@@ -1,10 +1,12 @@
 package sg.edu.nus.iss.product_service.repository;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import sg.edu.nus.iss.product_service.model.Product;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
 
@@ -21,6 +23,8 @@ public interface ProductRepository extends JpaRepository<Product, UUID> {
     Page<Product> findByMerchantIdAndDeletedFalse(UUID merchantId, Pageable pageable);
     Page<Product> findByCategory_CategoryIdAndDeletedFalse(UUID categoryId, Pageable pageable);
 
+    // Custom query to filter products by price range
+    List<Product> findByListingPriceBetween(BigDecimal minPrice, BigDecimal maxPrice);
 
     List<Product> findByMerchantIdAndCategory_CategoryIdAndDeletedFalse(UUID merchantId, UUID categoryId);
 

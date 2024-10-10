@@ -1,36 +1,37 @@
-
 package sg.edu.nus.iss.product_service.service;
 
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
+import sg.edu.nus.iss.product_service.dto.ProductFilterDTO;
+import sg.edu.nus.iss.product_service.model.Category;
 import sg.edu.nus.iss.product_service.model.Product;
 import sg.edu.nus.iss.product_service.repository.CategoryRepository;
 import sg.edu.nus.iss.product_service.repository.ProductRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 
+import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
-        import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.*;
 
 public class ProductServiceTest {
+
+    @InjectMocks
+    private ProductService productService;
 
     @Mock
     private ProductRepository productRepository;
 
     @Mock
     private CategoryRepository categoryRepository;
-
-    @InjectMocks
-    private ProductService productService;
 
     public ProductServiceTest() {
         MockitoAnnotations.openMocks(this);
@@ -126,5 +127,107 @@ public class ProductServiceTest {
         Product result = productService.getProductByIdAndMerchantId(merchantId, productId);
 
         assertEquals(product, result);
+    }
+
+    @Test
+    public void testGetFilteredProducts_WithPincode() {
+        // Given
+        Product product1 = new Product();
+        product1.setProductId(UUID.randomUUID());
+        product1.setPincode("12345");
+        product1.setOriginalPrice(BigDecimal.valueOf(10.00));
+        product1.setListingPrice(BigDecimal.valueOf(8.00));
+
+        Product product2 = new Product();
+        product2.setProductId(UUID.randomUUID());
+        product2.setPincode("12345");
+        product2.setOriginalPrice(BigDecimal.valueOf(20.00));
+        product2.setListingPrice(BigDecimal.valueOf(18.00));
+
+        Product product3 = new Product();
+        product3.setProductId(UUID.randomUUID());
+        product3.setPincode("54321");
+        product3.setOriginalPrice(BigDecimal.valueOf(30.00));
+        product3.setListingPrice(BigDecimal.valueOf(28.00));
+
+        // Ensure that the repository returns the correct products
+        when(productRepository.findAll()).thenReturn(Arrays.asList(product1, product2, product3));
+
+        // Set up filter DTO
+        ProductFilterDTO filterDTO = new ProductFilterDTO();
+        filterDTO.setPincode("12345"); // The pincode you want to filter by
+
+        // When
+        List<Product> filteredProducts = productService.getFilteredProducts(filterDTO);
+
+        // Then
+        assertEquals(2, filteredProducts.size());
+    }
+
+    @Test
+    public void testGetFilteredProducts_WithCategory() {
+        // Given
+        UUID categoryId = UUID.randomUUID();
+        Category category = new Category();
+        category.setCategoryId(categoryId);
+
+        Product product1 = new Product();
+        product1.setProductId(UUID.randomUUID());
+        product1.setCategory(category);
+        product1.setOriginalPrice(BigDecimal.valueOf(10.00));
+        product1.setListingPrice(BigDecimal.valueOf(8.00));
+
+        Product product2 = new Product();
+        product2.setProductId(UUID.randomUUID());
+        product2.setCategory(category);
+        product2.setOriginalPrice(BigDecimal.valueOf(20.00));
+        product2.setListingPrice(BigDecimal.valueOf(18.00));
+
+        // Ensure that the repository returns the correct products
+        when(productRepository.findAll()).thenReturn(Arrays.asList(product1, product2));
+
+        // Set up filter DTO
+        ProductFilterDTO filterDTO = new ProductFilterDTO();
+        filterDTO.setCategoryId(categoryId);
+
+        // When
+        List<Product> filteredProducts = productService.getFilteredProducts(filterDTO);
+
+        // Then
+        assertEquals(2, filteredProducts.size());
+    }
+
+    @Test
+    public void testGetFilteredProducts_WithPriceRange() {
+        // Given
+        Product product1 = new Product();
+        product1.setProductId(UUID.randomUUID());
+        product1.setPincode("12345");
+        product1.setOriginalPrice(BigDecimal.valueOf(10.00));
+        product1.setListingPrice(BigDecimal.valueOf(8.00));
+
+        Product product2 = new Product();
+        product2.setProductId(UUID.randomUUID());
+        product2.setPincode("12345");
+        product2.setOriginalPrice(BigDecimal.valueOf(20.00));
+        product2.setListingPrice(BigDecimal.valueOf(18.00));
+
+        Product product3 = new Product();
+        product3.setProductId(UUID.randomUUID());
+        product3.setPincode("54321");
+        product3.setOriginalPrice(BigDecimal.valueOf(30.00));
+        product3.setListingPrice(BigDecimal.valueOf(28.00));
+
+        when(productRepository.findAll()).thenReturn(Arrays.asList(product1, product2, product3));
+
+        ProductFilterDTO filterDTO = new ProductFilterDTO();
+        filterDTO.setMinPrice(BigDecimal.valueOf(15.00));
+        filterDTO.setMaxPrice(BigDecimal.valueOf(25.00));
+
+        // When
+        List<Product> filteredProducts = productService.getFilteredProducts(filterDTO);
+
+        // Then
+        assertEquals(1, filteredProducts.size()); // Only product2 should match
     }
 }

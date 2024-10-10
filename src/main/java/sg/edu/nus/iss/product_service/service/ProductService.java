@@ -1,6 +1,11 @@
 package sg.edu.nus.iss.product_service.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import sg.edu.nus.iss.product_service.dto.ProductFilterDTO;
+import sg.edu.nus.iss.product_service.model.Product;
+import sg.edu.nus.iss.product_service.repository.ProductRepository;
+import sg.edu.nus.iss.product_service.service.strategy.*;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -10,6 +15,7 @@ import sg.edu.nus.iss.product_service.model.Product;
 import sg.edu.nus.iss.product_service.repository.CategoryRepository;
 import sg.edu.nus.iss.product_service.repository.ProductRepository;
 
+import java.util.ArrayList;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
@@ -22,7 +28,6 @@ public class ProductService {
     private final CategoryRepository categoryRepository;
     private final ObjectMapper mapper;
 
-    @Autowired
     public ProductService(CategoryRepository categoryRepository, ProductRepository productRepository, ObjectMapper mapper) {
         this.mapper = mapper;
         this.productRepository = productRepository;
@@ -38,7 +43,7 @@ public class ProductService {
     }
 
     @Transactional
-    public Product deleteProduct(Product product) {
+    public Product deleteProduct (Product product){
         product.setUpdatedBy("merchant");
         product.setUpdatedAt(Date.from(LocalDateTime.now().atZone(ZoneId.of("Asia/Singapore")).toInstant()));
         product.setDeleted(true);
@@ -46,33 +51,51 @@ public class ProductService {
     }
 
     @Transactional
-    public Product addProduct(Product product) {
+    public Product addProduct (Product product){
         product.setCreatedBy("merchant");
         product.setCreatedAt(Date.from(LocalDateTime.now().atZone(ZoneId.of("Asia/Singapore")).toInstant()));
         return productRepository.save(product);
     }
 
-
-    public Page<Product> getAllProducts(UUID merchantId, Pageable pageable) {
-        return productRepository.findByMerchantIdAndDeletedFalse(merchantId,pageable);
+    public Page<Product> getAllProducts (UUID merchantId, Pageable pageable){
+        return productRepository.findByMerchantIdAndDeletedFalse(merchantId, pageable);
     }
 
-    public List<Product> getProductsByMerchantId(UUID merchantId) {
+    public List<Product> getProductsByMerchantId (UUID merchantId){
         return productRepository.findByMerchantIdAndDeletedFalse(merchantId);
     }
 
-    public Page<Product> getProductsByMerchantIdAndCategoryId(UUID merchantId, UUID categoryId, Pageable pageable) {
-        return productRepository.findByMerchantIdAndCategory_CategoryIdAndDeletedFalse(merchantId,categoryId, pageable);
+    public Page<Product> getProductsByMerchantIdAndCategoryId (UUID merchantId, UUID categoryId, Pageable pageable){
+        return productRepository.findByMerchantIdAndCategory_CategoryIdAndDeletedFalse(merchantId, categoryId, pageable);
     }
 
-    public List<Product> getProductsByMerchantIdAndCategoryId(UUID merchantId, UUID categoryId) {
-        return productRepository.findByMerchantIdAndCategory_CategoryIdAndDeletedFalse(merchantId,categoryId);
+    public List<Product> getProductsByMerchantIdAndCategoryId (UUID merchantId, UUID categoryId){
+        return productRepository.findByMerchantIdAndCategory_CategoryIdAndDeletedFalse(merchantId, categoryId);
     }
 
-    public Product getProductByIdAndMerchantId(UUID merchantID,UUID productId) {
-        return productRepository.findByMerchantIdAndProductIdAndDeletedFalse(merchantID,productId);
+    public Product getProductByIdAndMerchantId (UUID merchantID, UUID productId){
+        return productRepository.findByMerchantIdAndProductIdAndDeletedFalse(merchantID, productId);
     }
 
+    public List<Product> getFilteredProducts(ProductFilterDTO filterDTO) {
+        List<Product> allProducts = productRepository.findAll();
+        List<FilterStrategy> strategies = new ArrayList<>();
 
+        if (filterDTO.getPincode() != null) {
+            strategies.add(new PincodeFilterStrategy(filterDTO.getPincode()));
+        }
+        if (filterDTO.getCategoryId() != null) {
+            strategies.add(new CategoryFilterStrategy(filterDTO.getCategoryId()));
+        }
+        if (filterDTO.getMinPrice() != null || filterDTO.getMaxPrice() != null) {
+            strategies.add(new PriceFilterStrategy(filterDTO.getMinPrice(), filterDTO.getMaxPrice()));
+        }
 
+        // Apply each strategy
+        for (FilterStrategy strategy : strategies) {
+            allProducts = strategy.filter(allProducts);
+        }
+
+        return allProducts;
+    }
 }
