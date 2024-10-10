@@ -8,9 +8,10 @@ import lombok.Data;
 import org.hibernate.annotations.UuidGenerator;
 
 import java.util.UUID;
+import java.util.List;
 
-@Data
 @Entity
+@Data
 public class Category {
 
     @Id
@@ -18,7 +19,13 @@ public class Category {
     @UuidGenerator
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private UUID categoryId;
+
     private String categoryName;
     @JsonIgnore
     public boolean deleted=false;
+
+    private String categoryDescription;
+
+    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Product> products;  // One category can have many products
 }
