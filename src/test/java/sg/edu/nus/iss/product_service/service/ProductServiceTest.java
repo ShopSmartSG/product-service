@@ -34,9 +34,100 @@ public class ProductServiceTest {
     @Mock
     private CategoryRepository categoryRepository;
 
-    @BeforeEach
-    public void setup() {
+    public ProductServiceTest() {
         MockitoAnnotations.openMocks(this);
+    }
+
+    @Test
+    public void testDeleteProduct() {
+        Product product = new Product();
+        product.setProductId(UUID.randomUUID());
+        when(productRepository.save(product)).thenReturn(product);
+
+        Product result = productService.deleteProduct(product);
+
+        assertTrue(result.isDeleted());
+        assertEquals("merchant", result.getUpdatedBy());
+        assertNotNull(result.getUpdatedAt());
+    }
+
+    @Test
+    public void testUpdateProduct() {
+        Product product = new Product();
+        product.setProductId(UUID.randomUUID());
+        when(productRepository.save(product)).thenReturn(product);
+
+        Product result = productService.updateProduct(product);
+
+        assertEquals("merchant", result.getUpdatedBy());
+        assertNotNull(result.getUpdatedAt());
+    }
+
+    @Test
+    public void testAddProduct() {
+        Product product = new Product();
+        product.setProductId(UUID.randomUUID());
+        when(productRepository.save(product)).thenReturn(product);
+
+        Product result = productService.addProduct(product);
+
+        assertEquals("merchant", result.getCreatedBy());
+        assertNotNull(result.getCreatedAt());
+    }
+
+    @Test
+    public void testGetAllProducts() {
+        UUID merchantId = UUID.randomUUID();
+        PageRequest pageable = PageRequest.of(0, 10);
+        Product product = new Product();
+        product.setProductId(UUID.randomUUID());
+        Page<Product> page = new PageImpl<>(Collections.singletonList(product));
+        when(productRepository.findByMerchantIdAndDeletedFalse(merchantId, pageable)).thenReturn(page);
+
+        Page<Product> result = productService.getAllProducts(merchantId, pageable);
+
+        assertEquals(1, result.getTotalElements());
+        assertEquals(product, result.getContent().get(0));
+    }
+
+    @Test
+    public void testGetProductsByMerchantId() {
+        UUID merchantId = UUID.randomUUID();
+        Product product = new Product();
+        product.setProductId(UUID.randomUUID());
+        when(productRepository.findByMerchantIdAndDeletedFalse(merchantId)).thenReturn(Collections.singletonList(product));
+
+        List<Product> result = productService.getProductsByMerchantId(merchantId);
+
+        assertEquals(1, result.size());
+        assertEquals(product, result.get(0));
+    }
+
+    @Test
+    public void testGetProductsByMerchantIdAndCategoryId() {
+        UUID merchantId = UUID.randomUUID();
+        UUID categoryId = UUID.randomUUID();
+        Product product = new Product();
+        product.setProductId(UUID.randomUUID());
+        when(productRepository.findByMerchantIdAndCategory_CategoryIdAndDeletedFalse(merchantId, categoryId)).thenReturn(Collections.singletonList(product));
+
+        List<Product> result = productService.getProductsByMerchantIdAndCategoryId(merchantId, categoryId);
+
+        assertEquals(1, result.size());
+        assertEquals(product, result.get(0));
+    }
+
+    @Test
+    public void testGetProductByIdAndMerchantId() {
+        UUID merchantId = UUID.randomUUID();
+        UUID productId = UUID.randomUUID();
+        Product product = new Product();
+        product.setProductId(productId);
+        when(productRepository.findByMerchantIdAndProductIdAndDeletedFalse(merchantId, productId)).thenReturn(product);
+
+        Product result = productService.getProductByIdAndMerchantId(merchantId, productId);
+
+        assertEquals(product, result);
     }
 
     @Test
@@ -58,21 +149,6 @@ public class ProductServiceTest {
 
         // Then
         assertEquals(2, filteredProducts.size());
-    }
-
-    @Test
-    public void testDeleteProduct() {
-        Product product = new Product();
-        product.setProductId(UUID.randomUUID());
-        when(productRepository.save(product)).thenReturn(product);
-
-        // When
-        Product result = productService.deleteProduct(product);
-
-        // Then
-        assertTrue(result.isDeleted());
-        assertEquals("merchant", result.getUpdatedBy());
-        assertNotNull(result.getUpdatedAt());
     }
 
     @Test
@@ -140,65 +216,5 @@ public class ProductServiceTest {
         product.setListingPrice(listingPrice);
         product.setCategory(category);
         return product;
-    }
-
-    @Test
-    public void testGetAllProducts() {
-        UUID merchantId = UUID.randomUUID();
-        PageRequest pageable = PageRequest.of(0, 10);
-        Product product = new Product();
-        product.setProductId(UUID.randomUUID());
-        product.setProductName("Test Product");
-        product.setAvailableStock(10);
-        product.setOriginalPrice(BigDecimal.valueOf(20.00));
-        product.setListingPrice(BigDecimal.valueOf(18.00));
-
-        Page<Product> page = new PageImpl<>(Collections.singletonList(product));
-        when(productRepository.findByMerchantIdAndDeletedFalse(merchantId, pageable)).thenReturn(page);
-
-        Page<Product> result = productService.getAllProducts(merchantId, pageable);
-
-        assertEquals(1, result.getTotalElements());
-        assertEquals(product, result.getContent().get(0));
-    }
-
-    @Test
-    public void testGetProductsByMerchantId() {
-        UUID merchantId = UUID.randomUUID();
-        Product product = new Product();
-        product.setProductId(UUID.randomUUID());
-        when(productRepository.findByMerchantIdAndDeletedFalse(merchantId)).thenReturn(Collections.singletonList(product));
-
-        List<Product> result = productService.getProductsByMerchantId(merchantId);
-
-        assertEquals(1, result.size());
-        assertEquals(product, result.get(0));
-    }
-
-    @Test
-    public void testGetProductsByMerchantIdAndCategoryId() {
-        UUID merchantId = UUID.randomUUID();
-        UUID categoryId = UUID.randomUUID();
-        Product product = new Product();
-        product.setProductId(UUID.randomUUID());
-        when(productRepository.findByMerchantIdAndCategory_CategoryIdAndDeletedFalse(merchantId, categoryId)).thenReturn(Collections.singletonList(product));
-
-        List<Product> result = productService.getProductsByMerchantIdAndCategoryId(merchantId, categoryId);
-
-        assertEquals(1, result.size());
-        assertEquals(product, result.get(0));
-    }
-
-    @Test
-    public void testGetProductByIdAndMerchantId() {
-        UUID merchantId = UUID.randomUUID();
-        UUID productId = UUID.randomUUID();
-        Product product = new Product();
-        product.setProductId(productId);
-        when(productRepository.findByMerchantIdAndProductIdAndDeletedFalse(merchantId, productId)).thenReturn(product);
-
-        Product result = productService.getProductByIdAndMerchantId(merchantId, productId);
-
-        assertEquals(product, result);
     }
 }
