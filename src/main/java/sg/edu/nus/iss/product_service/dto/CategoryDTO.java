@@ -12,4 +12,5 @@ public class CategoryDTO {
     private UUID categoryId;
     @NotBlank(message = "Category name is mandatory")
     private String categoryName;
+    private String categoryDescription;
 }
