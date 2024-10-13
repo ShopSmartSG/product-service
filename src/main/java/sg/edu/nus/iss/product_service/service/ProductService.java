@@ -6,7 +6,6 @@ import sg.edu.nus.iss.product_service.model.Product;
 import sg.edu.nus.iss.product_service.repository.ProductRepository;
 import sg.edu.nus.iss.product_service.service.strategy.*;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -15,12 +14,10 @@ import sg.edu.nus.iss.product_service.model.Product;
 import sg.edu.nus.iss.product_service.repository.CategoryRepository;
 import sg.edu.nus.iss.product_service.repository.ProductRepository;
 
-import java.util.ArrayList;
+import java.math.BigDecimal;
+import java.util.*;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.util.Date;
-import java.util.List;
-import java.util.UUID;
 
 @Service
 public class ProductService {
@@ -81,21 +78,38 @@ public class ProductService {
         List<Product> allProducts = productRepository.findAll();
         List<FilterStrategy> strategies = new ArrayList<>();
 
-        if (filterDTO.getPincode() != null) {
-            strategies.add(new PincodeFilterStrategy(filterDTO.getPincode()));
-        }
-        if (filterDTO.getCategoryId() != null) {
-            strategies.add(new CategoryFilterStrategy(filterDTO.getCategoryId()));
-        }
-        if (filterDTO.getMinPrice() != null || filterDTO.getMaxPrice() != null) {
-            strategies.add(new PriceFilterStrategy(filterDTO.getMinPrice(), filterDTO.getMaxPrice()));
-        }
+        try{
+            if (filterDTO.getPincode() != null && !filterDTO.getPincode().isEmpty()) {
+                strategies.add(new PincodeFilterStrategy(filterDTO.getPincode()));
+            }
+            if (filterDTO.getCategoryId() != null && !filterDTO.getCategoryId().toString().isEmpty()) {
+                strategies.add(new CategoryFilterStrategy(filterDTO.getCategoryId()));
+            }
+            if (filterDTO.getMinPrice() != null && filterDTO.getMinPrice().compareTo(BigDecimal.ZERO) > 0 ||
+                    filterDTO.getMaxPrice() != null && filterDTO.getMaxPrice().compareTo(BigDecimal.ZERO) > 0) {
+                strategies.add(new PriceFilterStrategy(filterDTO.getMinPrice(), filterDTO.getMaxPrice()));
+            }
+            // Add strategy for full-text search if searchText is provided
+            if (filterDTO.getSearchText() != null && !filterDTO.getSearchText().isEmpty()) {
+                strategies.add(new FullTextSearchStrategy(filterDTO.getSearchText(), productRepository));
+            }
 
-        // Apply each strategy
-        for (FilterStrategy strategy : strategies) {
-            allProducts = strategy.filter(allProducts);
-        }
+            // If no strategies are added, return all products
+            if (strategies.isEmpty()) {
+                return allProducts;  // Return all products if no filters are applied
+            }
 
-        return allProducts;
+            // Apply each strategy
+            for (FilterStrategy strategy : strategies) {
+                allProducts = strategy.filter(allProducts);
+            }
+
+            return allProducts;
+        }catch (Exception e) {
+            // Log the exception
+            System.err.println("Error occurred while filtering products: " + e.getMessage());
+            // Return an empty list or handle it according to your application's logic
+            return Collections.emptyList();
+        }
     }
 }
