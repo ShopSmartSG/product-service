@@ -11,4 +11,5 @@ public class ProductFilterDTO {
     private UUID categoryId;
     private BigDecimal minPrice;
     private BigDecimal maxPrice;
+    private String searchText;
 }

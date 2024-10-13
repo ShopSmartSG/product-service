@@ -25,7 +25,4 @@ public class Category {
     public boolean deleted=false;
 
     private String categoryDescription;
-
-    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Product> products;  // One category can have many products
 }

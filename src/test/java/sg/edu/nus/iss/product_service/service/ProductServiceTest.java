@@ -230,4 +230,39 @@ public class ProductServiceTest {
         // Then
         assertEquals(1, filteredProducts.size()); // Only product2 should match
     }
+
+    @Test
+    public void testGetFilteredProducts_WithFullTextSearch_WithoutMock() {
+        // Given
+        Product product1 = new Product();
+        product1.setProductId(UUID.randomUUID());
+        product1.setProductName("Amazing Product");
+
+        Product product2 = new Product();
+        product2.setProductId(UUID.randomUUID());
+        product2.setProductName("Awesome Product");
+
+        Product product3 = new Product();
+        product3.setProductId(UUID.randomUUID());
+        product3.setProductName("Ordinary Item");
+
+        // Mock the repository to return the products
+        when(productRepository.findAll()).thenReturn(Arrays.asList(product1, product2, product3));
+
+        // Mock the similarity scores
+        when(productRepository.similarity("Amazing Product", "Amazing")).thenReturn(0.9);
+        when(productRepository.similarity("Awesome Product", "Amazing")).thenReturn(0.3);
+        when(productRepository.similarity("Ordinary Item", "Amazing")).thenReturn(0.1);
+
+        // Set up filter DTO
+        ProductFilterDTO filterDTO = new ProductFilterDTO();
+        filterDTO.setSearchText("Amazing");
+
+        // When
+        List<Product> filteredProducts = productService.getFilteredProducts(filterDTO);
+
+        // Then
+        assertEquals(1, filteredProducts.size());
+        assertEquals("Amazing Product", filteredProducts.get(0).getProductName());
+    }
 }

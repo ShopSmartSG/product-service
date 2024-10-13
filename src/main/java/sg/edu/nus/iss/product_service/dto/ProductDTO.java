@@ -6,7 +6,6 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
 import lombok.Data;
 import lombok.NonNull;
-import org.springframework.web.bind.annotation.PostMapping;
 
 import java.math.BigDecimal;
 import java.util.UUID;
@@ -14,7 +13,6 @@ import java.util.UUID;
 @Data
 public class ProductDTO {
 
-    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private UUID productId;
     @NotBlank(message = "Product name is mandatory")
     private String productName;

@@ -11,7 +11,7 @@ FROM openjdk:21-jdk-slim
 COPY --from=build /app/target/product-service.jar app.jar
 
 # Make port 8080 available to the world outside this container
-EXPOSE 8080
+EXPOSE 8082
 
 # Run the jar file
 ENTRYPOINT ["java", "-jar", "app.jar"]
