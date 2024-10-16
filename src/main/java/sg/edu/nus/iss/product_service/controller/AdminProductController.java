@@ -7,6 +7,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import sg.edu.nus.iss.product_service.service.strategy.ProductServiceContext;
 import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -34,6 +35,7 @@ public class AdminProductController {
     private final S3Utility s3Service;
     private final ObjectMapper objectMapper;
     private final CategoryService categoryService;
+    private final ProductServiceContext productServiceContext;
 
     @Autowired
     public AdminProductController(ProductService productService, ObjectMapper objectMapper, S3Utility s3Service, CategoryService categoryService) {
@@ -41,6 +43,7 @@ public class AdminProductController {
         this.objectMapper = objectMapper;
         this.s3Service = s3Service;
         this.categoryService = categoryService;
+        this.productServiceContext= new ProductServiceContext();
     }
 
     @GetMapping("/products")
@@ -82,16 +85,9 @@ public class AdminProductController {
 
     @PostMapping("/products")
     @Operation(summary = "Add a new product")
-    public ResponseEntity<?> addProduct( @Valid @RequestBody Product product) {
-        // check if category exists
-        // if it doesn't ask merchant to create category first
-        Category category = categoryService.getCategoryByName(product.getCategory().getCategoryName());
-        if (category == null) {
-            throw new ResourceNotFoundException("Category not found , Please create category first");
-        }
-        product.setCategory(category);
-        Product newProduct = productService.addProduct(product);
-        return ResponseEntity.ok(newProduct);
+    public ResponseEntity<?> addProduct(@RequestBody Product product) {
+        productServiceContext.setProductStrategy("admin");
+        return ResponseEntity.ok(productServiceContext.getProductStrategy().addProduct(product));
     }
 
     @PostMapping("/images/upload")
@@ -112,29 +108,16 @@ public class AdminProductController {
 
     @DeleteMapping("/products/{productId}")
     @Operation(summary = "Delete product by Product ID")
-    public ResponseEntity<String> deleteProduct(@RequestParam (required = false) UUID merchantId, @PathVariable UUID productId) {
-        Product existingProduct = productService.getProductByIdAndMerchantId(merchantId, productId);
-        if (existingProduct == null) {
-            throw new ResourceNotFoundException("Product not found");
-        }
-        productService.deleteProduct(existingProduct);
-        return ResponseEntity.ok("Delete: successful");
+    public ResponseEntity<?> deleteProduct(@PathVariable UUID productId) {
+        productServiceContext.setProductStrategy("admin");
+        productServiceContext.getProductStrategy().deleteProduct(productId);
+        return ResponseEntity.ok("Product deleted");
     }
 
     @PutMapping("/{merchantId}/products/{productId}")
     @Operation(summary = "Update product")
-    public ResponseEntity<?> updateProduct(@PathVariable UUID merchantId, @PathVariable UUID productId, @Valid @RequestBody ProductDTO dto) {
-        Product existingProduct = productService.getProductByIdAndMerchantId(merchantId, productId);
-        if (existingProduct == null) {
-            throw new ResourceNotFoundException("Product not found");
-        }
-
-        if (!existingProduct.getProductId().equals(dto.getProductId())) {
-            throw new IllegalArgumentException("Product ID mismatch");
-        }
-        existingProduct = objectMapper.convertValue(dto, Product.class);
-        existingProduct.setProductId(productId);
-        existingProduct.setCategory(categoryService.getCategoryById(dto.getCategoryId()));
-        return ResponseEntity.ok(productService.updateProduct(existingProduct));
+    public ResponseEntity<?> updateProduct(@PathVariable UUID productId, @RequestBody Product product) {
+        productServiceContext.setProductStrategy("admin");
+        return ResponseEntity.ok(productServiceContext.getProductStrategy().updateProduct(productId, product));
     }
 }

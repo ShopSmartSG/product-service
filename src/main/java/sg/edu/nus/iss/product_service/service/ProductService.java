@@ -57,27 +57,6 @@ public class ProductService {
         return productRepository.save(product);
     }
 
-    @Transactional
-    public Product updateProductAdmin(Product product) {
-        product.setUpdatedBy("Admin");
-        product.setUpdatedAt(Date.from(LocalDateTime.now().atZone(ZoneId.of("Asia/Singapore")).toInstant()));
-        return productRepository.save(product);
-    }
-
-    @Transactional
-    public Product deleteProductAdmin (Product product){
-        product.setUpdatedBy("Admin");
-        product.setUpdatedAt(Date.from(LocalDateTime.now().atZone(ZoneId.of("Asia/Singapore")).toInstant()));
-        product.setDeleted(true);
-        return productRepository.save(product);
-    }
-
-    @Transactional
-    public Product addProductAdmin (Product product){
-        product.setCreatedBy("Admin");
-        product.setCreatedAt(Date.from(LocalDateTime.now().atZone(ZoneId.of("Asia/Singapore")).toInstant()));
-        return productRepository.save(product);
-    }
 
     public Page<Product> getAllProducts (UUID merchantId, Pageable pageable){
         return productRepository.findByMerchantIdAndDeletedFalse(merchantId, pageable);

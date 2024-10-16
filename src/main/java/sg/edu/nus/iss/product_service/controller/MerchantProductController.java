@@ -20,6 +20,7 @@ import sg.edu.nus.iss.product_service.model.Product;
 import sg.edu.nus.iss.product_service.service.CategoryService;
 import sg.edu.nus.iss.product_service.service.ProductService;
 import sg.edu.nus.iss.product_service.utility.S3Utility;
+import sg.edu.nus.iss.product_service.service.strategy.ProductServiceContext;
 
 import java.io.IOException;
 import java.util.List;
@@ -33,6 +34,7 @@ public class MerchantProductController {
     private final S3Utility s3Service;
     private final ObjectMapper objectMapper;
     private final CategoryService categoryService;
+    private final ProductServiceContext productServiceContext;
 
     @Autowired
     public MerchantProductController(ProductService productService, ObjectMapper objectMapper, S3Utility s3Service, CategoryService categoryService) {
@@ -40,6 +42,7 @@ public class MerchantProductController {
         this.objectMapper = objectMapper;
         this.s3Service = s3Service;
         this.categoryService = categoryService;
+        this.productServiceContext = new ProductServiceContext();
     }
 
     @GetMapping("/{merchantId}/products")
@@ -82,6 +85,7 @@ public class MerchantProductController {
     @PostMapping("/products")
     @Operation(summary = "Add a new product")
     public ResponseEntity<?> addProduct( @Valid @RequestBody Product product) {
+
         // check if category exists
         // if it doesn't ask merchant to create category first
         Category category = categoryService.getCategoryByName(product.getCategory().getCategoryName());
@@ -89,8 +93,8 @@ public class MerchantProductController {
             throw new ResourceNotFoundException("Category not found , Please create category first");
         }
         product.setCategory(category);
-        Product newProduct = productService.addProduct(product);
-        return ResponseEntity.ok(newProduct);
+        productServiceContext.setProductStrategy("merchant");
+        return ResponseEntity.ok(productServiceContext.getProductStrategy().addProduct(product));
     }
 
     @PostMapping("/images/upload")
@@ -112,17 +116,19 @@ public class MerchantProductController {
     @DeleteMapping("/{merchantId}/products/{productId}")
     @Operation(summary = "Delete product by Product ID")
     public ResponseEntity<String> deleteProduct(@PathVariable UUID merchantId, @PathVariable UUID productId) {
+        productServiceContext.setProductStrategy("merchant");
         Product existingProduct = productService.getProductByIdAndMerchantId(merchantId, productId);
         if (existingProduct == null) {
             throw new ResourceNotFoundException("Product not found");
         }
-        productService.deleteProduct(existingProduct);
-        return ResponseEntity.ok("Delete: successful");
+        productServiceContext.getProductStrategy().deleteProduct(productId);
+        return ResponseEntity.ok("Product deleted");
     }
 
     @PutMapping("/{merchantId}/products/{productId}")
     @Operation(summary = "Update product")
-    public ResponseEntity<?> updateProduct(@PathVariable UUID merchantId, @PathVariable UUID productId, @Valid @RequestBody ProductDTO dto) {
+    public ResponseEntity<?> updateProduct(@PathVariable UUID merchantId, @PathVariable UUID productId, @Valid @RequestBody ProductDTO dto, @Valid @ RequestBody Product product) {
+        productServiceContext.setProductStrategy("merchant");
         Product existingProduct = productService.getProductByIdAndMerchantId(merchantId, productId);
         if (existingProduct == null) {
             throw new ResourceNotFoundException("Product not found");
@@ -134,6 +140,6 @@ public class MerchantProductController {
         existingProduct = objectMapper.convertValue(dto, Product.class);
         existingProduct.setProductId(productId);
         existingProduct.setCategory(categoryService.getCategoryById(dto.getCategoryId()));
-        return ResponseEntity.ok(productService.updateProduct(existingProduct));
+        return ResponseEntity.ok(productServiceContext.getProductStrategy().updateProduct(productId, product));
     }
 }

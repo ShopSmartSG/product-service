@@ -169,7 +169,7 @@ class MerchantProductControllerTest {
         when(categoryService.getCategoryById(any())).thenReturn(new Category());
         when(productService.updateProduct(any())).thenReturn(product);
 
-        ResponseEntity<?> response = merchantProductController.updateProduct(merchantId, productId, dto);
+        ResponseEntity<?> response = merchantProductController.updateProduct(merchantId, productId, dto,product);
 
         assertEquals(ResponseEntity.ok(product), response);
     }
@@ -180,11 +180,12 @@ class MerchantProductControllerTest {
         UUID productId = UUID.randomUUID();
         UUID categoryId = UUID.randomUUID();
         ProductDTO dto = new ProductDTO(categoryId,merchantId);
+        Product product = new Product();
         dto.setProductId(productId);
         when(productService.getProductByIdAndMerchantId(merchantId, productId)).thenReturn(null);
 
         assertThrows(ResourceNotFoundException.class, () -> {
-            merchantProductController.updateProduct(merchantId, productId, dto);
+            merchantProductController.updateProduct(merchantId, productId, dto,product);
         });
     }
 
@@ -200,7 +201,7 @@ class MerchantProductControllerTest {
         when(productService.getProductByIdAndMerchantId(merchantId, productId)).thenReturn(product);
 
         assertThrows(IllegalArgumentException.class, () -> {
-            merchantProductController.updateProduct(merchantId, productId, dto);
+            merchantProductController.updateProduct(merchantId, productId, dto,product);
         });
     }
 }
