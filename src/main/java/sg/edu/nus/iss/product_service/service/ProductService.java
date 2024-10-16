@@ -57,6 +57,7 @@ public class ProductService {
         return productRepository.save(product);
     }
 
+
     public Page<Product> getAllProducts (UUID merchantId, Pageable pageable){
         return productRepository.findByMerchantIdAndDeletedFalse(merchantId, pageable);
     }
