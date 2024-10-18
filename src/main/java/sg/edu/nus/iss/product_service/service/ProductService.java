@@ -33,31 +33,6 @@ public class ProductService {
         this.productRepository = productRepository;
         this.categoryRepository = categoryRepository;
     }
-
-
-    @Transactional
-    public Product updateProduct(Product product) {
-        product.setUpdatedBy("merchant");
-        product.setUpdatedAt(Date.from(LocalDateTime.now().atZone(ZoneId.of("Asia/Singapore")).toInstant()));
-        return productRepository.save(product);
-    }
-
-    @Transactional
-    public Product deleteProduct (Product product){
-        product.setUpdatedBy("merchant");
-        product.setUpdatedAt(Date.from(LocalDateTime.now().atZone(ZoneId.of("Asia/Singapore")).toInstant()));
-        product.setDeleted(true);
-        return productRepository.save(product);
-    }
-
-    @Transactional
-    public Product addProduct (Product product){
-        product.setCreatedBy("merchant");
-        product.setCreatedAt(Date.from(LocalDateTime.now().atZone(ZoneId.of("Asia/Singapore")).toInstant()));
-        return productRepository.save(product);
-    }
-
-
     public Page<Product> getAllProducts (UUID merchantId, Pageable pageable){
         return productRepository.findByMerchantIdAndDeletedFalse(merchantId, pageable);
     }

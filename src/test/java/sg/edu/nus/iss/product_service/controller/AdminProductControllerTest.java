@@ -8,7 +8,7 @@ import org.mockito.MockitoAnnotations;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import sg.edu.nus.iss.product_service.model.Product;
-import sg.edu.nus.iss.product_service.service.strategy.MerchantProductStrategy;
+import sg.edu.nus.iss.product_service.service.strategy.AdminProductStrategy;
 import sg.edu.nus.iss.product_service.service.strategy.ProductServiceContext;
 import sg.edu.nus.iss.product_service.dto.ProductDTO;
 
@@ -17,21 +17,21 @@ import java.util.UUID;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
-class MerchantProductControllerTest {
+class AdminProductControllerTest {
 
     @InjectMocks
-    private MerchantProductController merchantProductController;
+    private AdminProductController adminProductController;
 
     @Mock
     private ProductServiceContext productServiceContext;
 
     @Mock
-    private MerchantProductStrategy merchantProductStrategy;
+    private AdminProductStrategy adminProductStrategy;
 
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
-        when(productServiceContext.getProductStrategy()).thenReturn(merchantProductStrategy);
+        when(productServiceContext.getProductStrategy()).thenReturn(adminProductStrategy);
     }
 
     @Test
@@ -41,15 +41,15 @@ class MerchantProductControllerTest {
         product.setProductId(UUID.randomUUID());
 
         // Mock behavior
-        when(merchantProductStrategy.addProduct(product)).thenReturn(product);
+        when(adminProductStrategy.addProduct(product)).thenReturn(product);
 
         // Call the API
-        ResponseEntity<?> response = merchantProductController.addProduct(product);
+        ResponseEntity<?> response = adminProductController.addProduct(product);
 
         // Verify the results
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals(product, response.getBody());
-        verify(merchantProductStrategy, times(1)).addProduct(product);
+        verify(adminProductStrategy, times(1)).addProduct(product);
     }
 
     @Test
@@ -62,28 +62,27 @@ class MerchantProductControllerTest {
         ProductDTO productDTO = new ProductDTO(productId,merchantId);
 
         // Mock behavior
-        when(merchantProductStrategy.updateProduct(productId, product)).thenReturn(product);
+        when(adminProductStrategy.updateProduct(productId, product)).thenReturn(product);
 
         // Call the API
-        ResponseEntity<?> response = merchantProductController.updateProduct(productId, merchantId,productDTO,product);
+        ResponseEntity<?> response = adminProductController.updateProduct(productId, product);
 
         // Verify the results
         assertEquals(HttpStatus.OK, response.getStatusCode());
-        verify(merchantProductStrategy, times(1)).updateProduct(any(UUID.class), any(Product.class));
+        verify(adminProductStrategy, times(1)).updateProduct(any(UUID.class), any(Product.class));
     }
 
     @Test
     void testDeleteProduct() {
         // Mock data
         UUID productId = UUID.randomUUID();
-        UUID merchantId = UUID.randomUUID();
 
         // Call the API
-        ResponseEntity<String> response = merchantProductController.deleteProduct(productId,merchantId);
+        ResponseEntity<String> response = (ResponseEntity<String>) adminProductController.deleteProduct(productId);
 
         // Verify the results
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals("Deleted successfully", response.getBody());
-        verify(merchantProductStrategy, times(1)).deleteProduct(productId);
+        verify(adminProductStrategy, times(1)).deleteProduct(productId);
     }
 }
