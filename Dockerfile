@@ -8,13 +8,13 @@ RUN mvn clean package
 FROM openjdk:21-jdk-slim
 
 # Copy the project’s jar file into the container at /app
-COPY --from=build /app/target/product-service.jar app.jar
+COPY --from=build /app/target/product-service.jar product-app.jar
 
 # Make port 8080 available to the world outside this container
-EXPOSE 8082
+EXPOSE 8080
 
 # Run the jar file
-ENTRYPOINT ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-jar", "product-app.jar"]
 
 # to build image after building jar post any changes
 # docker build -t profile-service .
