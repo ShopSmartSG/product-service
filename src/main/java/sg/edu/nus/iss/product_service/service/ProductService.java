@@ -7,14 +7,11 @@ import sg.edu.nus.iss.product_service.model.Product;
 import sg.edu.nus.iss.product_service.repository.ProductRepository;
 import sg.edu.nus.iss.product_service.service.strategy.*;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import sg.edu.nus.iss.product_service.model.Product;
 import sg.edu.nus.iss.product_service.repository.CategoryRepository;
-import sg.edu.nus.iss.product_service.repository.ProductRepository;
 
 import java.math.BigDecimal;
 import java.util.*;
@@ -28,8 +25,8 @@ import java.util.UUID;
 public class ProductService {
     private final ProductRepository productRepository;
     private final CategoryRepository categoryRepository;
-    private final ObjectMapper mapper;
     private final ExternalLocationService locationService;
+    private final ObjectMapper mapper;
 
     public ProductService(CategoryRepository categoryRepository, ProductRepository productRepository, ObjectMapper mapper, ExternalLocationService locationService) {
         this.mapper = mapper;

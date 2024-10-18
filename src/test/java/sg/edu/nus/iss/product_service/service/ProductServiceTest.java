@@ -310,12 +310,10 @@ public class ProductServiceTest {
         // Create LocationFilterStrategy instance
         FilterStrategy locationFilterStrategy = new LocationFilterStrategy(targetCoordinates, rangeInKm, locationService);
 
-        // When
         List<Product> filteredProducts = locationFilterStrategy.filter(allProducts);
 
-        // Then
-        assertEquals(1, filteredProducts.size()); // Expecting only product1 to match
-        assertEquals(product1, filteredProducts.get(0)); // Verify that product1 is returned
+        assertEquals(1, filteredProducts.size());
+        assertEquals(product1, filteredProducts.get(0));
     }
 
 }
