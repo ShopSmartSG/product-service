@@ -17,7 +17,7 @@ EXPOSE 8080
 ENTRYPOINT ["java", "-jar", "product-app.jar"]
 
 # to build image after building jar post any changes
-# docker build -t profile-service .
+# docker build -t product-service .
 # docker-compose up --build
 # docker file and docker-compose port should be same
 # docker-compose down : shutdown the container
