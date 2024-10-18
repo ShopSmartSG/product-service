@@ -12,4 +12,5 @@ public class ProductFilterDTO {
     private BigDecimal minPrice;
     private BigDecimal maxPrice;
     private String searchText;
+    private Double rangeInKm;
 }

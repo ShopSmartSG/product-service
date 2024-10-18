@@ -1,17 +1,22 @@
 package sg.edu.nus.iss.product_service.service;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.web.client.RestTemplate;
 import sg.edu.nus.iss.product_service.dto.ProductFilterDTO;
 import sg.edu.nus.iss.product_service.model.Category;
+import sg.edu.nus.iss.product_service.model.LatLng;
 import sg.edu.nus.iss.product_service.model.Product;
 import sg.edu.nus.iss.product_service.repository.CategoryRepository;
 import sg.edu.nus.iss.product_service.repository.ProductRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
+import sg.edu.nus.iss.product_service.service.strategy.FilterStrategy;
+import sg.edu.nus.iss.product_service.service.strategy.LocationFilterStrategy;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
@@ -32,6 +37,15 @@ public class ProductServiceTest {
 
     @Mock
     private CategoryRepository categoryRepository;
+
+    @Mock
+    private RestTemplate restTemplate;
+
+    @Mock
+    private ObjectMapper mapper;
+
+    @Mock
+    private ExternalLocationService locationService;
 
     public ProductServiceTest() {
         MockitoAnnotations.openMocks(this);
@@ -265,4 +279,43 @@ public class ProductServiceTest {
         assertEquals(1, filteredProducts.size());
         assertEquals("Amazing Product", filteredProducts.get(0).getProductName());
     }
+
+    @Test
+    public void testGetFilteredProducts_WithLocationFilter() {
+        // Given
+        LatLng targetCoordinates = new LatLng(1.3521, 103.8198); // Target location
+        double rangeInKm = 3.0;
+
+        // Create products
+        Product product1 = new Product();
+        product1.setProductId(UUID.randomUUID());
+        product1.setMerchantId(UUID.randomUUID()); // Valid merchant ID for product 1
+
+        Product product2 = new Product();
+        product2.setProductId(UUID.randomUUID());
+        product2.setMerchantId(UUID.randomUUID()); // Valid merchant ID for product 2
+
+        // Mocking behavior for the external location service
+        when(locationService.getPincodeByMerchantId(product1.getMerchantId())).thenReturn("123456");
+        when(locationService.getPincodeByMerchantId(product2.getMerchantId())).thenReturn("654321");
+
+        // Mock coordinates for the given pincodes
+        when(locationService.getCoordinatesByPincode("123456")).thenReturn(new LatLng(1.3541, 103.8200)); // Within range
+        when(locationService.getCoordinatesByPincode("654321")).thenReturn(new LatLng(1.3700, 103.8500)); // Outside range
+
+        // List of products to filter
+        List<Product> allProducts = Arrays.asList(product1, product2);
+        when(productRepository.findAll()).thenReturn(allProducts);
+
+        // Create LocationFilterStrategy instance
+        FilterStrategy locationFilterStrategy = new LocationFilterStrategy(targetCoordinates, rangeInKm, locationService);
+
+        // When
+        List<Product> filteredProducts = locationFilterStrategy.filter(allProducts);
+
+        // Then
+        assertEquals(1, filteredProducts.size()); // Expecting only product1 to match
+        assertEquals(product1, filteredProducts.get(0)); // Verify that product1 is returned
+    }
+
 }

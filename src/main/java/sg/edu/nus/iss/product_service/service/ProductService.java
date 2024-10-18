@@ -2,10 +2,12 @@ package sg.edu.nus.iss.product_service.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import sg.edu.nus.iss.product_service.dto.ProductFilterDTO;
+import sg.edu.nus.iss.product_service.model.LatLng;
 import sg.edu.nus.iss.product_service.model.Product;
 import sg.edu.nus.iss.product_service.repository.ProductRepository;
 import sg.edu.nus.iss.product_service.service.strategy.*;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -18,19 +20,23 @@ import java.math.BigDecimal;
 import java.util.*;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.util.Date;
+import java.util.List;
+import java.util.UUID;
 
 @Service
 public class ProductService {
     private final ProductRepository productRepository;
     private final CategoryRepository categoryRepository;
     private final ObjectMapper mapper;
+    private final ExternalLocationService locationService;
 
-    public ProductService(CategoryRepository categoryRepository, ProductRepository productRepository, ObjectMapper mapper) {
+    public ProductService(CategoryRepository categoryRepository, ProductRepository productRepository, ObjectMapper mapper, ExternalLocationService locationService) {
         this.mapper = mapper;
         this.productRepository = productRepository;
         this.categoryRepository = categoryRepository;
+        this.locationService = locationService;
     }
-
 
     @Transactional
     public Product updateProduct(Product product) {
@@ -92,6 +98,12 @@ public class ProductService {
             // Add strategy for full-text search if searchText is provided
             if (filterDTO.getSearchText() != null && !filterDTO.getSearchText().isEmpty()) {
                 strategies.add(new FullTextSearchStrategy(filterDTO.getSearchText(), productRepository));
+            }
+            if (filterDTO.getPincode() != null && filterDTO.getRangeInKm() != null) {
+                LatLng targetCoordinates = locationService.getCoordinatesByPincode(filterDTO.getPincode());
+                if (targetCoordinates != null) {
+                    strategies.add(new LocationFilterStrategy(targetCoordinates, filterDTO.getRangeInKm(), locationService));
+                }
             }
 
             // If no strategies are added, return all products
