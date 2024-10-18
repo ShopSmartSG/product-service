@@ -1,5 +1,6 @@
 package sg.edu.nus.iss.product_service.controller;
 
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -30,6 +31,7 @@ import java.util.UUID;
 @RequestMapping("/merchants")
 @Tag(name = "Merchant Product API", description = "APIs for merchants to create, read, update, and delete products")
 public class MerchantProductController {
+
     private final ProductService productService;
     private final S3Utility s3Service;
     private final ObjectMapper objectMapper;
@@ -45,11 +47,30 @@ public class MerchantProductController {
         this.productServiceContext = new ProductServiceContext();
     }
 
+    // Helper method to create pageable object
+    private Pageable createPageable(Integer page, Integer size) {
+        return (page != null && size != null) ? PageRequest.of(page, size) : Pageable.unpaged();
+    }
+
+    // Helper method to validate product existence
+    private Product validateProduct(UUID merchantId, UUID productId) {
+        Product product = productService.getProductByIdAndMerchantId(merchantId, productId);
+        if (product == null) {
+            throw new ResourceNotFoundException("Product not found");
+        }
+        return product;
+    }
+
+    // Helper method to set the product strategy to merchant
+    private void setMerchantProductStrategy() {
+        productServiceContext.setProductStrategy("merchant");
+    }
+
     @GetMapping("/{merchantId}/products")
     @Operation(summary = "Retrieve all products")
     public ResponseEntity<?> getAllProducts(@PathVariable UUID merchantId, @RequestParam(required = false) Integer page, @RequestParam(required = false) Integer size) {
-        if (page != null && size != null) {
-            Pageable pageable = PageRequest.of(page, size);
+        Pageable pageable = createPageable(page, size);
+        if (pageable.isPaged()) {
             Page<Product> products = productService.getAllProducts(merchantId, pageable);
             return ResponseEntity.ok(products);
         } else {
@@ -61,19 +82,15 @@ public class MerchantProductController {
     @GetMapping("/{merchantId}/products/{productId}")
     @Operation(summary = "Retrieve product By ID")
     public ResponseEntity<?> getProductById(@PathVariable UUID merchantId, @PathVariable UUID productId) {
-        Product product = productService.getProductByIdAndMerchantId(merchantId, productId);
-        if (product == null) {
-            throw new ResourceNotFoundException("Product not found");
-        }
+        Product product = validateProduct(merchantId, productId);
         return ResponseEntity.ok(product);
     }
-
 
     @GetMapping("/{merchantId}/categories/{categoryId}")
     @Operation(summary = "Retrieve products by merchant ID and category ID")
     public ResponseEntity<?> getProductByMerchantIdAndCategoryId(@PathVariable UUID merchantId, @PathVariable UUID categoryId, @RequestParam(required = false) Integer page, @RequestParam(required = false) Integer size) {
-        if (page != null && size != null) {
-            Pageable pageable = PageRequest.of(page, size);
+        Pageable pageable = createPageable(page, size);
+        if (pageable.isPaged()) {
             Page<Product> products = productService.getProductsByMerchantIdAndCategoryId(merchantId, categoryId, pageable);
             return ResponseEntity.ok(products);
         } else {
@@ -84,16 +101,13 @@ public class MerchantProductController {
 
     @PostMapping("/products")
     @Operation(summary = "Add a new product")
-    public ResponseEntity<?> addProduct( @Valid @RequestBody Product product) {
-
-        // check if category exists
-        // if it doesn't ask merchant to create category first
+    public ResponseEntity<?> addProduct(@Valid @RequestBody Product product) {
         Category category = categoryService.getCategoryByName(product.getCategory().getCategoryName());
         if (category == null) {
-            throw new ResourceNotFoundException("Category not found , Please create category first");
+            throw new ResourceNotFoundException("Category not found, Please create category first");
         }
         product.setCategory(category);
-        productServiceContext.setProductStrategy("merchant");
+        setMerchantProductStrategy();
         return ResponseEntity.ok(productServiceContext.getProductStrategy().addProduct(product));
     }
 
@@ -116,24 +130,17 @@ public class MerchantProductController {
     @DeleteMapping("/{merchantId}/products/{productId}")
     @Operation(summary = "Delete product by Product ID")
     public ResponseEntity<String> deleteProduct(@PathVariable UUID merchantId, @PathVariable UUID productId) {
-        productServiceContext.setProductStrategy("merchant");
-        Product existingProduct = productService.getProductByIdAndMerchantId(merchantId, productId);
-        if (existingProduct == null) {
-            throw new ResourceNotFoundException("Product not found");
-        }
+        setMerchantProductStrategy();
+        Product existingProduct = validateProduct(merchantId, productId);
         productServiceContext.getProductStrategy().deleteProduct(productId);
         return ResponseEntity.ok("Product deleted");
     }
 
     @PutMapping("/{merchantId}/products/{productId}")
     @Operation(summary = "Update product")
-    public ResponseEntity<?> updateProduct(@PathVariable UUID merchantId, @PathVariable UUID productId, @Valid @RequestBody ProductDTO dto, @Valid @ RequestBody Product product) {
-        productServiceContext.setProductStrategy("merchant");
-        Product existingProduct = productService.getProductByIdAndMerchantId(merchantId, productId);
-        if (existingProduct == null) {
-            throw new ResourceNotFoundException("Product not found");
-        }
-
+    public ResponseEntity<?> updateProduct(@PathVariable UUID merchantId, @PathVariable UUID productId, @Valid @RequestBody ProductDTO dto, @Valid @RequestBody Product product) {
+        setMerchantProductStrategy();
+        Product existingProduct = validateProduct(merchantId, productId);
         if (!existingProduct.getProductId().equals(dto.getProductId())) {
             throw new IllegalArgumentException("Product ID mismatch");
         }
