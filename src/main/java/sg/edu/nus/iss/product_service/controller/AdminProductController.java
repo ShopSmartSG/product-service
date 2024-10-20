@@ -7,7 +7,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import sg.edu.nus.iss.product_service.service.strategy.ProductServiceContext;
+import sg.edu.nus.iss.product_service.service.ProductServiceContext;
 import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -38,12 +38,12 @@ public class AdminProductController {
     private final ProductServiceContext productServiceContext;
 
     @Autowired
-    public AdminProductController(ProductService productService, ObjectMapper objectMapper, S3Utility s3Service, CategoryService categoryService) {
+    public AdminProductController(ProductService productService, ObjectMapper objectMapper, S3Utility s3Service, CategoryService categoryService, ProductServiceContext productServiceContext) {
         this.productService = productService;
         this.objectMapper = objectMapper;
         this.s3Service = s3Service;
         this.categoryService = categoryService;
-        this.productServiceContext= new ProductServiceContext();
+        this.productServiceContext= productServiceContext;
     }
 
     @GetMapping("/products")

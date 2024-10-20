@@ -9,7 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import sg.edu.nus.iss.product_service.model.Product;
 import sg.edu.nus.iss.product_service.service.strategy.AdminProductStrategy;
-import sg.edu.nus.iss.product_service.service.strategy.ProductServiceContext;
+import sg.edu.nus.iss.product_service.service.ProductServiceContext;
 import sg.edu.nus.iss.product_service.dto.ProductDTO;
 
 import java.util.UUID;
@@ -31,6 +31,8 @@ class AdminProductControllerTest {
     @BeforeEach
     void setUp() {
         MockitoAnnotations.openMocks(this);
+
+        // Here we use the mock to return the adminProductStrategy
         when(productServiceContext.getProductStrategy()).thenReturn(adminProductStrategy);
     }
 
@@ -59,7 +61,7 @@ class AdminProductControllerTest {
         UUID merchantId = UUID.randomUUID();
         Product product = new Product();
         product.setProductId(productId);
-        ProductDTO productDTO = new ProductDTO(productId,merchantId);
+        ProductDTO productDTO = new ProductDTO(productId, merchantId);
 
         // Mock behavior
         when(adminProductStrategy.updateProduct(productId, product)).thenReturn(product);
@@ -82,7 +84,7 @@ class AdminProductControllerTest {
 
         // Verify the results
         assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals("Deleted successfully", response.getBody());
+        assertEquals("Product deleted", response.getBody());
         verify(adminProductStrategy, times(1)).deleteProduct(productId);
     }
 }

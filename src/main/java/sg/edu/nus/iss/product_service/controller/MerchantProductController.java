@@ -21,7 +21,7 @@ import sg.edu.nus.iss.product_service.model.Product;
 import sg.edu.nus.iss.product_service.service.CategoryService;
 import sg.edu.nus.iss.product_service.service.ProductService;
 import sg.edu.nus.iss.product_service.utility.S3Utility;
-import sg.edu.nus.iss.product_service.service.strategy.ProductServiceContext;
+import sg.edu.nus.iss.product_service.service.ProductServiceContext;
 
 import java.io.IOException;
 import java.util.List;
@@ -39,12 +39,12 @@ public class MerchantProductController {
     private final ProductServiceContext productServiceContext;
 
     @Autowired
-    public MerchantProductController(ProductService productService, ObjectMapper objectMapper, S3Utility s3Service, CategoryService categoryService) {
+    public MerchantProductController(ProductService productService, ObjectMapper objectMapper, S3Utility s3Service, CategoryService categoryService,ProductServiceContext productServiceContext) {
         this.productService = productService;
         this.objectMapper = objectMapper;
         this.s3Service = s3Service;
         this.categoryService = categoryService;
-        this.productServiceContext = new ProductServiceContext();
+        this.productServiceContext = productServiceContext;
     }
 
     // Helper method to create pageable object
