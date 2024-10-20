@@ -96,10 +96,11 @@ public class ProductService {
             if (filterDTO.getSearchText() != null && !filterDTO.getSearchText().isEmpty()) {
                 strategies.add(new FullTextSearchStrategy(filterDTO.getSearchText(), productRepository));
             }
-            if (filterDTO.getPincode() != null && filterDTO.getRangeInKm() != null) {
+            if (filterDTO.getPincode() != null) {
                 LatLng targetCoordinates = locationService.getCoordinatesByPincode(filterDTO.getPincode());
+                double range = (filterDTO.getRangeInKm() != null) ? filterDTO.getRangeInKm() : 5.0;  // Default to 5 km
                 if (targetCoordinates != null) {
-                    strategies.add(new LocationFilterStrategy(targetCoordinates, filterDTO.getRangeInKm(), locationService));
+                    strategies.add(new LocationFilterStrategy(targetCoordinates, range, locationService));
                 }
             }
 
