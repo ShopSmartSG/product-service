@@ -1,6 +1,7 @@
 package sg.edu.nus.iss.product_service.utility;
 
 
+import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -26,8 +27,9 @@ public class S3Utility {
 
 
     public String uploadFile(MultipartFile file) throws IOException {
-        String fileName = UUID.randomUUID().toString() + "_" + file.getOriginalFilename()+ "_"+ LocalDateTime.now().format(DateTimeFormatter.ofPattern("hh:mm:ss"));
-
+        String fileBaseName = FilenameUtils.getBaseName(file.getOriginalFilename());
+        String fileExtension = FilenameUtils.getExtension(file.getOriginalFilename());
+        String fileName = UUID.randomUUID().toString() + "_" + fileBaseName+ "_"+ LocalDateTime.now().format(DateTimeFormatter.ofPattern("hh:mm:ss"))+ "." + fileExtension;
         PutObjectRequest putObjectRequest = PutObjectRequest.builder()
                 .bucket(bucketName)
                 .key(fileName)
