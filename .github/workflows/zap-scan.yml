@@ -27,25 +27,25 @@ jobs:
       - name: Create Docker Network
         run: docker network create zap-network
 
-      # Step 2: Build the Docker image for the utility-service
+      # Step 2: Build the Docker image for the product-service
       - name: Build Docker Image
         uses: docker/build-push-action@v4
         with:
           context: .
           file: ./Dockerfile
           push: false
-          tags: utility-service:latest
+          tags: product-service:latest
 
       # Step 3: Run the Docker container for the application in the zap-network
       - name: Run Docker Container
-        run: docker run -d --name utility-service --network zap-network -p 8081:8081 utility-service:latest
+        run: docker run -d --name product-service --network zap-network -p 8081:8080 product-service:latest
 
       # Step 4: Wait for the application to start and be available
       - name: Wait for Application to Start
         run: |
           echo "Waiting for the application to start..."
           for i in {1..10}; do
-            if curl -s http://localhost:8081 >/dev/null; then
+            if curl -s http://localhost:8080 >/dev/null; then
               echo "Application is up!"
               break
             fi
@@ -57,9 +57,9 @@ jobs:
       - name: ZAP Full Scan
         uses: zaproxy/action-full-scan@v0.11.0
         with:
-          target: 'http://utility-service:8081'  # Target by container name in the zap-network
+          target: 'http://product-service:8080'  # Target by container name in the zap-network
           token: ${{ secrets.GITHUB_TOKEN }}
-          cmd_options: '-t http://utility-service:8081 -r zap_report.html'
+          cmd_options: '-t http://product-service:8080 -r zap_report.html'
 
       # Step 6: Upload the ZAP report as an artifact
       - name: Upload ZAP Report
