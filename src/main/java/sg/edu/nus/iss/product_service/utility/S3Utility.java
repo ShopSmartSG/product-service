@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import software.amazon.awssdk.core.sync.RequestBody;
 import software.amazon.awssdk.services.s3.S3Client;
+import software.amazon.awssdk.services.s3.model.ObjectCannedACL;
 import software.amazon.awssdk.services.s3.model.PutObjectRequest;
 
 import java.io.IOException;
@@ -33,11 +34,19 @@ public class S3Utility {
         PutObjectRequest putObjectRequest = PutObjectRequest.builder()
                 .bucket(bucketName)
                 .key(fileName)
+                .contentType(getContentType(file))
                 .build();
-
         s3Client.putObject(putObjectRequest, RequestBody.fromBytes(file.getBytes()));
 
         return fileName; // You can return the file URL if needed
+    }
+
+    private String getContentType(MultipartFile file) {
+        String contentType = file.getContentType();
+        if (contentType == null || contentType.isEmpty()) {
+            contentType = "application/octet-stream";
+        }
+        return contentType;
     }
 
     public String getFileUrl(String fileName) {
