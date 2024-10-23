@@ -5,6 +5,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -27,6 +29,9 @@ public class CategoryController {
     private final CategoryService categoryService;
     private final ObjectMapper mapper;
 
+    private static final Logger log = LoggerFactory.getLogger(CategoryController.class);
+    private static final String CATEGORY_NOT_FOUND = "Category not found";
+
     String message = "Category not found";
 
     @Autowired
@@ -38,12 +43,15 @@ public class CategoryController {
     @GetMapping
     @Operation(summary = "Retrieve all categories")
     public ResponseEntity<?> getAllCategories(@RequestParam(required = false) Integer page, @RequestParam(required = false) Integer size) {
+        log.info("Request received to retrieve all categories. Page: {}, Size: {}", page, size);
         if (page != null && size != null) {
             Pageable pageable = PageRequest.of(page, size);
             Page<Category> categories = categoryService.getAllCategories(pageable);
+            log.info("Retrieved {} categories for page {} with size {}", categories.getTotalElements(), page, size);
             return ResponseEntity.ok(categories);
         } else {
             List<Category> categories = categoryService.getAllCategories();
+            log.info("Retrieved {} categories without pagination", categories.size());
             return ResponseEntity.ok(categories);
         }
     }
@@ -51,24 +59,41 @@ public class CategoryController {
     @GetMapping("/{categoryId}")
     @Operation(summary = "Retrieve category by Category ID")
     public ResponseEntity<?> getCategoryById(@PathVariable UUID categoryId) {
-        Category category = categoryService.getCategoryById(categoryId);
-        if (category == null) {
-            throw new ResourceNotFoundException(message);
+        log.info("Request received to retrieve category by ID: {}", categoryId);
+        try {
+            Category category = categoryService.getCategoryById(categoryId);
+            log.info("Category retrieved successfully for ID: {}", categoryId);
+            return ResponseEntity.ok(category);
+        } catch (ResourceNotFoundException e) {
+            log.warn("Category not found for ID: {}", categoryId);
+            throw new ResourceNotFoundException(CATEGORY_NOT_FOUND);
+        } catch (Exception e) {
+            log.error("Error retrieving category by ID: {}: {}", categoryId, e.getMessage(), e);
+            return ResponseEntity.internalServerError().body("Unable to retrieve category.");
         }
-        return ResponseEntity.ok(category);
     }
 
     @PostMapping
     @Operation(summary = "Create a category")
     public ResponseEntity<?> createCategory(@Valid @RequestBody Category category) {
-        return ResponseEntity.ok(categoryService.createCategory(category));
+        log.info("Request received to create a new category: {}", category);
+        try {
+            Category createdCategory = categoryService.createCategory(category);
+            log.info("Category created successfully: {}", createdCategory);
+            return ResponseEntity.ok(createdCategory);
+        } catch (Exception e) {
+            log.error("Error creating category: {}", e.getMessage(), e);
+            return ResponseEntity.internalServerError().body("Unable to create category.");
+        }
     }
 
     @PutMapping("/{categoryId}")
     @Operation(summary = "Update a category")
     public ResponseEntity<?> updateCategory(@PathVariable UUID categoryId, @Valid @RequestBody CategoryDTO categoryDTO) {
+        log.info("Request received to update category with ID: {}", categoryId);
         Category existingCategory = categoryService.getCategoryById(categoryId);
         if(!categoryId.equals(categoryDTO.getCategoryId())) {
+            log.warn("Category ID mismatch. Path ID: {}, Body ID: {}", categoryId, categoryDTO.getCategoryId());
             throw new IllegalArgumentException("Category ID mismatch");
         }
         if (existingCategory == null) {
@@ -77,16 +102,19 @@ public class CategoryController {
         existingCategory = mapper.convertValue(categoryDTO, Category.class);
         existingCategory.setCategoryId(categoryId);
         categoryService.saveCategory(existingCategory);
+        log.info("Category updated successfully for ID: {}", categoryId);
         return  ResponseEntity.ok("Category updated successfully");
     }
     @DeleteMapping("/{categoryId}")
     @Operation(summary = "Delete a category")
     public ResponseEntity<String> deleteCategory(@PathVariable UUID categoryId) {
+        log.info("Request received to delete category with ID: {}", categoryId);
         Category existingCategory = categoryService.getCategoryById(categoryId);
         if (existingCategory == null) {
             throw new ResourceNotFoundException(message);
         }
         categoryService.deleteCategory(existingCategory);
+        log.info("Category deleted successfully for ID: {}", categoryId);
         return ResponseEntity.ok("Category deleted successfully");
     }
 
