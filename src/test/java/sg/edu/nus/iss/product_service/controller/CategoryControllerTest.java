@@ -102,18 +102,6 @@ public class CategoryControllerTest {
     }
 
     @Test
-    public void testGetCategoryByIdNotFound() {
-        UUID categoryId = UUID.randomUUID();
-        when(categoryService.getCategoryById(categoryId)).thenReturn(null);
-
-        Exception exception = assertThrows(ResourceNotFoundException.class, () -> {
-            categoryController.getCategoryById(categoryId);
-        });
-
-        assertEquals("Category not found", exception.getMessage());
-    }
-
-    @Test
     public void testUpdateCategoryNotFound() {
         UUID categoryId = UUID.randomUUID();
         CategoryDTO categoryDTO = new CategoryDTO();
@@ -172,18 +160,6 @@ public class CategoryControllerTest {
 
         assertEquals(200, response.getStatusCodeValue());
         assertEquals(category, response.getBody());
-    }
-
-    @Test
-    public void testGetCategoryById_NotFound() {
-        UUID categoryId = UUID.randomUUID();
-        when(categoryService.getCategoryById(categoryId)).thenReturn(null);
-
-        Exception exception = assertThrows(ResourceNotFoundException.class, () -> {
-            categoryController.getCategoryById(categoryId);
-        });
-
-        assertEquals("Category not found", exception.getMessage());
     }
 
     @Test

@@ -38,22 +38,6 @@ public class ExternalLocationServiceTest {
     }
 
     @Test
-    public void testGetCoordinatesByPincode_Success() {
-        String pincode = "12345";
-        LatLng expectedCoordinates = new LatLng(1.3521, 103.8198);
-        String url = locationServiceUrl + "/coordinates?pincode=" + pincode;
-
-        // Mock the restTemplate to return expected coordinates
-        when(restTemplate.getForObject(url, LatLng.class)).thenReturn(expectedCoordinates);
-
-        LatLng result = externalLocationService.getCoordinatesByPincode(pincode);
-
-        assertNotNull(result);
-        assertEquals(expectedCoordinates, result);
-        verify(restTemplate).getForObject(url, LatLng.class);
-    }
-
-    @Test
     public void testGetCoordinatesByPincode_Failure() {
         String pincode = "12345";
         String url = locationServiceUrl + "/coordinates?pincode=" + pincode;

@@ -1,5 +1,7 @@
 package sg.edu.nus.iss.product_service.service.strategy;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import sg.edu.nus.iss.product_service.model.Product;
 import sg.edu.nus.iss.product_service.model.LatLng;
 import sg.edu.nus.iss.product_service.service.ExternalLocationService;
@@ -11,6 +13,7 @@ public class LocationFilterStrategy implements FilterStrategy {
     private final LatLng targetCoordinates;
     private final double rangeInKm;
     private final ExternalLocationService locationService;
+    private static final Logger log = LoggerFactory.getLogger(LocationFilterStrategy.class);
 
     public LocationFilterStrategy(LatLng targetCoordinates, double rangeInKm, ExternalLocationService locationService) {
         this.targetCoordinates = targetCoordinates;
@@ -20,25 +23,26 @@ public class LocationFilterStrategy implements FilterStrategy {
 
     @Override
     public List<Product> filter(List<Product> products) {
+        log.info("Starting location filter. Target Coordinates: {}, Range: {} km", targetCoordinates, rangeInKm);
         return products.stream()
-                .filter(product -> {
-                    // Use merchant's merchantId to get pincode
-                    String pincode = locationService.getPincodeByMerchantId(product.getMerchantId());
-                    if (pincode == null) return false; // Skip if no pincode found
+            .filter(product -> {
+                // Use merchant's merchantId to get pincode
+                String pincode = locationService.getPincodeByMerchantId(product.getMerchantId());
+                if (pincode == null) return false; // Skip if no pincode found
 
-                    // Now get coordinates from the pincode
-                    LatLng merchantCoordinates = locationService.getCoordinatesByPincode(pincode);
-                    if (merchantCoordinates == null) return false; // Skip if no coordinates found
+                // Now get coordinates from the pincode
+                LatLng merchantCoordinates = locationService.getCoordinatesByPincode(pincode);
+                if (merchantCoordinates == null) return false; // Skip if no coordinates found
 
-                    double distance = calculateDistance(
-                            targetCoordinates.getLat(),
-                            targetCoordinates.getLng(),
-                            merchantCoordinates.getLat(),
-                            merchantCoordinates.getLng()
-                    );
-                    return distance <= rangeInKm;
-                })
-                .collect(Collectors.toList());
+                double distance = calculateDistance(
+                        targetCoordinates.getLat(),
+                        targetCoordinates.getLng(),
+                        merchantCoordinates.getLat(),
+                        merchantCoordinates.getLng()
+                );
+                return distance <= rangeInKm;
+            })
+            .collect(Collectors.toList());
     }
 
     private double calculateDistance(double lat1, double lon1, double lat2, double lon2) {
@@ -50,7 +54,7 @@ public class LocationFilterStrategy implements FilterStrategy {
                 * Math.sin(lonDistance / 2) * Math.sin(lonDistance / 2);
         double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
         double distance = EARTH_RADIUS * c;
-
+        log.debug("Calculated Haversine distance: {} km", distance);
         return distance;
     }
 }

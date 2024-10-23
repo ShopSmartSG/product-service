@@ -261,12 +261,8 @@ public class ProductServiceTest {
         product3.setProductName("Ordinary Item");
 
         // Mock the repository to return the products
-        when(productRepository.findAll()).thenReturn(Arrays.asList(product1, product2, product3));
-
-        // Mock the similarity scores
-        when(productRepository.similarity("Amazing Product", "Amazing")).thenReturn(0.9);
-        when(productRepository.similarity("Awesome Product", "Amazing")).thenReturn(0.3);
-        when(productRepository.similarity("Ordinary Item", "Amazing")).thenReturn(0.1);
+        when(productRepository.findSimilarProducts("Amazing", 0.1))
+                .thenReturn(Arrays.asList(product1)); // Mocking the method to return only product1
 
         // Set up filter DTO
         ProductFilterDTO filterDTO = new ProductFilterDTO();

@@ -1,6 +1,8 @@
 package sg.edu.nus.iss.product_service.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import sg.edu.nus.iss.product_service.dto.ProductFilterDTO;
 import sg.edu.nus.iss.product_service.model.LatLng;
 import sg.edu.nus.iss.product_service.model.Product;
@@ -28,6 +30,8 @@ public class ProductService {
     private final ExternalLocationService locationService;
     private final ObjectMapper mapper;
 
+    private static final Logger log = LoggerFactory.getLogger(ProductService.class);
+
     public ProductService(CategoryRepository categoryRepository, ProductRepository productRepository, ObjectMapper mapper, ExternalLocationService locationService) {
         this.mapper = mapper;
         this.productRepository = productRepository;
@@ -37,6 +41,7 @@ public class ProductService {
 
     @Transactional
     public Product updateProduct(Product product) {
+        log.info("Updating product with ID: {}", product.getProductId());
         product.setUpdatedBy("merchant");
         product.setUpdatedAt(Date.from(LocalDateTime.now().atZone(ZoneId.of("Asia/Singapore")).toInstant()));
         return productRepository.save(product);
@@ -44,6 +49,7 @@ public class ProductService {
 
     @Transactional
     public Product deleteProduct (Product product){
+        log.info("Deleting product with ID: {}", product.getProductId());
         product.setUpdatedBy("merchant");
         product.setUpdatedAt(Date.from(LocalDateTime.now().atZone(ZoneId.of("Asia/Singapore")).toInstant()));
         product.setDeleted(true);
@@ -52,28 +58,34 @@ public class ProductService {
 
     @Transactional
     public Product addProduct (Product product){
+        log.info("Adding new product: {}", product);
         product.setCreatedBy("merchant");
         product.setCreatedAt(Date.from(LocalDateTime.now().atZone(ZoneId.of("Asia/Singapore")).toInstant()));
         return productRepository.save(product);
     }
 
     public Page<Product> getAllProducts (UUID merchantId, Pageable pageable){
+        log.info("Fetching all products for merchantId: {}", merchantId);
         return productRepository.findByMerchantIdAndDeletedFalse(merchantId, pageable);
     }
 
     public List<Product> getProductsByMerchantId (UUID merchantId){
+        log.info("Fetching products for merchantId: {}", merchantId);
         return productRepository.findByMerchantIdAndDeletedFalse(merchantId);
     }
 
     public Page<Product> getProductsByMerchantIdAndCategoryId (UUID merchantId, UUID categoryId, Pageable pageable){
+        log.info("Fetching products for merchantId: {} and categoryId: {}", merchantId, categoryId);
         return productRepository.findByMerchantIdAndCategory_CategoryIdAndDeletedFalse(merchantId, categoryId, pageable);
     }
 
     public List<Product> getProductsByMerchantIdAndCategoryId (UUID merchantId, UUID categoryId){
+        log.info("Fetching products for merchantId : {} and categoryId : {}", merchantId, categoryId);
         return productRepository.findByMerchantIdAndCategory_CategoryIdAndDeletedFalse(merchantId, categoryId);
     }
 
     public Product getProductByIdAndMerchantId (UUID merchantID, UUID productId){
+        log.info("Fetching product with ID: {} for merchantId: {}", productId, merchantID);
         return productRepository.findByMerchantIdAndProductIdAndDeletedFalse(merchantID, productId);
     }
 
@@ -96,27 +108,30 @@ public class ProductService {
             if (filterDTO.getSearchText() != null && !filterDTO.getSearchText().isEmpty()) {
                 strategies.add(new FullTextSearchStrategy(filterDTO.getSearchText(), productRepository));
             }
-            if (filterDTO.getPincode() != null && filterDTO.getRangeInKm() != null) {
+            if (filterDTO.getPincode() != null) {
                 LatLng targetCoordinates = locationService.getCoordinatesByPincode(filterDTO.getPincode());
+                double range = (filterDTO.getRangeInKm() != null) ? filterDTO.getRangeInKm() : 5.0;  // Default to 5 km
                 if (targetCoordinates != null) {
-                    strategies.add(new LocationFilterStrategy(targetCoordinates, filterDTO.getRangeInKm(), locationService));
+                    strategies.add(new LocationFilterStrategy(targetCoordinates, range, locationService));
                 }
             }
 
             // If no strategies are added, return all products
             if (strategies.isEmpty()) {
+                log.warn("No filter criteria applied. Returning all products.");
                 return allProducts;  // Return all products if no filters are applied
             }
 
             // Apply each strategy
             for (FilterStrategy strategy : strategies) {
+                log.info("Filtered products count: {}", allProducts.size());
                 allProducts = strategy.filter(allProducts);
             }
 
             return allProducts;
         }catch (Exception e) {
             // Log the exception
-            System.err.println("Error occurred while filtering products: " + e.getMessage());
+            log.error("Error occurred while filtering products: {}", e.getMessage(), e);
             // Return an empty list or handle it according to your application's logic
             return Collections.emptyList();
         }

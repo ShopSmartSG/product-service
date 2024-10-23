@@ -17,7 +17,6 @@ public interface ProductRepository extends JpaRepository<Product, UUID> {
     List<Product> findByDeletedFalse();
     Page<Product> findByDeletedFalse(Pageable pageable);
 
-
     List<Product> findByMerchantIdAndDeletedFalse(UUID merchantId);
 
     List<Product> findByCategory_CategoryIdAndDeletedFalse(UUID categoryId);
@@ -36,6 +35,7 @@ public interface ProductRepository extends JpaRepository<Product, UUID> {
 
     Product findByMerchantIdAndProductIdAndDeletedFalse(UUID merchantID, UUID productId);
 
-    @Query("SELECT similarity(:productName, :searchText) FROM Product WHERE deleted = false")
-    double similarity(String productName, @Param("searchText") String searchText);
+    @Query(value = "SELECT p.* FROM product p WHERE similarity(p.product_name, :searchText) > :threshold AND p.deleted = false",
+            nativeQuery = true)
+    List<Product> findSimilarProducts(@Param("searchText") String searchText, @Param("threshold") double threshold);
 }

@@ -1,5 +1,7 @@
 package sg.edu.nus.iss.product_service.service.strategy;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import sg.edu.nus.iss.product_service.model.Product;
 import sg.edu.nus.iss.product_service.repository.ProductRepository;
 
@@ -10,6 +12,7 @@ public class FullTextSearchStrategy implements FilterStrategy {
 
     private final String searchText;
     private final ProductRepository productRepository;
+    private static final Logger log = LoggerFactory.getLogger(FullTextSearchStrategy.class);
 
     public FullTextSearchStrategy(String searchText, ProductRepository productRepository) {
         this.searchText = searchText;
@@ -18,13 +21,14 @@ public class FullTextSearchStrategy implements FilterStrategy {
 
     @Override
     public List<Product> filter(List<Product> products) {
-        return products.stream()
-                .filter(product -> {
-                    double score = productRepository.similarity(product.getProductName(), searchText);
-                    System.out.println("Searching for: " + searchText);
-                    System.out.println("Product: " + product.getProductName() + ", Similarity Score: " + score);
-                    return score > 0.5; // Adjust threshold as needed
-                })
-                .collect(Collectors.toList());
+        log.info("Executing similarity search for: {}", searchText);
+
+        double threshold = 0.1; // Adjust as needed
+        List<Product> similarProducts = productRepository.findSimilarProducts(searchText, threshold);
+
+        similarProducts.forEach(product ->
+                log.info("Found Product: {}, Similarity Score: {}", product.getProductName(), threshold));
+
+        return similarProducts;
     }
 }
