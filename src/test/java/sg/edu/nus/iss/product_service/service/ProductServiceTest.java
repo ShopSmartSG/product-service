@@ -144,41 +144,6 @@ public class ProductServiceTest {
     }
 
     @Test
-    public void testGetFilteredProducts_WithPincode() {
-        // Given
-        Product product1 = new Product();
-        product1.setProductId(UUID.randomUUID());
-        product1.setPincode("12345");
-        product1.setOriginalPrice(BigDecimal.valueOf(10.00));
-        product1.setListingPrice(BigDecimal.valueOf(8.00));
-
-        Product product2 = new Product();
-        product2.setProductId(UUID.randomUUID());
-        product2.setPincode("12345");
-        product2.setOriginalPrice(BigDecimal.valueOf(20.00));
-        product2.setListingPrice(BigDecimal.valueOf(18.00));
-
-        Product product3 = new Product();
-        product3.setProductId(UUID.randomUUID());
-        product3.setPincode("54321");
-        product3.setOriginalPrice(BigDecimal.valueOf(30.00));
-        product3.setListingPrice(BigDecimal.valueOf(28.00));
-
-        // Ensure that the repository returns the correct products
-        when(productRepository.findAll()).thenReturn(Arrays.asList(product1, product2, product3));
-
-        // Set up filter DTO
-        ProductFilterDTO filterDTO = new ProductFilterDTO();
-        filterDTO.setPincode("12345"); // The pincode you want to filter by
-
-        // When
-        List<Product> filteredProducts = productService.getFilteredProducts(filterDTO);
-
-        // Then
-        assertEquals(2, filteredProducts.size());
-    }
-
-    @Test
     public void testGetFilteredProducts_WithCategory() {
         // Given
         UUID categoryId = UUID.randomUUID();
@@ -256,15 +221,11 @@ public class ProductServiceTest {
         product2.setProductId(UUID.randomUUID());
         product2.setProductName("Awesome Product");
 
-        Product product3 = new Product();
-        product3.setProductId(UUID.randomUUID());
-        product3.setProductName("Ordinary Item");
-
-        // Mock the repository to return the products
+        // Mock the repository to return products matching the search
         when(productRepository.findSimilarProducts("Amazing", 0.1))
-                .thenReturn(Arrays.asList(product1)); // Mocking the method to return only product1
+                .thenReturn(Arrays.asList(product1));  // Mock only product1 as matching
 
-        // Set up filter DTO
+        // Set up filter DTO with search text
         ProductFilterDTO filterDTO = new ProductFilterDTO();
         filterDTO.setSearchText("Amazing");
 
@@ -279,37 +240,35 @@ public class ProductServiceTest {
     @Test
     public void testGetFilteredProducts_WithLocationFilter() {
         // Given
-        LatLng targetCoordinates = new LatLng(1.3521, 103.8198); // Target location
+        LatLng targetCoordinates = new LatLng(1.31901, 103.884983); // Target coordinates
         double rangeInKm = 3.0;
 
-        // Create products
+        // Create products with pincodes
         Product product1 = new Product();
         product1.setProductId(UUID.randomUUID());
-        product1.setMerchantId(UUID.randomUUID()); // Valid merchant ID for product 1
+        product1.setPincode("123456"); // Pincode for product1
 
         Product product2 = new Product();
         product2.setProductId(UUID.randomUUID());
-        product2.setMerchantId(UUID.randomUUID()); // Valid merchant ID for product 2
+        product2.setPincode("654321"); // Pincode for product2
 
-        // Mocking behavior for the external location service
-        when(locationService.getPincodeByMerchantId(product1.getMerchantId())).thenReturn("123456");
-        when(locationService.getPincodeByMerchantId(product2.getMerchantId())).thenReturn("654321");
+        // Mock coordinates for product pincodes
+        when(locationService.getCoordinatesByPincode("123456"))
+                .thenReturn(new LatLng(1.32001, 103.9683)); // Outside range
+        when(locationService.getCoordinatesByPincode("654321"))
+                .thenReturn(new LatLng(1.320549, 103.873827)); // Within range
 
-        // Mock coordinates for the given pincodes
-        when(locationService.getCoordinatesByPincode("123456")).thenReturn(new LatLng(1.3541, 103.8200)); // Within range
-        when(locationService.getCoordinatesByPincode("654321")).thenReturn(new LatLng(1.3700, 103.8500)); // Outside range
-
-        // List of products to filter
+        // Mock repository to return all products
         List<Product> allProducts = Arrays.asList(product1, product2);
         when(productRepository.findAll()).thenReturn(allProducts);
 
         // Create LocationFilterStrategy instance
         FilterStrategy locationFilterStrategy = new LocationFilterStrategy(targetCoordinates, rangeInKm, locationService);
-
+        // When
         List<Product> filteredProducts = locationFilterStrategy.filter(allProducts);
 
+        // Then
         assertEquals(1, filteredProducts.size());
-        assertEquals(product1, filteredProducts.get(0));
+        assertEquals(product2, filteredProducts.get(0));  // Product1 is within range
     }
-
 }

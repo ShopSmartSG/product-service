@@ -27,19 +27,28 @@ public class LocationFilterStrategy implements FilterStrategy {
         return products.stream()
             .filter(product -> {
                 // Use merchant's merchantId to get pincode
-                String pincode = locationService.getPincodeByMerchantId(product.getMerchantId());
-                if (pincode == null) return false; // Skip if no pincode found
+                String pincode = product.getPincode();
+                if (pincode == null) {
+                    log.warn("No pincode found: {}", product.getPincode());
+                    return false;
+                }
 
                 // Now get coordinates from the pincode
                 LatLng merchantCoordinates = locationService.getCoordinatesByPincode(pincode);
-                if (merchantCoordinates == null) return false; // Skip if no coordinates found
+                if (merchantCoordinates == null) {
+                    log.warn("Coordinates not found for pincode: {}", pincode);
+                    return false;
+                }
 
+                // Calculate distance between target and merchant coordinates
                 double distance = calculateDistance(
                         targetCoordinates.getLat(),
                         targetCoordinates.getLng(),
                         merchantCoordinates.getLat(),
                         merchantCoordinates.getLng()
                 );
+                log.info("Product ID: {} - Distance: {} km", product.getProductId(), distance);
+                System.out.printf("Product ID: %s - Distance: %.2f km%n", product.getProductId(), distance);
                 return distance <= rangeInKm;
             })
             .collect(Collectors.toList());

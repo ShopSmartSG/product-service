@@ -94,9 +94,6 @@ public class ProductService {
         List<FilterStrategy> strategies = new ArrayList<>();
 
         try{
-            if (filterDTO.getPincode() != null && !filterDTO.getPincode().isEmpty()) {
-                strategies.add(new PincodeFilterStrategy(filterDTO.getPincode()));
-            }
             if (filterDTO.getCategoryId() != null && !filterDTO.getCategoryId().toString().isEmpty()) {
                 strategies.add(new CategoryFilterStrategy(filterDTO.getCategoryId()));
             }
