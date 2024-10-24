@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/products")
+@RequestMapping("/products")
 public class ProductController {
 
     @Autowired
@@ -27,4 +27,12 @@ public class ProductController {
         log.info("Filtered Products: {}", filteredProducts);
         return ResponseEntity.ok(filteredProducts);
     }
+
+    // Updated API to fetch products by a list of UUIDs using query parameters
+    @GetMapping("/ids")
+    public ResponseEntity<?> getProductsByIds(@RequestParam List<String> productIds) {
+        log.info("Received request to fetch products by IDs: {}", productIds);
+        return productService.getProductsByIds(productIds);  // Delegate to service
+    }
+
 }

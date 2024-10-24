@@ -3,6 +3,8 @@ package sg.edu.nus.iss.product_service.service;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import sg.edu.nus.iss.product_service.dto.ProductFilterDTO;
 import sg.edu.nus.iss.product_service.model.LatLng;
 import sg.edu.nus.iss.product_service.model.Product;
@@ -87,6 +89,40 @@ public class ProductService {
     public Product getProductByIdAndMerchantId (UUID merchantID, UUID productId){
         log.info("Fetching product with ID: {} for merchantId: {}", productId, merchantID);
         return productRepository.findByMerchantIdAndProductIdAndDeletedFalse(merchantID, productId);
+    }
+
+//    public List<Product> getProductsByIds(List<String> productIds) {
+//        log.info("Fetching products for product IDs: {}", productIds);
+//
+//        // Convert the list of strings into a list of UUIDs
+//        List<UUID> ids = productIds.stream()
+//                .map(UUID::fromString)
+//                .toList();
+//
+//        // Fetch products matching the given IDs
+//        return productRepository.findByProductIdInAndDeletedFalse(ids);
+//    }
+
+    @Transactional(readOnly = true)
+    public ResponseEntity<?> getProductsByIds(List<String> productIds) {
+        log.info("Fetching products for product IDs: {}", productIds);
+
+        // Convert string IDs to UUIDs
+        List<UUID> ids = productIds.stream()
+                .map(UUID::fromString)
+                .toList();
+
+        // Fetch products from the repository
+        List<Product> products = productRepository.findByProductIdInAndDeletedFalse(ids);
+
+        // Check if any products were found
+        if (products.isEmpty()) {
+            log.warn("No products found for the provided IDs: {}", productIds);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No products with matching ids available");  // Return 404 status
+        } else {
+            log.info("Found {} products for the provided IDs.", products.size());
+            return ResponseEntity.ok(products);  // Return 200 OK with the product list
+        }
     }
 
     public List<Product> getFilteredProducts(ProductFilterDTO filterDTO) {

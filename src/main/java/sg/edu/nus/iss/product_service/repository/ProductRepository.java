@@ -35,6 +35,8 @@ public interface ProductRepository extends JpaRepository<Product, UUID> {
 
     Product findByMerchantIdAndProductIdAndDeletedFalse(UUID merchantID, UUID productId);
 
+    List<Product> findByProductIdInAndDeletedFalse(List<UUID> productIds);
+
     @Query(value = "SELECT p.* FROM product p WHERE similarity(p.product_name, :searchText) > :threshold AND p.deleted = false",
             nativeQuery = true)
     List<Product> findSimilarProducts(@Param("searchText") String searchText, @Param("threshold") double threshold);
