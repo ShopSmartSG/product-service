@@ -29,9 +29,6 @@ public class ExternalLocationServiceTest {
     @Value("${location.service.url}")
     private String locationServiceUrl;
 
-    @Value("${profile.merchant.url}")
-    private String merchantServiceUrl;
-
     @BeforeEach
     public void setUp() {
         externalLocationService = new ExternalLocationService(restTemplate);
@@ -40,7 +37,7 @@ public class ExternalLocationServiceTest {
     @Test
     public void testGetCoordinatesByPincode_Failure() {
         String pincode = "12345";
-        String url = locationServiceUrl + "/coordinates?pincode=" + pincode;
+        String url = locationServiceUrl + "/location/coordinates?pincode=" + pincode;
 
         // Mock the restTemplate to throw an exception
         when(restTemplate.getForObject(url, LatLng.class)).thenThrow(new RuntimeException("Service unavailable"));
@@ -49,50 +46,5 @@ public class ExternalLocationServiceTest {
 
         assertNull(result);
         verify(restTemplate).getForObject(url, LatLng.class);
-    }
-
-    @Test
-    public void testGetPincodeByMerchantId_Success() {
-        UUID merchantId = UUID.randomUUID();
-        MerchantDTO expectedMerchant = new MerchantDTO();
-        expectedMerchant.setPincode("12345");
-        String url = merchantServiceUrl + "/merchants/" + merchantId;
-
-        // Mock the restTemplate to return the expected merchant
-        when(restTemplate.getForObject(url, MerchantDTO.class)).thenReturn(expectedMerchant);
-
-        String result = externalLocationService.getPincodeByMerchantId(merchantId);
-
-        assertNotNull(result);
-        assertEquals("12345", result);
-        verify(restTemplate).getForObject(url, MerchantDTO.class);
-    }
-
-    @Test
-    public void testGetPincodeByMerchantId_MerchantNotFound() {
-        UUID merchantId = UUID.randomUUID();
-        String url = merchantServiceUrl + "/merchants/" + merchantId;
-
-        // Mock the restTemplate to return null (merchant not found)
-        when(restTemplate.getForObject(url, MerchantDTO.class)).thenReturn(null);
-
-        String result = externalLocationService.getPincodeByMerchantId(merchantId);
-
-        assertNull(result);
-        verify(restTemplate).getForObject(url, MerchantDTO.class);
-    }
-
-    @Test
-    public void testGetPincodeByMerchantId_Failure() {
-        UUID merchantId = UUID.randomUUID();
-        String url = merchantServiceUrl + "/merchants/" + merchantId;
-
-        // Mock the restTemplate to throw an exception
-        when(restTemplate.getForObject(url, MerchantDTO.class)).thenThrow(new RuntimeException("Service unavailable"));
-
-        String result = externalLocationService.getPincodeByMerchantId(merchantId);
-
-        assertNull(result);
-        verify(restTemplate).getForObject(url, MerchantDTO.class);
     }
 }
