@@ -164,7 +164,7 @@ public class ProductServiceTest {
         product2.setListingPrice(BigDecimal.valueOf(18.00));
 
         // Ensure that the repository returns the correct products
-        when(productRepository.findAll()).thenReturn(Arrays.asList(product1, product2));
+        when(productRepository.findByDeletedFalse()).thenReturn(Arrays.asList(product1, product2));
 
         // Set up filter DTO
         ProductFilterDTO filterDTO = new ProductFilterDTO();
@@ -198,7 +198,7 @@ public class ProductServiceTest {
         product3.setOriginalPrice(BigDecimal.valueOf(30.00));
         product3.setListingPrice(BigDecimal.valueOf(28.00));
 
-        when(productRepository.findAll()).thenReturn(Arrays.asList(product1, product2, product3));
+        when(productRepository.findByDeletedFalse()).thenReturn(Arrays.asList(product1, product2, product3));
 
         ProductFilterDTO filterDTO = new ProductFilterDTO();
         filterDTO.setMinPrice(BigDecimal.valueOf(15.00));
