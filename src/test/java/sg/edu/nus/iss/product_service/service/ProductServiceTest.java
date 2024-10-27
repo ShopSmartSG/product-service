@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 import sg.edu.nus.iss.product_service.dto.ProductFilterDTO;
 import sg.edu.nus.iss.product_service.model.Category;
@@ -270,5 +271,24 @@ public class ProductServiceTest {
         // Then
         assertEquals(1, filteredProducts.size());
         assertEquals(product2, filteredProducts.get(0));  // Product1 is within range
+    }
+
+    @Test
+    // test getProductsByIds method with list of strings
+    public void testGetProductsByIds() {
+        // Given
+        List<String> productIds = Arrays.asList("123e4567-e89b-12d3-a456-426614174000", "123e4567-e89b-12d3-a456-426614174001");
+        List<UUID> ids = Arrays.asList(UUID.fromString("123e4567-e89b-12d3-a456-426614174000"), UUID.fromString("123e4567-e89b-12d3-a456-426614174001"));
+        Product product1 = new Product();
+        product1.setProductId(UUID.fromString("123e4567-e89b-12d3-a456-426614174000"));
+        Product product2 = new Product();
+        product2.setProductId(UUID.fromString("123e4567-e89b-12d3-a456-426614174001"));
+        when(productRepository.findByProductIdInAndDeletedFalse(ids)).thenReturn(Arrays.asList(product1, product2));
+
+        // When
+        ResponseEntity<?> response = productService.getProductsByIds(productIds);
+        // response size should be same as that of ids list
+        List<Product> products = (List<Product>) response.getBody();
+        assertEquals(2, products.size());
     }
 }
