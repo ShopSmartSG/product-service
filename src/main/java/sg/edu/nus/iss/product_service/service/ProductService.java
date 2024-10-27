@@ -134,7 +134,7 @@ public class ProductService {
     }
 
     public List<Product> getFilteredProducts(ProductFilterDTO filterDTO) {
-        List<Product> allProducts = productRepository.findAll();
+        List<Product> allProducts = productRepository.findByDeletedFalse();
         List<FilterStrategy> strategies = new ArrayList<>();
 
         try{

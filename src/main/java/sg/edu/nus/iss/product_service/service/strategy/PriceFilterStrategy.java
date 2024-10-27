@@ -14,7 +14,7 @@ public class PriceFilterStrategy implements FilterStrategy {
     private final BigDecimal maxPrice;
     private static final Logger log = LoggerFactory.getLogger(PriceFilterStrategy.class);
     public PriceFilterStrategy(BigDecimal minPrice, BigDecimal maxPrice) {
-        this.minPrice = minPrice;
+        this.minPrice = minPrice != null ? minPrice : BigDecimal.ZERO;
         this.maxPrice = maxPrice;
         log.info("Initialized PriceFilterStrategy with minPrice: {}, maxPrice: {}", minPrice, maxPrice);
     }
