@@ -1,10 +1,14 @@
 package sg.edu.nus.iss.product_service.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+import org.apache.logging.log4j.message.Message;
+import org.bson.json.JsonObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.ErrorResponse;
 import sg.edu.nus.iss.product_service.dto.ProductFilterDTO;
 import sg.edu.nus.iss.product_service.model.LatLng;
 import sg.edu.nus.iss.product_service.model.Product;
@@ -112,13 +116,17 @@ public class ProductService {
                 .map(UUID::fromString)
                 .toList();
 
+
+
         // Fetch products from the repository
         List<Product> products = productRepository.findByProductIdInAndDeletedFalse(ids);
 
         // Check if any products were found
         if (products.isEmpty()) {
+            ObjectNode response = mapper.createObjectNode();
+            response.put("message","No products with matching ids available");
             log.warn("No products found for the provided IDs: {}", productIds);
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No products with matching ids available");  // Return 404 status
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);  // Return 404 status
         } else {
             log.info("Found {} products for the provided IDs.", products.size());
             return ResponseEntity.ok(products);  // Return 200 OK with the product list
