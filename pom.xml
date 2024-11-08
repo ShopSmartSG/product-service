@@ -28,6 +28,7 @@
 	</scm>
 	<properties>
 		<java.version>21</java.version>
+		<sonar.exclusions>**/dto/**,**/model/**,**/repository/**, **/config/**, **/utility/**, **/exception/**</sonar.exclusions>
 	</properties>
 	<dependencies>
 		<dependency>
