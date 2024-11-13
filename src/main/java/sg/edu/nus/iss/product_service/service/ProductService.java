@@ -96,7 +96,7 @@ public class ProductService {
 
 
         // Fetch products from the repository
-        List<Product> products = productRepository.findByProductIdAndDeletedFalse(ids);
+        List<Product> products = productRepository.findByProductIdInAndDeletedFalse(ids);
 
         // Check if any products were found
         if (products.isEmpty()) {
