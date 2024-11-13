@@ -6,6 +6,10 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import sg.edu.nus.iss.product_service.dto.CategoryDTO;
 import sg.edu.nus.iss.product_service.exception.ResourceNotFoundException;
@@ -98,18 +102,6 @@ public class CategoryControllerTest {
     }
 
     @Test
-    public void testGetCategoryByIdNotFound() {
-        UUID categoryId = UUID.randomUUID();
-        when(categoryService.getCategoryById(categoryId)).thenReturn(null);
-
-        Exception exception = assertThrows(ResourceNotFoundException.class, () -> {
-            categoryController.getCategoryById(categoryId);
-        });
-
-        assertEquals("Category not found", exception.getMessage());
-    }
-
-    @Test
     public void testUpdateCategoryNotFound() {
         UUID categoryId = UUID.randomUUID();
         CategoryDTO categoryDTO = new CategoryDTO();
@@ -125,6 +117,113 @@ public class CategoryControllerTest {
 
     @Test
     public void testDeleteCategoryNotFound() {
+        UUID categoryId = UUID.randomUUID();
+        when(categoryService.getCategoryById(categoryId)).thenReturn(null);
+
+        Exception exception = assertThrows(ResourceNotFoundException.class, () -> {
+            categoryController.deleteCategory(categoryId);
+        });
+
+        assertEquals("Category not found", exception.getMessage());
+    }
+
+    @Test
+    public void testGetAllCategories_NoPagination() {
+        List<Category> categories = Arrays.asList(new Category(), new Category());
+        when(categoryService.getAllCategories()).thenReturn(categories);
+
+        ResponseEntity<?> response = categoryController.getAllCategories(null, null);
+
+        assertEquals(200, response.getStatusCodeValue());
+        assertEquals(categories, response.getBody());
+    }
+
+    @Test
+    public void testGetAllCategories_WithPagination() {
+        Page<Category> categoryPage = new PageImpl<>(Arrays.asList(new Category()));
+        Pageable pageable = PageRequest.of(0, 5);
+        when(categoryService.getAllCategories(pageable)).thenReturn(categoryPage);
+
+        ResponseEntity<?> response = categoryController.getAllCategories(0, 5);
+
+        assertEquals(200, response.getStatusCodeValue());
+        assertEquals(categoryPage, response.getBody());
+    }
+
+    @Test
+    public void testGetCategoryById_Success() {
+        UUID categoryId = UUID.randomUUID();
+        Category category = new Category();
+        when(categoryService.getCategoryById(categoryId)).thenReturn(category);
+
+        ResponseEntity<?> response = categoryController.getCategoryById(categoryId);
+
+        assertEquals(200, response.getStatusCodeValue());
+        assertEquals(category, response.getBody());
+    }
+
+    @Test
+    public void testUpdateCategory_Success() {
+        UUID categoryId = UUID.randomUUID();
+        CategoryDTO categoryDTO = new CategoryDTO();
+        categoryDTO.setCategoryId(categoryId);
+
+        Category category = new Category();
+        when(categoryService.getCategoryById(categoryId)).thenReturn(category);
+        when(mapper.convertValue(categoryDTO, Category.class)).thenReturn(category);
+
+        ResponseEntity<?> response = categoryController.updateCategory(categoryId, categoryDTO);
+
+        assertEquals(200, response.getStatusCodeValue());
+        assertEquals("Category updated successfully", response.getBody());
+        verify(categoryService).saveCategory(category);
+    }
+
+    @Test
+    public void testUpdateCategory_CategoryIdMismatch() {
+        UUID categoryId = UUID.randomUUID();
+        CategoryDTO categoryDTO = new CategoryDTO();
+        categoryDTO.setCategoryId(UUID.randomUUID()); // Different ID
+
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            categoryController.updateCategory(categoryId, categoryDTO);
+        });
+
+        assertEquals("Category ID mismatch", exception.getMessage());
+    }
+
+    @Test
+    public void testUpdateCategory_NotFound() {
+        UUID categoryId = UUID.randomUUID();
+        CategoryDTO categoryDTO = new CategoryDTO();
+        categoryDTO.setCategoryId(categoryId);
+
+        when(categoryService.getCategoryById(categoryId)).thenReturn(null);
+
+        Exception exception = assertThrows(ResourceNotFoundException.class, () -> {
+            categoryController.updateCategory(categoryId, categoryDTO);
+        });
+
+        assertEquals("Category not found", exception.getMessage());
+    }
+
+    @Test
+    public void testDeleteCategory_Success() {
+        UUID categoryId = UUID.randomUUID();
+        Category category = new Category();
+        category.setCategoryId(categoryId);
+
+        when(categoryService.getCategoryById(categoryId)).thenReturn(category);
+
+        ResponseEntity<String> response = categoryController.deleteCategory(categoryId);
+
+        assertEquals(200, response.getStatusCodeValue());
+        assertEquals("Category deleted successfully", response.getBody());
+        verify(categoryService).deleteCategory(category);
+    }
+
+    @Test
+    public void testDeleteCategory_NotFound() {
         UUID categoryId = UUID.randomUUID();
         when(categoryService.getCategoryById(categoryId)).thenReturn(null);
 

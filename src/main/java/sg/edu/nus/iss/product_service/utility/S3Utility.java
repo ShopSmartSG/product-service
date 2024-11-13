@@ -1,11 +1,13 @@
 package sg.edu.nus.iss.product_service.utility;
 
 
+import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import software.amazon.awssdk.core.sync.RequestBody;
 import software.amazon.awssdk.services.s3.S3Client;
+import software.amazon.awssdk.services.s3.model.ObjectCannedACL;
 import software.amazon.awssdk.services.s3.model.PutObjectRequest;
 
 import java.io.IOException;
@@ -26,16 +28,25 @@ public class S3Utility {
 
 
     public String uploadFile(MultipartFile file) throws IOException {
-        String fileName = UUID.randomUUID().toString() + "_" + file.getOriginalFilename()+ "_"+ LocalDateTime.now().format(DateTimeFormatter.ofPattern("hh:mm:ss"));
-
+        String fileBaseName = FilenameUtils.getBaseName(file.getOriginalFilename());
+        String fileExtension = FilenameUtils.getExtension(file.getOriginalFilename());
+        String fileName = UUID.randomUUID().toString() + "_" + fileBaseName+ "_"+ LocalDateTime.now().format(DateTimeFormatter.ofPattern("hh:mm:ss"))+ "." + fileExtension;
         PutObjectRequest putObjectRequest = PutObjectRequest.builder()
                 .bucket(bucketName)
                 .key(fileName)
+                .contentType(getContentType(file))
                 .build();
-
         s3Client.putObject(putObjectRequest, RequestBody.fromBytes(file.getBytes()));
 
         return fileName; // You can return the file URL if needed
+    }
+
+    private String getContentType(MultipartFile file) {
+        String contentType = file.getContentType();
+        if (contentType == null || contentType.isEmpty()) {
+            contentType = "application/octet-stream";
+        }
+        return contentType;
     }
 
     public String getFileUrl(String fileName) {

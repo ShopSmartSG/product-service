@@ -1,0 +1,1555 @@
+2024-10-23 14:59:47 INFO  s.e.n.i.p.service.ProductService - Filtered products count: 0
+2024-10-23 14:59:47 INFO  s.e.n.i.p.s.s.FullTextSearchStrategy - Executing similarity search for: Amazing
+2024-10-23 14:59:47 INFO  s.e.n.i.p.s.s.FullTextSearchStrategy - Found Product: Amazing Product, Similarity Score: 0.1
+2024-10-23 15:00:35 INFO  s.e.n.i.p.c.CategoryController - Updating product with ID: fcf50647-dbd6-430c-a52f-1239d8370591 for merchantId: 6975fae4-6fb9-4c7e-b2f9-4b95d993725a
+2024-10-23 15:00:35 ERROR s.e.n.i.p.c.CategoryController - Product ID mismatch: fcf50647-dbd6-430c-a52f-1239d8370591 vs 7eea515c-e24c-49d6-b71b-a1e742956480
+2024-10-23 15:00:35 INFO  s.e.n.i.p.c.CategoryController - Fetching product with ID: 7b9a62cc-697a-4f25-b421-5b602b8040a2 for merchantId: 5891ddb9-f2c2-4553-a4a6-24739ef1d4d5
+2024-10-23 15:00:35 WARN  s.e.n.i.p.c.CategoryController - Product not found for ID: 7b9a62cc-697a-4f25-b421-5b602b8040a2
+2024-10-23 15:00:35 INFO  s.e.n.i.p.c.CategoryController - Updating product with ID: 770df9be-254f-44cc-a954-8b4c3840cca3 for merchantId: c6bdad43-a68e-42f4-a6b2-930fdcb2fbdc
+2024-10-23 15:00:35 INFO  s.e.n.i.p.c.CategoryController - Product updated successfully: Product(productId=770df9be-254f-44cc-a954-8b4c3840cca3, productName=null, category=Category(categoryId=null, categoryName=null, deleted=false, categoryDescription=null), imageUrl=null, productDescription=null, originalPrice=null, listingPrice=null, availableStock=0, merchantId=null, pincode=null, deleted=false, createdAt=null, updatedAt=null, createdBy=null, updatedBy=null)
+2024-10-23 15:00:35 INFO  s.e.n.i.p.c.CategoryController - Deleting product with ID: 04c45fb7-7009-4014-9cec-2353e1f300cc for merchantId: 834490a6-fe3e-4638-bb7b-59da27367301
+2024-10-23 15:00:35 WARN  s.e.n.i.p.c.CategoryController - Product not found for deletion: 04c45fb7-7009-4014-9cec-2353e1f300cc
+2024-10-23 15:00:35 INFO  s.e.n.i.p.c.CategoryController - Uploading product image: null
+2024-10-23 15:00:35 INFO  s.e.n.i.p.c.CategoryController - Image uploaded successfully: http://example.com/test.jpg
+2024-10-23 15:00:35 INFO  s.e.n.i.p.c.CategoryController - Updating product with ID: 68e37432-05cf-4457-86f6-f46263b0fa34 for merchantId: 65d60e89-b91b-4618-bdc5-c2338c4b9114
+2024-10-23 15:00:35 WARN  s.e.n.i.p.c.CategoryController - Product not found for update: 68e37432-05cf-4457-86f6-f46263b0fa34
+2024-10-23 15:00:35 INFO  s.e.n.i.p.c.CategoryController - Adding new product: Product(productId=null, productName=null, category=Category(categoryId=null, categoryName=Test Category, deleted=false, categoryDescription=null), imageUrl=null, productDescription=null, originalPrice=null, listingPrice=null, availableStock=0, merchantId=null, pincode=null, deleted=false, createdAt=null, updatedAt=null, createdBy=null, updatedBy=null)
+2024-10-23 15:00:35 WARN  s.e.n.i.p.c.CategoryController - Category not found: Test Category
+2024-10-23 15:00:35 INFO  s.e.n.i.p.c.CategoryController - Adding new product: Product(productId=null, productName=null, category=Category(categoryId=null, categoryName=Test Category, deleted=false, categoryDescription=null), imageUrl=null, productDescription=null, originalPrice=null, listingPrice=null, availableStock=0, merchantId=null, pincode=null, deleted=false, createdAt=null, updatedAt=null, createdBy=null, updatedBy=null)
+2024-10-23 15:00:35 INFO  s.e.n.i.p.c.CategoryController - Product added successfully: Product(productId=null, productName=null, category=Category(categoryId=null, categoryName=Test Category, deleted=false, categoryDescription=null), imageUrl=null, productDescription=null, originalPrice=null, listingPrice=null, availableStock=0, merchantId=null, pincode=null, deleted=false, createdAt=null, updatedAt=null, createdBy=null, updatedBy=null)
+2024-10-23 15:00:35 INFO  s.e.n.i.p.c.CategoryController - Fetching product with ID: 618f170a-d66f-4d1d-8199-c2155c16f98c for merchantId: 7e016658-15ae-42f0-bc8e-652cac7868be
+2024-10-23 15:00:35 INFO  s.e.n.i.p.c.CategoryController - Product retrieved successfully: Product(productId=null, productName=null, category=null, imageUrl=null, productDescription=null, originalPrice=null, listingPrice=null, availableStock=0, merchantId=null, pincode=null, deleted=false, createdAt=null, updatedAt=null, createdBy=null, updatedBy=null)
+2024-10-23 15:00:35 INFO  s.e.n.i.p.c.CategoryController - Deleting product with ID: 5b68413d-6943-49c9-a7c6-47f152c1ebca for merchantId: 9b0fbc07-b22e-4ea8-b54e-c9c716be408d
+2024-10-23 15:00:35 INFO  s.e.n.i.p.c.CategoryController - Product deleted successfully: 5b68413d-6943-49c9-a7c6-47f152c1ebca
+2024-10-23 15:00:35 INFO  s.e.n.i.p.c.CategoryController - Fetching products for merchantId: 748b07d8-a2ef-45a3-931d-6b6423e1c1ef in categoryId: fff710d9-6bec-4e4a-a7ab-9aac884e72a9
+2024-10-23 15:00:35 INFO  s.e.n.i.p.c.CategoryController - Found 1 products
+2024-10-23 15:00:35 INFO  s.e.n.i.p.c.CategoryController - Fetching all products for merchantId: 96457457-0239-4d59-967c-205ed60d0513
+2024-10-23 15:00:35 INFO  s.e.n.i.p.c.CategoryController - Found 1 products for merchant
+2024-10-23 15:00:35 INFO  s.e.n.i.p.c.CategoryController - Request received to retrieve category by ID: 08d9bebd-fff2-44fd-9117-8e42eb0003aa
+2024-10-23 15:00:35 INFO  s.e.n.i.p.c.CategoryController - Category retrieved successfully for ID: 08d9bebd-fff2-44fd-9117-8e42eb0003aa
+2024-10-23 15:00:35 INFO  s.e.n.i.p.c.CategoryController - Request received to retrieve all categories. Page: null, Size: null
+2024-10-23 15:00:35 INFO  s.e.n.i.p.c.CategoryController - Retrieved 2 categories without pagination
+2024-10-23 15:00:35 INFO  s.e.n.i.p.c.CategoryController - Request received to delete category with ID: 63974fe7-c3cc-4463-870e-61744bfc15f8
+2024-10-23 15:00:35 INFO  s.e.n.i.p.c.CategoryController - Request received to update category with ID: 08142820-78eb-4f84-b4fe-989fcd3f6cb0
+2024-10-23 15:00:35 INFO  s.e.n.i.p.c.CategoryController - Request received to delete category with ID: f8a61363-22de-4e8d-818f-ecda20912e10
+2024-10-23 15:00:35 INFO  s.e.n.i.p.c.CategoryController - Category deleted successfully for ID: f8a61363-22de-4e8d-818f-ecda20912e10
+2024-10-23 15:00:35 INFO  s.e.n.i.p.c.CategoryController - Request received to retrieve category by ID: 2a42fb2b-d587-414f-9239-277425dd82cd
+2024-10-23 15:00:35 INFO  s.e.n.i.p.c.CategoryController - Category retrieved successfully for ID: 2a42fb2b-d587-414f-9239-277425dd82cd
+2024-10-23 15:00:35 INFO  s.e.n.i.p.c.CategoryController - Request received to update category with ID: 6c942939-dd73-44f9-8d40-f25244dbd83e
+2024-10-23 15:00:35 INFO  s.e.n.i.p.c.CategoryController - Category updated successfully for ID: 6c942939-dd73-44f9-8d40-f25244dbd83e
+2024-10-23 15:00:35 INFO  s.e.n.i.p.c.CategoryController - Request received to update category with ID: ced60c8a-9841-4092-bde7-686d5c8c61e8
+2024-10-23 15:00:35 WARN  s.e.n.i.p.c.CategoryController - Category ID mismatch. Path ID: ced60c8a-9841-4092-bde7-686d5c8c61e8, Body ID: e185e8b3-4f7d-40d4-b2d6-a65d6ac438e7
+2024-10-23 15:00:35 INFO  s.e.n.i.p.c.CategoryController - Request received to update category with ID: 1655e30d-faa2-4602-8cc9-1963130cf726
+2024-10-23 15:00:35 INFO  s.e.n.i.p.c.CategoryController - Category updated successfully for ID: 1655e30d-faa2-4602-8cc9-1963130cf726
+2024-10-23 15:00:35 INFO  s.e.n.i.p.c.CategoryController - Request received to create a new category: Category(categoryId=null, categoryName=null, deleted=false, categoryDescription=null)
+2024-10-23 15:00:35 INFO  s.e.n.i.p.c.CategoryController - Category created successfully: Category(categoryId=null, categoryName=null, deleted=false, categoryDescription=null)
+2024-10-23 15:00:35 INFO  s.e.n.i.p.c.CategoryController - Request received to update category with ID: 8396318d-52c5-41dd-845d-36ae1bda3780
+2024-10-23 15:00:35 INFO  s.e.n.i.p.c.CategoryController - Request received to retrieve all categories. Page: 0, Size: 5
+2024-10-23 15:00:35 INFO  s.e.n.i.p.c.CategoryController - Retrieved 1 categories for page 0 with size 5
+2024-10-23 15:00:35 INFO  s.e.n.i.p.c.CategoryController - Request received to delete category with ID: 1c8bc060-a0ef-474c-b352-3863063d3839
+2024-10-23 15:00:35 INFO  s.e.n.i.p.c.CategoryController - Category deleted successfully for ID: 1c8bc060-a0ef-474c-b352-3863063d3839
+2024-10-23 15:00:35 INFO  s.e.n.i.p.c.CategoryController - Request received to delete category with ID: c2137c3b-bfcb-4688-b436-119ad7ff09a8
+2024-10-23 15:00:35 INFO  s.e.n.i.p.c.CategoryController - Request received to retrieve category by ID: 1c0123b1-8a4d-4250-a437-11bdba429d3e
+2024-10-23 15:00:35 INFO  s.e.n.i.p.c.CategoryController - Category retrieved successfully for ID: 1c0123b1-8a4d-4250-a437-11bdba429d3e
+2024-10-23 15:00:35 INFO  s.e.n.i.p.c.CategoryController - Request received to retrieve category by ID: 0be19409-0aab-4709-8484-3fca9dbf6fc9
+2024-10-23 15:00:35 INFO  s.e.n.i.p.c.CategoryController - Category retrieved successfully for ID: 0be19409-0aab-4709-8484-3fca9dbf6fc9
+2024-10-23 15:00:35 INFO  s.e.n.i.p.c.CategoryController - Request received to retrieve all categories. Page: null, Size: null
+2024-10-23 15:00:35 INFO  s.e.n.i.p.c.CategoryController - Retrieved 2 categories without pagination
+2024-10-23 15:00:35 INFO  s.e.n.i.p.c.ProductController - Filtered Products: [Product(productId=cd705226-ecb4-47af-9afc-827ce3591e6e, productName=Product 1, category=null, imageUrl=null, productDescription=null, originalPrice=100.00, listingPrice=null, availableStock=10, merchantId=11b444cc-a324-435f-911f-e44695da2c43, pincode=12345, deleted=false, createdAt=null, updatedAt=null, createdBy=null, updatedBy=null)]
+2024-10-23 15:00:35 INFO  s.e.n.i.p.s.s.PriceFilterStrategy - Initialized PriceFilterStrategy with minPrice: 15.0, maxPrice: 25.0
+2024-10-23 15:00:35 INFO  s.e.n.i.p.service.ProductService - Filtered products count: 3
+2024-10-23 15:00:35 INFO  s.e.n.i.p.s.s.PriceFilterStrategy - Starting price filter with minPrice: 15.0, maxPrice: 25.0
+2024-10-23 15:00:35 INFO  s.e.n.i.p.s.s.PriceFilterStrategy - Price filter completed. Found 1 matching products.
+2024-10-23 15:00:35 INFO  s.e.n.i.p.service.ProductService - Filtered products count: 0
+2024-10-23 15:00:35 INFO  s.e.n.i.p.s.s.FullTextSearchStrategy - Executing similarity search for: Amazing
+2024-10-23 15:00:35 INFO  s.e.n.i.p.s.s.FullTextSearchStrategy - Found Product: Amazing Product, Similarity Score: 0.1
+2024-10-23 15:00:35 INFO  s.e.n.i.p.s.s.PincodeFilterStrategy - Initialized PincodeFilterStrategy with pincode: 12345
+2024-10-23 15:00:35 INFO  s.e.n.i.p.service.ProductService - Filtered products count: 3
+2024-10-23 15:00:35 INFO  s.e.n.i.p.s.s.PincodeFilterStrategy - Starting pincode filter for pincode: 12345
+2024-10-23 15:00:35 INFO  s.e.n.i.p.s.s.PincodeFilterStrategy - Pincode filter completed. Found 2 matching products.
+2024-10-23 15:00:35 INFO  s.e.n.i.p.service.ProductService - Filtered products count: 2
+2024-10-23 15:00:35 INFO  s.e.n.i.p.s.s.CategoryFilterStrategy - Starting category filter. Category ID: 09710525-0498-43db-91cb-c50f700d95a8
+2024-10-23 15:00:35 INFO  s.e.n.i.p.s.s.CategoryFilterStrategy - Category filter completed. Found 2 matching products.
+2024-10-23 15:00:35 INFO  s.e.n.i.p.service.ProductService - Updating product with ID: 0be20d86-7606-4550-96b9-8850d2a5dd96
+2024-10-23 15:00:35 INFO  s.e.n.i.p.s.s.LocationFilterStrategy - Starting location filter. Target Coordinates: LatLng(lat=1.3521, lng=103.8198), Range: 3.0 km
+2024-10-23 15:00:35 INFO  s.e.n.i.p.service.ProductService - Fetching product with ID: c7a2e244-7c84-4f13-83c3-ddba5a1ba01f for merchantId: c978dd05-c858-4338-9d99-6f7a4d648a95
+2024-10-23 15:00:35 INFO  s.e.n.i.p.service.ProductService - Adding new product: Product(productId=a9f54a42-91c0-4d0b-ba72-ef3cc213bb54, productName=null, category=null, imageUrl=null, productDescription=null, originalPrice=null, listingPrice=null, availableStock=0, merchantId=null, pincode=null, deleted=false, createdAt=null, updatedAt=null, createdBy=null, updatedBy=null)
+2024-10-23 15:00:35 INFO  s.e.n.i.p.service.ProductService - Deleting product with ID: 6bf910b9-1bcf-4751-a16d-a0d9f3a90f77
+2024-10-23 15:00:35 INFO  s.e.n.i.p.service.ProductService - Fetching products for merchantId : 87226075-52a4-4dd9-9d4e-c811fa604321 and categoryId : 8ce808bf-04fe-4f28-83dd-de0e6d727968
+2024-10-23 15:00:35 INFO  s.e.n.i.p.service.ProductService - Fetching all products for merchantId: 60b65eb9-a5c2-45f4-9ce6-aa35647cee3d
+2024-10-23 15:00:35 INFO  s.e.n.i.p.service.ProductService - Fetching products for merchantId: 3ede52ae-ccd0-40fa-a418-ed1596514d4d
+2024-10-23 15:00:35 WARN  s.e.n.i.p.service.CategoryService - Category with name 'NonExistentCategory' not found.
+2024-10-23 15:00:35 INFO  s.e.n.i.p.service.CategoryService - Retrieved 1 categories.
+2024-10-23 15:00:35 WARN  s.e.n.i.p.service.CategoryService - Cannot delete category with ID 55d73ab3-a508-47a5-a795-942c75e0c98f because it has associated products.
+2024-10-23 15:00:35 INFO  s.e.n.i.p.service.CategoryService - Category created successfully with ID: null
+2024-10-23 15:00:35 WARN  s.e.n.i.p.service.CategoryService - Category with name 'null' already exists.
+2024-10-23 15:00:35 INFO  s.e.n.i.p.service.CategoryService - Category saved successfully: Category(categoryId=null, categoryName=null, deleted=false, categoryDescription=null)
+2024-10-23 15:00:35 INFO  s.e.n.i.p.service.CategoryService - Category with ID b672996c-6f61-47b2-94a0-e17e458af2a7 marked as deleted.
+2024-10-23 15:00:35 INFO  s.e.n.i.p.service.CategoryService - Retrieved 1 categories in the current page.
+2024-10-23 15:00:35 INFO  s.e.n.i.p.service.CategoryService - Fetching category with ID: fa000905-5bc4-4acb-8898-c4770deb7172
+2024-10-23 15:00:35 WARN  s.e.n.i.p.service.CategoryService - Category with ID fa000905-5bc4-4acb-8898-c4770deb7172 not found.
+2024-10-23 15:00:35 INFO  s.e.n.i.p.service.CategoryService - Fetching category with ID: b67f9873-e489-4ada-bd04-1be940aa76a5
+2024-10-23 15:00:35 INFO  s.e.n.i.p.s.ExternalLocationService - Calling location service to get coordinates for pincode: 12345
+2024-10-23 15:00:35 INFO  s.e.n.i.p.s.ExternalLocationService - Received coordinates for pincode 12345: LatLng(lat=1.3521, lng=103.8198)
+2024-10-23 15:00:35 INFO  s.e.n.i.p.s.ExternalLocationService - Calling location service to get coordinates for pincode: 12345
+2024-10-23 15:00:35 ERROR s.e.n.i.p.s.ExternalLocationService - Failed to fetch coordinates for pincode 12345 from URL: null/coordinates?pincode=12345. Error: Service unavailable
+java.lang.RuntimeException: Service unavailable
+	at org.springframework.web.client.RestTemplate.getForObject(RestTemplate.java:401)
+	at sg.edu.nus.iss.product_service.service.ExternalLocationService.getCoordinatesByPincode(ExternalLocationService.java:33)
+	at sg.edu.nus.iss.product_service.service.ExternalLocationServiceTest.testGetCoordinatesByPincode_Failure(ExternalLocationServiceTest.java:64)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:728)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:218)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:214)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:139)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:198)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:169)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:93)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:58)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:141)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:57)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:103)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:85)
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47)
+	at org.apache.maven.surefire.junitplatform.LazyLauncher.execute(LazyLauncher.java:56)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.execute(JUnitPlatformProvider.java:184)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:148)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:122)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+2024-10-23 15:00:35 INFO  s.e.n.i.p.s.ExternalLocationService - Calling merchant service to get pincode for merchant ID: ba681ca8-ed49-4056-bec8-22ae8ae8cc6b
+2024-10-23 15:00:35 WARN  s.e.n.i.p.s.ExternalLocationService - No merchant found with ID: ba681ca8-ed49-4056-bec8-22ae8ae8cc6b
+2024-10-23 15:00:35 INFO  s.e.n.i.p.s.ExternalLocationService - Calling merchant service to get pincode for merchant ID: f0d305a3-fc5b-473c-a02e-b08b164ec2f9
+2024-10-23 15:00:35 INFO  s.e.n.i.p.s.ExternalLocationService - Received pincode '12345' for merchant ID: f0d305a3-fc5b-473c-a02e-b08b164ec2f9
+2024-10-23 15:00:35 INFO  s.e.n.i.p.s.ExternalLocationService - Calling merchant service to get pincode for merchant ID: 10548405-21b0-49bd-ba1c-a81cd4580ed5
+2024-10-23 15:00:35 ERROR s.e.n.i.p.s.ExternalLocationService - Failed to fetch merchant data for ID 10548405-21b0-49bd-ba1c-a81cd4580ed5 from URL: null/merchants/10548405-21b0-49bd-ba1c-a81cd4580ed5. Error: Service unavailable
+java.lang.RuntimeException: Service unavailable
+	at org.springframework.web.client.RestTemplate.getForObject(RestTemplate.java:401)
+	at sg.edu.nus.iss.product_service.service.ExternalLocationService.getPincodeByMerchantId(ExternalLocationService.java:46)
+	at sg.edu.nus.iss.product_service.service.ExternalLocationServiceTest.testGetPincodeByMerchantId_Failure(ExternalLocationServiceTest.java:109)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:728)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:218)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:214)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:139)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:198)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:169)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:93)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:58)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:141)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:57)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:103)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:85)
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47)
+	at org.apache.maven.surefire.junitplatform.LazyLauncher.execute(LazyLauncher.java:56)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.execute(JUnitPlatformProvider.java:184)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:148)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:122)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+2024-10-23 15:01:33 INFO  s.e.n.i.p.c.CategoryController - Request received to retrieve category by ID: d146fb71-bfb8-499d-ab22-609c2e10bda2
+2024-10-23 15:01:33 INFO  s.e.n.i.p.c.CategoryController - Category retrieved successfully for ID: d146fb71-bfb8-499d-ab22-609c2e10bda2
+2024-10-23 15:01:33 INFO  s.e.n.i.p.c.CategoryController - Request received to retrieve all categories. Page: null, Size: null
+2024-10-23 15:01:33 INFO  s.e.n.i.p.c.CategoryController - Retrieved 2 categories without pagination
+2024-10-23 15:01:33 INFO  s.e.n.i.p.c.CategoryController - Request received to delete category with ID: 96c48a61-c29a-4c23-96cf-2b0021b04f36
+2024-10-23 15:01:33 INFO  s.e.n.i.p.c.CategoryController - Request received to update category with ID: f8246d4c-6a2f-44fe-b710-f88e200bf9dc
+2024-10-23 15:01:33 INFO  s.e.n.i.p.c.CategoryController - Request received to delete category with ID: bd9a6261-fd8b-4b9e-ac2b-2cf5a96daaae
+2024-10-23 15:01:33 INFO  s.e.n.i.p.c.CategoryController - Category deleted successfully for ID: bd9a6261-fd8b-4b9e-ac2b-2cf5a96daaae
+2024-10-23 15:01:33 INFO  s.e.n.i.p.c.CategoryController - Request received to retrieve category by ID: fd0cbcec-6c2c-478e-a49f-323d77fede61
+2024-10-23 15:01:33 INFO  s.e.n.i.p.c.CategoryController - Category retrieved successfully for ID: fd0cbcec-6c2c-478e-a49f-323d77fede61
+2024-10-23 15:01:33 INFO  s.e.n.i.p.c.CategoryController - Request received to update category with ID: 480007ce-8dad-45e5-9f0d-90c1f4fb9028
+2024-10-23 15:01:33 INFO  s.e.n.i.p.c.CategoryController - Category updated successfully for ID: 480007ce-8dad-45e5-9f0d-90c1f4fb9028
+2024-10-23 15:01:33 INFO  s.e.n.i.p.c.CategoryController - Request received to update category with ID: 42ab1078-fb1d-4718-9fb5-89e8d8a4f624
+2024-10-23 15:01:33 WARN  s.e.n.i.p.c.CategoryController - Category ID mismatch. Path ID: 42ab1078-fb1d-4718-9fb5-89e8d8a4f624, Body ID: 4c14f5d1-8e9f-4744-872a-1380f1473a49
+2024-10-23 15:01:33 INFO  s.e.n.i.p.c.CategoryController - Request received to update category with ID: 7b697591-cd08-483b-b768-c8eb52a868b4
+2024-10-23 15:01:33 INFO  s.e.n.i.p.c.CategoryController - Category updated successfully for ID: 7b697591-cd08-483b-b768-c8eb52a868b4
+2024-10-23 15:01:33 INFO  s.e.n.i.p.c.CategoryController - Request received to create a new category: Category(categoryId=null, categoryName=null, deleted=false, categoryDescription=null)
+2024-10-23 15:01:33 INFO  s.e.n.i.p.c.CategoryController - Category created successfully: Category(categoryId=null, categoryName=null, deleted=false, categoryDescription=null)
+2024-10-23 15:01:33 INFO  s.e.n.i.p.c.CategoryController - Request received to update category with ID: 25b137d8-425b-4c67-9978-5aab353e74ea
+2024-10-23 15:01:33 INFO  s.e.n.i.p.c.CategoryController - Request received to retrieve all categories. Page: 0, Size: 5
+2024-10-23 15:01:33 INFO  s.e.n.i.p.c.CategoryController - Retrieved 1 categories for page 0 with size 5
+2024-10-23 15:01:33 INFO  s.e.n.i.p.c.CategoryController - Request received to delete category with ID: 64c82978-47fb-4723-bc72-2fec5c47d032
+2024-10-23 15:01:33 INFO  s.e.n.i.p.c.CategoryController - Category deleted successfully for ID: 64c82978-47fb-4723-bc72-2fec5c47d032
+2024-10-23 15:01:33 INFO  s.e.n.i.p.c.CategoryController - Request received to delete category with ID: 313cf561-b3d0-4fbd-a56d-e34e3d12f8a7
+2024-10-23 15:01:33 INFO  s.e.n.i.p.c.CategoryController - Request received to retrieve category by ID: 377af572-3c19-46cf-98c8-934ac0c424b1
+2024-10-23 15:01:33 INFO  s.e.n.i.p.c.CategoryController - Category retrieved successfully for ID: 377af572-3c19-46cf-98c8-934ac0c424b1
+2024-10-23 15:01:33 INFO  s.e.n.i.p.c.CategoryController - Request received to retrieve category by ID: fec38bc5-5719-4704-9b4b-7c7f34cf8fe8
+2024-10-23 15:01:33 INFO  s.e.n.i.p.c.CategoryController - Category retrieved successfully for ID: fec38bc5-5719-4704-9b4b-7c7f34cf8fe8
+2024-10-23 15:01:33 INFO  s.e.n.i.p.c.CategoryController - Request received to retrieve all categories. Page: null, Size: null
+2024-10-23 15:01:33 INFO  s.e.n.i.p.c.CategoryController - Retrieved 2 categories without pagination
+2024-10-23 15:01:57 INFO  s.e.n.i.p.c.CategoryController - Request received to retrieve category by ID: 126ab3af-cbcf-4662-ade4-f09cd83480b6
+2024-10-23 15:01:57 INFO  s.e.n.i.p.c.CategoryController - Category retrieved successfully for ID: 126ab3af-cbcf-4662-ade4-f09cd83480b6
+2024-10-23 15:01:57 INFO  s.e.n.i.p.c.CategoryController - Request received to retrieve all categories. Page: null, Size: null
+2024-10-23 15:01:57 INFO  s.e.n.i.p.c.CategoryController - Retrieved 2 categories without pagination
+2024-10-23 15:01:57 INFO  s.e.n.i.p.c.CategoryController - Request received to delete category with ID: cf605d54-6fa3-4781-bbe7-08db53c4025b
+2024-10-23 15:01:57 INFO  s.e.n.i.p.c.CategoryController - Request received to update category with ID: cb429bb8-b23f-4a5e-8ff8-acd0137a8b54
+2024-10-23 15:01:57 INFO  s.e.n.i.p.c.CategoryController - Request received to delete category with ID: 860c6692-1b74-422c-baf4-ede58ae6b9a6
+2024-10-23 15:01:57 INFO  s.e.n.i.p.c.CategoryController - Category deleted successfully for ID: 860c6692-1b74-422c-baf4-ede58ae6b9a6
+2024-10-23 15:01:57 INFO  s.e.n.i.p.c.CategoryController - Request received to update category with ID: c653eedf-3863-4ac1-a8b0-34bd605f662f
+2024-10-23 15:01:57 INFO  s.e.n.i.p.c.CategoryController - Category updated successfully for ID: c653eedf-3863-4ac1-a8b0-34bd605f662f
+2024-10-23 15:01:57 INFO  s.e.n.i.p.c.CategoryController - Request received to update category with ID: 2df4da32-573f-40e5-9a37-270cc7730563
+2024-10-23 15:01:57 WARN  s.e.n.i.p.c.CategoryController - Category ID mismatch. Path ID: 2df4da32-573f-40e5-9a37-270cc7730563, Body ID: b6df1435-e47f-42ad-9304-8aaefcd0556e
+2024-10-23 15:01:57 INFO  s.e.n.i.p.c.CategoryController - Request received to update category with ID: 9516b0ee-a8a7-46a2-af34-aaab32d31f73
+2024-10-23 15:01:57 INFO  s.e.n.i.p.c.CategoryController - Category updated successfully for ID: 9516b0ee-a8a7-46a2-af34-aaab32d31f73
+2024-10-23 15:01:57 INFO  s.e.n.i.p.c.CategoryController - Request received to create a new category: Category(categoryId=null, categoryName=null, deleted=false, categoryDescription=null)
+2024-10-23 15:01:57 INFO  s.e.n.i.p.c.CategoryController - Category created successfully: Category(categoryId=null, categoryName=null, deleted=false, categoryDescription=null)
+2024-10-23 15:01:57 INFO  s.e.n.i.p.c.CategoryController - Request received to update category with ID: 73473d1b-1692-47d1-801c-9b91839dab68
+2024-10-23 15:01:57 INFO  s.e.n.i.p.c.CategoryController - Request received to retrieve all categories. Page: 0, Size: 5
+2024-10-23 15:01:57 INFO  s.e.n.i.p.c.CategoryController - Retrieved 1 categories for page 0 with size 5
+2024-10-23 15:01:57 INFO  s.e.n.i.p.c.CategoryController - Request received to delete category with ID: ce5488f0-6e79-416d-b5ac-dd5f5bc29c74
+2024-10-23 15:01:57 INFO  s.e.n.i.p.c.CategoryController - Category deleted successfully for ID: ce5488f0-6e79-416d-b5ac-dd5f5bc29c74
+2024-10-23 15:01:57 INFO  s.e.n.i.p.c.CategoryController - Request received to delete category with ID: 8872b80e-77b8-46fb-94c5-415253d528ce
+2024-10-23 15:01:57 INFO  s.e.n.i.p.c.CategoryController - Request received to retrieve category by ID: d1b96b82-24ab-40e7-bf0e-079ab10637a0
+2024-10-23 15:01:57 INFO  s.e.n.i.p.c.CategoryController - Category retrieved successfully for ID: d1b96b82-24ab-40e7-bf0e-079ab10637a0
+2024-10-23 15:01:57 INFO  s.e.n.i.p.c.CategoryController - Request received to retrieve all categories. Page: null, Size: null
+2024-10-23 15:01:57 INFO  s.e.n.i.p.c.CategoryController - Retrieved 2 categories without pagination
+2024-10-23 15:02:04 INFO  s.e.n.i.p.c.CategoryController - Updating product with ID: 0eeaba41-a094-4362-bef1-cd7e9b6ee84c for merchantId: e83afa4c-b5bc-419d-900c-9a5b2bf43453
+2024-10-23 15:02:04 ERROR s.e.n.i.p.c.CategoryController - Product ID mismatch: 0eeaba41-a094-4362-bef1-cd7e9b6ee84c vs c4b0f36b-2d83-4257-bdf9-9c09002d7df3
+2024-10-23 15:02:04 INFO  s.e.n.i.p.c.CategoryController - Fetching product with ID: 295fdb5a-29cc-4cc5-9ff5-560b6e44ab1b for merchantId: 4c03732d-e16b-4c74-84dd-8b38c66627ea
+2024-10-23 15:02:04 WARN  s.e.n.i.p.c.CategoryController - Product not found for ID: 295fdb5a-29cc-4cc5-9ff5-560b6e44ab1b
+2024-10-23 15:02:04 INFO  s.e.n.i.p.c.CategoryController - Updating product with ID: 0719f6e6-2531-4ad0-8385-ec913f8345a1 for merchantId: f4c1864a-4e9e-40f7-9cb1-198818091ebe
+2024-10-23 15:02:04 INFO  s.e.n.i.p.c.CategoryController - Product updated successfully: Product(productId=0719f6e6-2531-4ad0-8385-ec913f8345a1, productName=null, category=Category(categoryId=null, categoryName=null, deleted=false, categoryDescription=null), imageUrl=null, productDescription=null, originalPrice=null, listingPrice=null, availableStock=0, merchantId=null, pincode=null, deleted=false, createdAt=null, updatedAt=null, createdBy=null, updatedBy=null)
+2024-10-23 15:02:04 INFO  s.e.n.i.p.c.CategoryController - Deleting product with ID: 24097aae-2753-4925-be77-3dc2fd76c425 for merchantId: 05dbf526-2487-4953-8432-4edec5251352
+2024-10-23 15:02:04 WARN  s.e.n.i.p.c.CategoryController - Product not found for deletion: 24097aae-2753-4925-be77-3dc2fd76c425
+2024-10-23 15:02:04 INFO  s.e.n.i.p.c.CategoryController - Uploading product image: null
+2024-10-23 15:02:04 INFO  s.e.n.i.p.c.CategoryController - Image uploaded successfully: http://example.com/test.jpg
+2024-10-23 15:02:04 INFO  s.e.n.i.p.c.CategoryController - Updating product with ID: 1fc473f4-2f2b-4c7a-b6cd-e796a945f45a for merchantId: 1350b7bc-a852-42ad-aa86-c9e00fe2d8a9
+2024-10-23 15:02:04 WARN  s.e.n.i.p.c.CategoryController - Product not found for update: 1fc473f4-2f2b-4c7a-b6cd-e796a945f45a
+2024-10-23 15:02:04 INFO  s.e.n.i.p.c.CategoryController - Adding new product: Product(productId=null, productName=null, category=Category(categoryId=null, categoryName=Test Category, deleted=false, categoryDescription=null), imageUrl=null, productDescription=null, originalPrice=null, listingPrice=null, availableStock=0, merchantId=null, pincode=null, deleted=false, createdAt=null, updatedAt=null, createdBy=null, updatedBy=null)
+2024-10-23 15:02:04 WARN  s.e.n.i.p.c.CategoryController - Category not found: Test Category
+2024-10-23 15:02:04 INFO  s.e.n.i.p.c.CategoryController - Adding new product: Product(productId=null, productName=null, category=Category(categoryId=null, categoryName=Test Category, deleted=false, categoryDescription=null), imageUrl=null, productDescription=null, originalPrice=null, listingPrice=null, availableStock=0, merchantId=null, pincode=null, deleted=false, createdAt=null, updatedAt=null, createdBy=null, updatedBy=null)
+2024-10-23 15:02:04 INFO  s.e.n.i.p.c.CategoryController - Product added successfully: Product(productId=null, productName=null, category=Category(categoryId=null, categoryName=Test Category, deleted=false, categoryDescription=null), imageUrl=null, productDescription=null, originalPrice=null, listingPrice=null, availableStock=0, merchantId=null, pincode=null, deleted=false, createdAt=null, updatedAt=null, createdBy=null, updatedBy=null)
+2024-10-23 15:02:04 INFO  s.e.n.i.p.c.CategoryController - Fetching product with ID: 58285de3-3b7d-4c1b-8b9e-6b724d8eea16 for merchantId: 995349f8-af93-4c91-a3ef-2a6c2de34c46
+2024-10-23 15:02:04 INFO  s.e.n.i.p.c.CategoryController - Product retrieved successfully: Product(productId=null, productName=null, category=null, imageUrl=null, productDescription=null, originalPrice=null, listingPrice=null, availableStock=0, merchantId=null, pincode=null, deleted=false, createdAt=null, updatedAt=null, createdBy=null, updatedBy=null)
+2024-10-23 15:02:04 INFO  s.e.n.i.p.c.CategoryController - Deleting product with ID: b8df21f9-3a9a-4953-91c9-89e0bcb930ba for merchantId: 6d6eaa36-90f4-41d7-9110-087665f547d3
+2024-10-23 15:02:04 INFO  s.e.n.i.p.c.CategoryController - Product deleted successfully: b8df21f9-3a9a-4953-91c9-89e0bcb930ba
+2024-10-23 15:02:04 INFO  s.e.n.i.p.c.CategoryController - Fetching products for merchantId: efe7f3da-9e0c-40b8-83d9-178de19cd77e in categoryId: 73a9d769-8015-4e8e-9427-f2a5e061fddc
+2024-10-23 15:02:04 INFO  s.e.n.i.p.c.CategoryController - Found 1 products
+2024-10-23 15:02:04 INFO  s.e.n.i.p.c.CategoryController - Fetching all products for merchantId: 940e5e6c-e3a9-4414-a8f4-f4f56975d39a
+2024-10-23 15:02:04 INFO  s.e.n.i.p.c.CategoryController - Found 1 products for merchant
+2024-10-23 15:02:09 INFO  s.e.n.i.p.c.ProductController - Filtered Products: [Product(productId=3b407132-3879-4b05-be58-a62528a393e4, productName=Product 1, category=null, imageUrl=null, productDescription=null, originalPrice=100.00, listingPrice=null, availableStock=10, merchantId=4e2ec540-47ec-4be8-9eed-38d2db2891ff, pincode=12345, deleted=false, createdAt=null, updatedAt=null, createdBy=null, updatedBy=null)]
+2024-10-23 15:02:16 WARN  s.e.n.i.p.service.CategoryService - Category with name 'NonExistentCategory' not found.
+2024-10-23 15:02:16 INFO  s.e.n.i.p.service.CategoryService - Retrieved 1 categories.
+2024-10-23 15:02:16 WARN  s.e.n.i.p.service.CategoryService - Cannot delete category with ID 71085bed-c7ba-4615-b768-91bb9437c3b5 because it has associated products.
+2024-10-23 15:02:16 INFO  s.e.n.i.p.service.CategoryService - Category created successfully with ID: null
+2024-10-23 15:02:16 WARN  s.e.n.i.p.service.CategoryService - Category with name 'null' already exists.
+2024-10-23 15:02:16 INFO  s.e.n.i.p.service.CategoryService - Category saved successfully: Category(categoryId=null, categoryName=null, deleted=false, categoryDescription=null)
+2024-10-23 15:02:16 INFO  s.e.n.i.p.service.CategoryService - Category with ID fc40d67e-04ca-41f3-a7dd-beafe4686807 marked as deleted.
+2024-10-23 15:02:16 INFO  s.e.n.i.p.service.CategoryService - Retrieved 1 categories in the current page.
+2024-10-23 15:02:16 INFO  s.e.n.i.p.service.CategoryService - Fetching category with ID: cc798a22-7765-4a3d-b177-d634ab18dbb0
+2024-10-23 15:02:16 WARN  s.e.n.i.p.service.CategoryService - Category with ID cc798a22-7765-4a3d-b177-d634ab18dbb0 not found.
+2024-10-23 15:02:16 INFO  s.e.n.i.p.service.CategoryService - Fetching category with ID: 66cd48fb-7c62-48f0-bf5a-ade87c139ee5
+2024-10-23 15:02:21 INFO  s.e.n.i.p.s.ExternalLocationService - Calling location service to get coordinates for pincode: 12345
+2024-10-23 15:02:21 INFO  s.e.n.i.p.s.ExternalLocationService - Received coordinates for pincode 12345: LatLng(lat=1.3521, lng=103.8198)
+2024-10-23 15:02:21 INFO  s.e.n.i.p.s.ExternalLocationService - Calling location service to get coordinates for pincode: 12345
+2024-10-23 15:02:21 ERROR s.e.n.i.p.s.ExternalLocationService - Failed to fetch coordinates for pincode 12345 from URL: null/coordinates?pincode=12345. Error: Service unavailable
+java.lang.RuntimeException: Service unavailable
+	at org.springframework.web.client.RestTemplate.getForObject(RestTemplate.java:401)
+	at sg.edu.nus.iss.product_service.service.ExternalLocationService.getCoordinatesByPincode(ExternalLocationService.java:33)
+	at sg.edu.nus.iss.product_service.service.ExternalLocationServiceTest.testGetCoordinatesByPincode_Failure(ExternalLocationServiceTest.java:64)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:728)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:218)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:214)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:139)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:198)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:169)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:93)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:58)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:141)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:57)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:103)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:85)
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47)
+	at org.junit.platform.launcher.core.SessionPerRequestLauncher.execute(SessionPerRequestLauncher.java:63)
+	at com.intellij.junit5.JUnit5IdeaTestRunner.startRunnerWithArgs(JUnit5IdeaTestRunner.java:57)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater$1.execute(IdeaTestRunner.java:38)
+	at com.intellij.rt.execution.junit.TestsRepeater.repeat(TestsRepeater.java:11)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:35)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:232)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:55)
+2024-10-23 15:02:21 INFO  s.e.n.i.p.s.ExternalLocationService - Calling merchant service to get pincode for merchant ID: 6243a627-da10-4db8-b0cc-20f2a961fee4
+2024-10-23 15:02:21 WARN  s.e.n.i.p.s.ExternalLocationService - No merchant found with ID: 6243a627-da10-4db8-b0cc-20f2a961fee4
+2024-10-23 15:02:21 INFO  s.e.n.i.p.s.ExternalLocationService - Calling merchant service to get pincode for merchant ID: 1098257e-5739-423c-b426-b80ff626d428
+2024-10-23 15:02:21 INFO  s.e.n.i.p.s.ExternalLocationService - Received pincode '12345' for merchant ID: 1098257e-5739-423c-b426-b80ff626d428
+2024-10-23 15:02:21 INFO  s.e.n.i.p.s.ExternalLocationService - Calling merchant service to get pincode for merchant ID: 66927186-6315-48a2-85ab-3d6ff78e5565
+2024-10-23 15:02:21 ERROR s.e.n.i.p.s.ExternalLocationService - Failed to fetch merchant data for ID 66927186-6315-48a2-85ab-3d6ff78e5565 from URL: null/merchants/66927186-6315-48a2-85ab-3d6ff78e5565. Error: Service unavailable
+java.lang.RuntimeException: Service unavailable
+	at org.springframework.web.client.RestTemplate.getForObject(RestTemplate.java:401)
+	at sg.edu.nus.iss.product_service.service.ExternalLocationService.getPincodeByMerchantId(ExternalLocationService.java:46)
+	at sg.edu.nus.iss.product_service.service.ExternalLocationServiceTest.testGetPincodeByMerchantId_Failure(ExternalLocationServiceTest.java:109)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:728)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:218)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:214)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:139)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:198)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:169)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:93)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:58)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:141)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:57)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:103)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:85)
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47)
+	at org.junit.platform.launcher.core.SessionPerRequestLauncher.execute(SessionPerRequestLauncher.java:63)
+	at com.intellij.junit5.JUnit5IdeaTestRunner.startRunnerWithArgs(JUnit5IdeaTestRunner.java:57)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater$1.execute(IdeaTestRunner.java:38)
+	at com.intellij.rt.execution.junit.TestsRepeater.repeat(TestsRepeater.java:11)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:35)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:232)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:55)
+2024-10-23 15:02:34 INFO  s.e.n.i.p.s.ExternalLocationService - Calling location service to get coordinates for pincode: 12345
+2024-10-23 15:02:35 ERROR s.e.n.i.p.s.ExternalLocationService - Failed to fetch coordinates for pincode 12345 from URL: null/coordinates?pincode=12345. Error: Service unavailable
+java.lang.RuntimeException: Service unavailable
+	at org.springframework.web.client.RestTemplate.getForObject(RestTemplate.java:401)
+	at sg.edu.nus.iss.product_service.service.ExternalLocationService.getCoordinatesByPincode(ExternalLocationService.java:33)
+	at sg.edu.nus.iss.product_service.service.ExternalLocationServiceTest.testGetCoordinatesByPincode_Failure(ExternalLocationServiceTest.java:48)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:728)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:218)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:214)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:139)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:198)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:169)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:93)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:58)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:141)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:57)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:103)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:85)
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47)
+	at org.junit.platform.launcher.core.SessionPerRequestLauncher.execute(SessionPerRequestLauncher.java:63)
+	at com.intellij.junit5.JUnit5IdeaTestRunner.startRunnerWithArgs(JUnit5IdeaTestRunner.java:57)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater$1.execute(IdeaTestRunner.java:38)
+	at com.intellij.rt.execution.junit.TestsRepeater.repeat(TestsRepeater.java:11)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:35)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:232)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:55)
+2024-10-23 15:02:35 INFO  s.e.n.i.p.s.ExternalLocationService - Calling merchant service to get pincode for merchant ID: 96c83d36-26d7-4add-b622-1735cbd1cc77
+2024-10-23 15:02:35 WARN  s.e.n.i.p.s.ExternalLocationService - No merchant found with ID: 96c83d36-26d7-4add-b622-1735cbd1cc77
+2024-10-23 15:02:35 INFO  s.e.n.i.p.s.ExternalLocationService - Calling merchant service to get pincode for merchant ID: 952f972c-e0ad-468f-a2c0-667e1b9e8ae4
+2024-10-23 15:02:35 INFO  s.e.n.i.p.s.ExternalLocationService - Received pincode '12345' for merchant ID: 952f972c-e0ad-468f-a2c0-667e1b9e8ae4
+2024-10-23 15:02:35 INFO  s.e.n.i.p.s.ExternalLocationService - Calling merchant service to get pincode for merchant ID: 03381276-854a-4865-b33a-76cb8bb84e65
+2024-10-23 15:02:35 ERROR s.e.n.i.p.s.ExternalLocationService - Failed to fetch merchant data for ID 03381276-854a-4865-b33a-76cb8bb84e65 from URL: null/merchants/03381276-854a-4865-b33a-76cb8bb84e65. Error: Service unavailable
+java.lang.RuntimeException: Service unavailable
+	at org.springframework.web.client.RestTemplate.getForObject(RestTemplate.java:401)
+	at sg.edu.nus.iss.product_service.service.ExternalLocationService.getPincodeByMerchantId(ExternalLocationService.java:46)
+	at sg.edu.nus.iss.product_service.service.ExternalLocationServiceTest.testGetPincodeByMerchantId_Failure(ExternalLocationServiceTest.java:93)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:728)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:218)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:214)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:139)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:198)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:169)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:93)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:58)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:141)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:57)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:103)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:85)
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47)
+	at org.junit.platform.launcher.core.SessionPerRequestLauncher.execute(SessionPerRequestLauncher.java:63)
+	at com.intellij.junit5.JUnit5IdeaTestRunner.startRunnerWithArgs(JUnit5IdeaTestRunner.java:57)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater$1.execute(IdeaTestRunner.java:38)
+	at com.intellij.rt.execution.junit.TestsRepeater.repeat(TestsRepeater.java:11)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:35)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:232)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:55)
+2024-10-23 15:02:41 INFO  s.e.n.i.p.s.ExternalLocationService - Calling location service to get coordinates for pincode: 12345
+2024-10-23 15:02:41 ERROR s.e.n.i.p.s.ExternalLocationService - Failed to fetch coordinates for pincode 12345 from URL: null/coordinates?pincode=12345. Error: Service unavailable
+java.lang.RuntimeException: Service unavailable
+	at org.springframework.web.client.RestTemplate.getForObject(RestTemplate.java:401)
+	at sg.edu.nus.iss.product_service.service.ExternalLocationService.getCoordinatesByPincode(ExternalLocationService.java:33)
+	at sg.edu.nus.iss.product_service.service.ExternalLocationServiceTest.testGetCoordinatesByPincode_Failure(ExternalLocationServiceTest.java:48)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:728)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:218)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:214)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:139)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:198)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:169)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:93)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:58)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:141)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:57)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:103)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:85)
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47)
+	at org.junit.platform.launcher.core.SessionPerRequestLauncher.execute(SessionPerRequestLauncher.java:63)
+	at com.intellij.junit5.JUnit5IdeaTestRunner.startRunnerWithArgs(JUnit5IdeaTestRunner.java:57)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater$1.execute(IdeaTestRunner.java:38)
+	at com.intellij.rt.execution.junit.TestsRepeater.repeat(TestsRepeater.java:11)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:35)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:232)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:55)
+2024-10-23 15:02:41 INFO  s.e.n.i.p.s.ExternalLocationService - Calling merchant service to get pincode for merchant ID: 1e82ce51-fc35-43ad-84c0-24599fa0dc7c
+2024-10-23 15:02:41 WARN  s.e.n.i.p.s.ExternalLocationService - No merchant found with ID: 1e82ce51-fc35-43ad-84c0-24599fa0dc7c
+2024-10-23 15:02:41 INFO  s.e.n.i.p.s.ExternalLocationService - Calling merchant service to get pincode for merchant ID: 18c4b289-f9b9-4aec-b2ac-89770680ade0
+2024-10-23 15:02:41 INFO  s.e.n.i.p.s.ExternalLocationService - Received pincode '12345' for merchant ID: 18c4b289-f9b9-4aec-b2ac-89770680ade0
+2024-10-23 15:02:41 INFO  s.e.n.i.p.s.ExternalLocationService - Calling merchant service to get pincode for merchant ID: f4ac1175-02e7-45b1-80c9-fb5cacb751dd
+2024-10-23 15:02:41 ERROR s.e.n.i.p.s.ExternalLocationService - Failed to fetch merchant data for ID f4ac1175-02e7-45b1-80c9-fb5cacb751dd from URL: null/merchants/f4ac1175-02e7-45b1-80c9-fb5cacb751dd. Error: Service unavailable
+java.lang.RuntimeException: Service unavailable
+	at org.springframework.web.client.RestTemplate.getForObject(RestTemplate.java:401)
+	at sg.edu.nus.iss.product_service.service.ExternalLocationService.getPincodeByMerchantId(ExternalLocationService.java:46)
+	at sg.edu.nus.iss.product_service.service.ExternalLocationServiceTest.testGetPincodeByMerchantId_Failure(ExternalLocationServiceTest.java:93)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:728)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:218)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:214)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:139)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:198)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:169)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:93)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:58)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:141)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:57)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:103)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:85)
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47)
+	at org.junit.platform.launcher.core.SessionPerRequestLauncher.execute(SessionPerRequestLauncher.java:63)
+	at com.intellij.junit5.JUnit5IdeaTestRunner.startRunnerWithArgs(JUnit5IdeaTestRunner.java:57)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater$1.execute(IdeaTestRunner.java:38)
+	at com.intellij.rt.execution.junit.TestsRepeater.repeat(TestsRepeater.java:11)
+	at com.intellij.rt.junit.IdeaTestRunner$Repeater.startRunnerWithArgs(IdeaTestRunner.java:35)
+	at com.intellij.rt.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:232)
+	at com.intellij.rt.junit.JUnitStarter.main(JUnitStarter.java:55)
+2024-10-23 15:02:48 INFO  s.e.n.i.p.s.s.PriceFilterStrategy - Initialized PriceFilterStrategy with minPrice: 15.0, maxPrice: 25.0
+2024-10-23 15:02:48 INFO  s.e.n.i.p.service.ProductService - Filtered products count: 3
+2024-10-23 15:02:48 INFO  s.e.n.i.p.s.s.PriceFilterStrategy - Starting price filter with minPrice: 15.0, maxPrice: 25.0
+2024-10-23 15:02:48 INFO  s.e.n.i.p.s.s.PriceFilterStrategy - Price filter completed. Found 1 matching products.
+2024-10-23 15:02:48 INFO  s.e.n.i.p.service.ProductService - Filtered products count: 0
+2024-10-23 15:02:48 INFO  s.e.n.i.p.s.s.FullTextSearchStrategy - Executing similarity search for: Amazing
+2024-10-23 15:02:48 INFO  s.e.n.i.p.s.s.FullTextSearchStrategy - Found Product: Amazing Product, Similarity Score: 0.1
+2024-10-23 15:02:48 INFO  s.e.n.i.p.s.s.PincodeFilterStrategy - Initialized PincodeFilterStrategy with pincode: 12345
+2024-10-23 15:02:48 INFO  s.e.n.i.p.service.ProductService - Filtered products count: 3
+2024-10-23 15:02:48 INFO  s.e.n.i.p.s.s.PincodeFilterStrategy - Starting pincode filter for pincode: 12345
+2024-10-23 15:02:48 INFO  s.e.n.i.p.s.s.PincodeFilterStrategy - Pincode filter completed. Found 2 matching products.
+2024-10-23 15:02:48 INFO  s.e.n.i.p.service.ProductService - Filtered products count: 2
+2024-10-23 15:02:48 INFO  s.e.n.i.p.s.s.CategoryFilterStrategy - Starting category filter. Category ID: 36bbc09b-32c9-41d0-a89b-ca324649092f
+2024-10-23 15:02:48 INFO  s.e.n.i.p.s.s.CategoryFilterStrategy - Category filter completed. Found 2 matching products.
+2024-10-23 15:02:48 INFO  s.e.n.i.p.service.ProductService - Updating product with ID: 4e78d53b-3309-4b53-b91d-69b72164a38f
+2024-10-23 15:02:48 INFO  s.e.n.i.p.s.s.LocationFilterStrategy - Starting location filter. Target Coordinates: LatLng(lat=1.3521, lng=103.8198), Range: 3.0 km
+2024-10-23 15:02:48 INFO  s.e.n.i.p.service.ProductService - Fetching product with ID: 1a9f3a00-3d01-4fb8-a0b7-25e59b3f37f9 for merchantId: 7988fd90-e250-4a98-ad51-1d6c20ae19ea
+2024-10-23 15:02:49 INFO  s.e.n.i.p.service.ProductService - Adding new product: Product(productId=eff35870-06f2-4b52-9b2a-b44b64baaa31, productName=null, category=null, imageUrl=null, productDescription=null, originalPrice=null, listingPrice=null, availableStock=0, merchantId=null, pincode=null, deleted=false, createdAt=null, updatedAt=null, createdBy=null, updatedBy=null)
+2024-10-23 15:02:49 INFO  s.e.n.i.p.service.ProductService - Deleting product with ID: bafc9717-aa0d-4671-9df9-a532c595ddd1
+2024-10-23 15:02:49 INFO  s.e.n.i.p.service.ProductService - Fetching products for merchantId : e1082505-fed2-4024-b125-a8acd429b8fe and categoryId : 61a79876-c5c8-4b13-a3a6-a5137134c91a
+2024-10-23 15:02:49 INFO  s.e.n.i.p.service.ProductService - Fetching all products for merchantId: ef7909d6-d424-457d-aea0-790c58c51501
+2024-10-23 15:02:49 INFO  s.e.n.i.p.service.ProductService - Fetching products for merchantId: d76dd717-fae2-4be7-91d2-991e35db41c9
+2024-10-23 15:02:58 INFO  s.e.n.i.p.c.CategoryController - Updating product with ID: 301f3d46-029a-4597-a223-de09b08a75da for merchantId: 95bf37e6-34bd-4e02-92f4-565423015b4b
+2024-10-23 15:02:58 ERROR s.e.n.i.p.c.CategoryController - Product ID mismatch: 301f3d46-029a-4597-a223-de09b08a75da vs 1ae964ef-7e64-436e-9b6a-10b4f920eed5
+2024-10-23 15:02:58 INFO  s.e.n.i.p.c.CategoryController - Fetching product with ID: cdc74204-94ac-4c83-bb38-d5874660663d for merchantId: 1388ef0d-18b0-4e08-9e37-6c6246c40d13
+2024-10-23 15:02:58 WARN  s.e.n.i.p.c.CategoryController - Product not found for ID: cdc74204-94ac-4c83-bb38-d5874660663d
+2024-10-23 15:02:58 INFO  s.e.n.i.p.c.CategoryController - Updating product with ID: 318a82e1-3b91-485b-ba1d-b9cdc5a1caa4 for merchantId: 396e1871-184a-400a-80ef-cb4d8f160e94
+2024-10-23 15:02:58 INFO  s.e.n.i.p.c.CategoryController - Product updated successfully: Product(productId=318a82e1-3b91-485b-ba1d-b9cdc5a1caa4, productName=null, category=Category(categoryId=null, categoryName=null, deleted=false, categoryDescription=null), imageUrl=null, productDescription=null, originalPrice=null, listingPrice=null, availableStock=0, merchantId=null, pincode=null, deleted=false, createdAt=null, updatedAt=null, createdBy=null, updatedBy=null)
+2024-10-23 15:02:58 INFO  s.e.n.i.p.c.CategoryController - Deleting product with ID: e1d393bc-778f-4a6f-b0e5-8b86d7a8d74a for merchantId: 3a2ea348-2e73-4ef2-86a8-48680afef90b
+2024-10-23 15:02:58 WARN  s.e.n.i.p.c.CategoryController - Product not found for deletion: e1d393bc-778f-4a6f-b0e5-8b86d7a8d74a
+2024-10-23 15:02:58 INFO  s.e.n.i.p.c.CategoryController - Uploading product image: null
+2024-10-23 15:02:58 INFO  s.e.n.i.p.c.CategoryController - Image uploaded successfully: http://example.com/test.jpg
+2024-10-23 15:02:58 INFO  s.e.n.i.p.c.CategoryController - Updating product with ID: 3a3785d6-c4de-4f34-8288-36808327b195 for merchantId: 17cd869c-4a05-4042-977f-b187e5bf412a
+2024-10-23 15:02:58 WARN  s.e.n.i.p.c.CategoryController - Product not found for update: 3a3785d6-c4de-4f34-8288-36808327b195
+2024-10-23 15:02:58 INFO  s.e.n.i.p.c.CategoryController - Adding new product: Product(productId=null, productName=null, category=Category(categoryId=null, categoryName=Test Category, deleted=false, categoryDescription=null), imageUrl=null, productDescription=null, originalPrice=null, listingPrice=null, availableStock=0, merchantId=null, pincode=null, deleted=false, createdAt=null, updatedAt=null, createdBy=null, updatedBy=null)
+2024-10-23 15:02:58 WARN  s.e.n.i.p.c.CategoryController - Category not found: Test Category
+2024-10-23 15:02:58 INFO  s.e.n.i.p.c.CategoryController - Adding new product: Product(productId=null, productName=null, category=Category(categoryId=null, categoryName=Test Category, deleted=false, categoryDescription=null), imageUrl=null, productDescription=null, originalPrice=null, listingPrice=null, availableStock=0, merchantId=null, pincode=null, deleted=false, createdAt=null, updatedAt=null, createdBy=null, updatedBy=null)
+2024-10-23 15:02:58 INFO  s.e.n.i.p.c.CategoryController - Product added successfully: Product(productId=null, productName=null, category=Category(categoryId=null, categoryName=Test Category, deleted=false, categoryDescription=null), imageUrl=null, productDescription=null, originalPrice=null, listingPrice=null, availableStock=0, merchantId=null, pincode=null, deleted=false, createdAt=null, updatedAt=null, createdBy=null, updatedBy=null)
+2024-10-23 15:02:58 INFO  s.e.n.i.p.c.CategoryController - Fetching product with ID: 78453477-7c10-4d02-b5fa-ee11f1f62bdc for merchantId: ec2ba46d-9f35-4714-baeb-01486c6a774e
+2024-10-23 15:02:58 INFO  s.e.n.i.p.c.CategoryController - Product retrieved successfully: Product(productId=null, productName=null, category=null, imageUrl=null, productDescription=null, originalPrice=null, listingPrice=null, availableStock=0, merchantId=null, pincode=null, deleted=false, createdAt=null, updatedAt=null, createdBy=null, updatedBy=null)
+2024-10-23 15:02:58 INFO  s.e.n.i.p.c.CategoryController - Deleting product with ID: 250a3f99-3d02-4402-af80-db2ffb7ad1af for merchantId: 86042b05-8f22-477f-b26e-a0b9ccb375aa
+2024-10-23 15:02:58 INFO  s.e.n.i.p.c.CategoryController - Product deleted successfully: 250a3f99-3d02-4402-af80-db2ffb7ad1af
+2024-10-23 15:02:58 INFO  s.e.n.i.p.c.CategoryController - Fetching products for merchantId: 87c068e5-0d93-496c-a8d9-720150665688 in categoryId: 95e2d5e8-aefa-4b96-9794-3e2fd78eca8e
+2024-10-23 15:02:58 INFO  s.e.n.i.p.c.CategoryController - Found 1 products
+2024-10-23 15:02:58 INFO  s.e.n.i.p.c.CategoryController - Fetching all products for merchantId: dcf5accd-1aa9-4375-b4de-509c8af719cd
+2024-10-23 15:02:58 INFO  s.e.n.i.p.c.CategoryController - Found 1 products for merchant
+2024-10-23 15:02:58 INFO  s.e.n.i.p.c.CategoryController - Request received to retrieve category by ID: 53fd33f2-c1b2-4d1b-af34-cddd24dda740
+2024-10-23 15:02:58 INFO  s.e.n.i.p.c.CategoryController - Category retrieved successfully for ID: 53fd33f2-c1b2-4d1b-af34-cddd24dda740
+2024-10-23 15:02:58 INFO  s.e.n.i.p.c.CategoryController - Request received to retrieve all categories. Page: null, Size: null
+2024-10-23 15:02:58 INFO  s.e.n.i.p.c.CategoryController - Retrieved 2 categories without pagination
+2024-10-23 15:02:58 INFO  s.e.n.i.p.c.CategoryController - Request received to delete category with ID: 212ac869-a2cf-4888-8407-8aa3d771e19a
+2024-10-23 15:02:58 INFO  s.e.n.i.p.c.CategoryController - Request received to update category with ID: bbfb8828-7ad0-409f-bbb2-5497424d54e2
+2024-10-23 15:02:58 INFO  s.e.n.i.p.c.CategoryController - Request received to delete category with ID: 95a0077c-a65f-4208-844d-7d574558fc63
+2024-10-23 15:02:58 INFO  s.e.n.i.p.c.CategoryController - Category deleted successfully for ID: 95a0077c-a65f-4208-844d-7d574558fc63
+2024-10-23 15:02:58 INFO  s.e.n.i.p.c.CategoryController - Request received to update category with ID: ffe75713-8d5a-493f-9920-fb859b523182
+2024-10-23 15:02:58 INFO  s.e.n.i.p.c.CategoryController - Category updated successfully for ID: ffe75713-8d5a-493f-9920-fb859b523182
+2024-10-23 15:02:58 INFO  s.e.n.i.p.c.CategoryController - Request received to update category with ID: 31e531d1-8cba-4698-9cb8-f95bb598b26e
+2024-10-23 15:02:58 WARN  s.e.n.i.p.c.CategoryController - Category ID mismatch. Path ID: 31e531d1-8cba-4698-9cb8-f95bb598b26e, Body ID: 9e2391f1-1ad5-4e99-8e03-4c4d70c56233
+2024-10-23 15:02:58 INFO  s.e.n.i.p.c.CategoryController - Request received to update category with ID: f5cffba0-cf1a-40c3-9d83-bc15f8e61e79
+2024-10-23 15:02:58 INFO  s.e.n.i.p.c.CategoryController - Category updated successfully for ID: f5cffba0-cf1a-40c3-9d83-bc15f8e61e79
+2024-10-23 15:02:58 INFO  s.e.n.i.p.c.CategoryController - Request received to create a new category: Category(categoryId=null, categoryName=null, deleted=false, categoryDescription=null)
+2024-10-23 15:02:58 INFO  s.e.n.i.p.c.CategoryController - Category created successfully: Category(categoryId=null, categoryName=null, deleted=false, categoryDescription=null)
+2024-10-23 15:02:58 INFO  s.e.n.i.p.c.CategoryController - Request received to update category with ID: 07f8809c-b067-4b3e-a88c-6ab2ce58de6f
+2024-10-23 15:02:58 INFO  s.e.n.i.p.c.CategoryController - Request received to retrieve all categories. Page: 0, Size: 5
+2024-10-23 15:02:58 INFO  s.e.n.i.p.c.CategoryController - Retrieved 1 categories for page 0 with size 5
+2024-10-23 15:02:58 INFO  s.e.n.i.p.c.CategoryController - Request received to delete category with ID: c2deec93-df1d-4942-a5a9-73924c952522
+2024-10-23 15:02:58 INFO  s.e.n.i.p.c.CategoryController - Category deleted successfully for ID: c2deec93-df1d-4942-a5a9-73924c952522
+2024-10-23 15:02:58 INFO  s.e.n.i.p.c.CategoryController - Request received to delete category with ID: a67ea47e-6a73-4e22-a9d2-14f661f1b2c3
+2024-10-23 15:02:59 INFO  s.e.n.i.p.c.CategoryController - Request received to retrieve category by ID: fe9003b2-245c-4448-a6a8-d4028b1dc7d5
+2024-10-23 15:02:59 INFO  s.e.n.i.p.c.CategoryController - Category retrieved successfully for ID: fe9003b2-245c-4448-a6a8-d4028b1dc7d5
+2024-10-23 15:02:59 INFO  s.e.n.i.p.c.CategoryController - Request received to retrieve all categories. Page: null, Size: null
+2024-10-23 15:02:59 INFO  s.e.n.i.p.c.CategoryController - Retrieved 2 categories without pagination
+2024-10-23 15:02:59 INFO  s.e.n.i.p.c.ProductController - Filtered Products: [Product(productId=14959cd3-1918-4e98-86fb-db6494f7b21d, productName=Product 1, category=null, imageUrl=null, productDescription=null, originalPrice=100.00, listingPrice=null, availableStock=10, merchantId=4f0a07c2-710a-41d3-93f6-b789990a853b, pincode=12345, deleted=false, createdAt=null, updatedAt=null, createdBy=null, updatedBy=null)]
+2024-10-23 15:02:59 INFO  s.e.n.i.p.s.s.PriceFilterStrategy - Initialized PriceFilterStrategy with minPrice: 15.0, maxPrice: 25.0
+2024-10-23 15:02:59 INFO  s.e.n.i.p.service.ProductService - Filtered products count: 3
+2024-10-23 15:02:59 INFO  s.e.n.i.p.s.s.PriceFilterStrategy - Starting price filter with minPrice: 15.0, maxPrice: 25.0
+2024-10-23 15:02:59 INFO  s.e.n.i.p.s.s.PriceFilterStrategy - Price filter completed. Found 1 matching products.
+2024-10-23 15:02:59 INFO  s.e.n.i.p.service.ProductService - Filtered products count: 0
+2024-10-23 15:02:59 INFO  s.e.n.i.p.s.s.FullTextSearchStrategy - Executing similarity search for: Amazing
+2024-10-23 15:02:59 INFO  s.e.n.i.p.s.s.FullTextSearchStrategy - Found Product: Amazing Product, Similarity Score: 0.1
+2024-10-23 15:02:59 INFO  s.e.n.i.p.s.s.PincodeFilterStrategy - Initialized PincodeFilterStrategy with pincode: 12345
+2024-10-23 15:02:59 INFO  s.e.n.i.p.service.ProductService - Filtered products count: 3
+2024-10-23 15:02:59 INFO  s.e.n.i.p.s.s.PincodeFilterStrategy - Starting pincode filter for pincode: 12345
+2024-10-23 15:02:59 INFO  s.e.n.i.p.s.s.PincodeFilterStrategy - Pincode filter completed. Found 2 matching products.
+2024-10-23 15:02:59 INFO  s.e.n.i.p.service.ProductService - Filtered products count: 2
+2024-10-23 15:02:59 INFO  s.e.n.i.p.s.s.CategoryFilterStrategy - Starting category filter. Category ID: 065f87f5-fc7c-4335-9701-2b92b90a35f9
+2024-10-23 15:02:59 INFO  s.e.n.i.p.s.s.CategoryFilterStrategy - Category filter completed. Found 2 matching products.
+2024-10-23 15:02:59 INFO  s.e.n.i.p.service.ProductService - Updating product with ID: 563bed25-2c1d-41dd-bff9-e60806768d3b
+2024-10-23 15:02:59 INFO  s.e.n.i.p.s.s.LocationFilterStrategy - Starting location filter. Target Coordinates: LatLng(lat=1.3521, lng=103.8198), Range: 3.0 km
+2024-10-23 15:02:59 INFO  s.e.n.i.p.service.ProductService - Fetching product with ID: a1e1e061-c135-486f-98d2-1fa784672115 for merchantId: 98e6b060-ff81-4058-be29-e64fa02805a9
+2024-10-23 15:02:59 INFO  s.e.n.i.p.service.ProductService - Adding new product: Product(productId=e36d541d-7e4e-420f-85e6-c8995f4d5168, productName=null, category=null, imageUrl=null, productDescription=null, originalPrice=null, listingPrice=null, availableStock=0, merchantId=null, pincode=null, deleted=false, createdAt=null, updatedAt=null, createdBy=null, updatedBy=null)
+2024-10-23 15:02:59 INFO  s.e.n.i.p.service.ProductService - Deleting product with ID: 92d95f72-cdd5-427b-a62a-9448d0c6133b
+2024-10-23 15:02:59 INFO  s.e.n.i.p.service.ProductService - Fetching products for merchantId : 8a96bee0-e613-473d-8b4f-5bbd96ed7db4 and categoryId : aa3dbfa9-1e9e-42ff-b8c1-27451b10057d
+2024-10-23 15:02:59 INFO  s.e.n.i.p.service.ProductService - Fetching all products for merchantId: 7cb6eaef-5763-4299-a827-e45c7f7bc055
+2024-10-23 15:02:59 INFO  s.e.n.i.p.service.ProductService - Fetching products for merchantId: 1469bdd7-2c85-4760-8704-bf0d35ead3b0
+2024-10-23 15:02:59 WARN  s.e.n.i.p.service.CategoryService - Category with name 'NonExistentCategory' not found.
+2024-10-23 15:02:59 INFO  s.e.n.i.p.service.CategoryService - Retrieved 1 categories.
+2024-10-23 15:02:59 WARN  s.e.n.i.p.service.CategoryService - Cannot delete category with ID dbb712d3-12c1-46e5-851f-00aa8eb83fa3 because it has associated products.
+2024-10-23 15:02:59 INFO  s.e.n.i.p.service.CategoryService - Category created successfully with ID: null
+2024-10-23 15:02:59 WARN  s.e.n.i.p.service.CategoryService - Category with name 'null' already exists.
+2024-10-23 15:02:59 INFO  s.e.n.i.p.service.CategoryService - Category saved successfully: Category(categoryId=null, categoryName=null, deleted=false, categoryDescription=null)
+2024-10-23 15:02:59 INFO  s.e.n.i.p.service.CategoryService - Category with ID 87774caa-bafb-4cdd-af86-6ac21ca77c72 marked as deleted.
+2024-10-23 15:02:59 INFO  s.e.n.i.p.service.CategoryService - Retrieved 1 categories in the current page.
+2024-10-23 15:02:59 INFO  s.e.n.i.p.service.CategoryService - Fetching category with ID: f0901636-3885-4869-a59e-373fc3e14eea
+2024-10-23 15:02:59 WARN  s.e.n.i.p.service.CategoryService - Category with ID f0901636-3885-4869-a59e-373fc3e14eea not found.
+2024-10-23 15:02:59 INFO  s.e.n.i.p.service.CategoryService - Fetching category with ID: 31b30bb3-b3f6-4dd5-859c-9df63d7afc2a
+2024-10-23 15:02:59 INFO  s.e.n.i.p.s.ExternalLocationService - Calling location service to get coordinates for pincode: 12345
+2024-10-23 15:02:59 ERROR s.e.n.i.p.s.ExternalLocationService - Failed to fetch coordinates for pincode 12345 from URL: null/coordinates?pincode=12345. Error: Service unavailable
+java.lang.RuntimeException: Service unavailable
+	at org.springframework.web.client.RestTemplate.getForObject(RestTemplate.java:401)
+	at sg.edu.nus.iss.product_service.service.ExternalLocationService.getCoordinatesByPincode(ExternalLocationService.java:33)
+	at sg.edu.nus.iss.product_service.service.ExternalLocationServiceTest.testGetCoordinatesByPincode_Failure(ExternalLocationServiceTest.java:48)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:728)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:218)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:214)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:139)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:198)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:169)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:93)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:58)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:141)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:57)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:103)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:85)
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47)
+	at org.apache.maven.surefire.junitplatform.LazyLauncher.execute(LazyLauncher.java:56)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.execute(JUnitPlatformProvider.java:184)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:148)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:122)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+2024-10-23 15:02:59 INFO  s.e.n.i.p.s.ExternalLocationService - Calling merchant service to get pincode for merchant ID: c64c9fa3-ee46-4c13-b138-12608ac66f00
+2024-10-23 15:02:59 WARN  s.e.n.i.p.s.ExternalLocationService - No merchant found with ID: c64c9fa3-ee46-4c13-b138-12608ac66f00
+2024-10-23 15:02:59 INFO  s.e.n.i.p.s.ExternalLocationService - Calling merchant service to get pincode for merchant ID: 017530d0-0245-4b90-9622-0ae13945fc91
+2024-10-23 15:02:59 INFO  s.e.n.i.p.s.ExternalLocationService - Received pincode '12345' for merchant ID: 017530d0-0245-4b90-9622-0ae13945fc91
+2024-10-23 15:02:59 INFO  s.e.n.i.p.s.ExternalLocationService - Calling merchant service to get pincode for merchant ID: 4c3af118-17fa-48c3-9b25-a4cc9a39ecdb
+2024-10-23 15:02:59 ERROR s.e.n.i.p.s.ExternalLocationService - Failed to fetch merchant data for ID 4c3af118-17fa-48c3-9b25-a4cc9a39ecdb from URL: null/merchants/4c3af118-17fa-48c3-9b25-a4cc9a39ecdb. Error: Service unavailable
+java.lang.RuntimeException: Service unavailable
+	at org.springframework.web.client.RestTemplate.getForObject(RestTemplate.java:401)
+	at sg.edu.nus.iss.product_service.service.ExternalLocationService.getPincodeByMerchantId(ExternalLocationService.java:46)
+	at sg.edu.nus.iss.product_service.service.ExternalLocationServiceTest.testGetPincodeByMerchantId_Failure(ExternalLocationServiceTest.java:93)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:728)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:218)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:214)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:139)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:198)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:169)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:93)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:58)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:141)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:57)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:103)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:85)
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47)
+	at org.apache.maven.surefire.junitplatform.LazyLauncher.execute(LazyLauncher.java:56)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.execute(JUnitPlatformProvider.java:184)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:148)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:122)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+2024-10-23 15:03:21 INFO  s.e.n.i.p.c.CategoryController - Updating product with ID: a46c6bbf-819c-4602-8031-15bb3a358527 for merchantId: 2ca54656-7a92-434c-ae02-dc3c5bda7b2a
+2024-10-23 15:03:21 ERROR s.e.n.i.p.c.CategoryController - Product ID mismatch: a46c6bbf-819c-4602-8031-15bb3a358527 vs 17ddb457-3cb2-4722-a05a-2c0abb85db25
+2024-10-23 15:03:21 INFO  s.e.n.i.p.c.CategoryController - Fetching product with ID: 1fce8268-c1a8-4b38-9c28-8a0a2a359568 for merchantId: 4bf0bbb7-3121-41a2-9ea5-6b8b4e9c9e86
+2024-10-23 15:03:21 WARN  s.e.n.i.p.c.CategoryController - Product not found for ID: 1fce8268-c1a8-4b38-9c28-8a0a2a359568
+2024-10-23 15:03:21 INFO  s.e.n.i.p.c.CategoryController - Updating product with ID: 1da9c468-fcb5-4112-86ac-aaf2b91df08d for merchantId: 908b0810-7917-44e1-b12c-746e2bc96d2b
+2024-10-23 15:03:21 INFO  s.e.n.i.p.c.CategoryController - Product updated successfully: Product(productId=1da9c468-fcb5-4112-86ac-aaf2b91df08d, productName=null, category=Category(categoryId=null, categoryName=null, deleted=false, categoryDescription=null), imageUrl=null, productDescription=null, originalPrice=null, listingPrice=null, availableStock=0, merchantId=null, pincode=null, deleted=false, createdAt=null, updatedAt=null, createdBy=null, updatedBy=null)
+2024-10-23 15:03:21 INFO  s.e.n.i.p.c.CategoryController - Deleting product with ID: d5fabb38-c1d9-4144-8228-0be5a7e7fdb3 for merchantId: 169e7de6-8089-4ecf-89b5-071d8804bac2
+2024-10-23 15:03:21 WARN  s.e.n.i.p.c.CategoryController - Product not found for deletion: d5fabb38-c1d9-4144-8228-0be5a7e7fdb3
+2024-10-23 15:03:21 INFO  s.e.n.i.p.c.CategoryController - Uploading product image: null
+2024-10-23 15:03:21 INFO  s.e.n.i.p.c.CategoryController - Image uploaded successfully: http://example.com/test.jpg
+2024-10-23 15:03:21 INFO  s.e.n.i.p.c.CategoryController - Updating product with ID: 39fbefc9-eb4a-477d-a74d-3b4cfc94a56a for merchantId: 3d7d3b36-9f82-44a2-80b2-fc3c32b7e0d8
+2024-10-23 15:03:21 WARN  s.e.n.i.p.c.CategoryController - Product not found for update: 39fbefc9-eb4a-477d-a74d-3b4cfc94a56a
+2024-10-23 15:03:21 INFO  s.e.n.i.p.c.CategoryController - Adding new product: Product(productId=null, productName=null, category=Category(categoryId=null, categoryName=Test Category, deleted=false, categoryDescription=null), imageUrl=null, productDescription=null, originalPrice=null, listingPrice=null, availableStock=0, merchantId=null, pincode=null, deleted=false, createdAt=null, updatedAt=null, createdBy=null, updatedBy=null)
+2024-10-23 15:03:21 WARN  s.e.n.i.p.c.CategoryController - Category not found: Test Category
+2024-10-23 15:03:21 INFO  s.e.n.i.p.c.CategoryController - Adding new product: Product(productId=null, productName=null, category=Category(categoryId=null, categoryName=Test Category, deleted=false, categoryDescription=null), imageUrl=null, productDescription=null, originalPrice=null, listingPrice=null, availableStock=0, merchantId=null, pincode=null, deleted=false, createdAt=null, updatedAt=null, createdBy=null, updatedBy=null)
+2024-10-23 15:03:21 INFO  s.e.n.i.p.c.CategoryController - Product added successfully: Product(productId=null, productName=null, category=Category(categoryId=null, categoryName=Test Category, deleted=false, categoryDescription=null), imageUrl=null, productDescription=null, originalPrice=null, listingPrice=null, availableStock=0, merchantId=null, pincode=null, deleted=false, createdAt=null, updatedAt=null, createdBy=null, updatedBy=null)
+2024-10-23 15:03:21 INFO  s.e.n.i.p.c.CategoryController - Fetching product with ID: bf90b438-e274-49a4-8900-4bd420f450a5 for merchantId: 3544edfd-b765-459d-8be9-81fa58f54437
+2024-10-23 15:03:21 INFO  s.e.n.i.p.c.CategoryController - Product retrieved successfully: Product(productId=null, productName=null, category=null, imageUrl=null, productDescription=null, originalPrice=null, listingPrice=null, availableStock=0, merchantId=null, pincode=null, deleted=false, createdAt=null, updatedAt=null, createdBy=null, updatedBy=null)
+2024-10-23 15:03:21 INFO  s.e.n.i.p.c.CategoryController - Deleting product with ID: f3611a30-b211-43c2-aa32-10dc4d851d43 for merchantId: 93bd7563-7e45-4b7e-b9da-e4a0e2a54bad
+2024-10-23 15:03:21 INFO  s.e.n.i.p.c.CategoryController - Product deleted successfully: f3611a30-b211-43c2-aa32-10dc4d851d43
+2024-10-23 15:03:21 INFO  s.e.n.i.p.c.CategoryController - Fetching products for merchantId: 5e30aa67-e1e1-4fbe-af7d-cffbec70604d in categoryId: 40892c34-a082-453e-80f6-3d24cdd11b5c
+2024-10-23 15:03:21 INFO  s.e.n.i.p.c.CategoryController - Found 1 products
+2024-10-23 15:03:21 INFO  s.e.n.i.p.c.CategoryController - Fetching all products for merchantId: 8719126e-7967-4e0f-bf4c-1a8278cdc838
+2024-10-23 15:03:21 INFO  s.e.n.i.p.c.CategoryController - Found 1 products for merchant
+2024-10-23 15:03:21 INFO  s.e.n.i.p.c.CategoryController - Request received to retrieve category by ID: 1ddf5c17-7f0c-4ac8-860f-ba6da2ece9ca
+2024-10-23 15:03:21 INFO  s.e.n.i.p.c.CategoryController - Category retrieved successfully for ID: 1ddf5c17-7f0c-4ac8-860f-ba6da2ece9ca
+2024-10-23 15:03:21 INFO  s.e.n.i.p.c.CategoryController - Request received to retrieve all categories. Page: null, Size: null
+2024-10-23 15:03:21 INFO  s.e.n.i.p.c.CategoryController - Retrieved 2 categories without pagination
+2024-10-23 15:03:21 INFO  s.e.n.i.p.c.CategoryController - Request received to delete category with ID: d76a16c0-6e23-4f1c-a3ef-86c0306b497f
+2024-10-23 15:03:21 INFO  s.e.n.i.p.c.CategoryController - Request received to update category with ID: 317c5316-a059-4efc-b876-5ddf7be2e95d
+2024-10-23 15:03:21 INFO  s.e.n.i.p.c.CategoryController - Request received to delete category with ID: 1526ab06-1052-4b38-998b-0f5cc13057e2
+2024-10-23 15:03:21 INFO  s.e.n.i.p.c.CategoryController - Category deleted successfully for ID: 1526ab06-1052-4b38-998b-0f5cc13057e2
+2024-10-23 15:03:21 INFO  s.e.n.i.p.c.CategoryController - Request received to update category with ID: f982beb7-9631-46fb-b70a-5c19f44f86d6
+2024-10-23 15:03:21 INFO  s.e.n.i.p.c.CategoryController - Category updated successfully for ID: f982beb7-9631-46fb-b70a-5c19f44f86d6
+2024-10-23 15:03:21 INFO  s.e.n.i.p.c.CategoryController - Request received to update category with ID: f6cd6fa0-6255-46fa-8545-914110ebfee5
+2024-10-23 15:03:21 WARN  s.e.n.i.p.c.CategoryController - Category ID mismatch. Path ID: f6cd6fa0-6255-46fa-8545-914110ebfee5, Body ID: 5f394957-becd-4ff9-856b-f6ea3f7db03c
+2024-10-23 15:03:21 INFO  s.e.n.i.p.c.CategoryController - Request received to update category with ID: 99383a21-f593-4f6b-9b4c-197233f7fcc6
+2024-10-23 15:03:21 INFO  s.e.n.i.p.c.CategoryController - Category updated successfully for ID: 99383a21-f593-4f6b-9b4c-197233f7fcc6
+2024-10-23 15:03:21 INFO  s.e.n.i.p.c.CategoryController - Request received to create a new category: Category(categoryId=null, categoryName=null, deleted=false, categoryDescription=null)
+2024-10-23 15:03:21 INFO  s.e.n.i.p.c.CategoryController - Category created successfully: Category(categoryId=null, categoryName=null, deleted=false, categoryDescription=null)
+2024-10-23 15:03:21 INFO  s.e.n.i.p.c.CategoryController - Request received to update category with ID: fdce6bc9-b5be-4ddd-9349-726cff50f404
+2024-10-23 15:03:21 INFO  s.e.n.i.p.c.CategoryController - Request received to retrieve all categories. Page: 0, Size: 5
+2024-10-23 15:03:21 INFO  s.e.n.i.p.c.CategoryController - Retrieved 1 categories for page 0 with size 5
+2024-10-23 15:03:21 INFO  s.e.n.i.p.c.CategoryController - Request received to delete category with ID: 33752f9a-3361-4d0a-bcd0-3e3368666cb2
+2024-10-23 15:03:21 INFO  s.e.n.i.p.c.CategoryController - Category deleted successfully for ID: 33752f9a-3361-4d0a-bcd0-3e3368666cb2
+2024-10-23 15:03:21 INFO  s.e.n.i.p.c.CategoryController - Request received to delete category with ID: 916d837f-bd2a-4072-a784-63f1a360fc92
+2024-10-23 15:03:21 INFO  s.e.n.i.p.c.CategoryController - Request received to retrieve category by ID: 9d10bfd4-5106-4da2-b0a2-ddd98a5456b6
+2024-10-23 15:03:21 INFO  s.e.n.i.p.c.CategoryController - Category retrieved successfully for ID: 9d10bfd4-5106-4da2-b0a2-ddd98a5456b6
+2024-10-23 15:03:21 INFO  s.e.n.i.p.c.CategoryController - Request received to retrieve all categories. Page: null, Size: null
+2024-10-23 15:03:21 INFO  s.e.n.i.p.c.CategoryController - Retrieved 2 categories without pagination
+2024-10-23 15:03:21 INFO  s.e.n.i.p.c.ProductController - Filtered Products: [Product(productId=300bc87b-9d74-46c9-8c4b-d8b2689b1914, productName=Product 1, category=null, imageUrl=null, productDescription=null, originalPrice=100.00, listingPrice=null, availableStock=10, merchantId=417a0a55-9c75-4523-ab91-90c3b656674a, pincode=12345, deleted=false, createdAt=null, updatedAt=null, createdBy=null, updatedBy=null)]
+2024-10-23 15:03:21 INFO  s.e.n.i.p.s.s.PriceFilterStrategy - Initialized PriceFilterStrategy with minPrice: 15.0, maxPrice: 25.0
+2024-10-23 15:03:21 INFO  s.e.n.i.p.service.ProductService - Filtered products count: 3
+2024-10-23 15:03:21 INFO  s.e.n.i.p.s.s.PriceFilterStrategy - Starting price filter with minPrice: 15.0, maxPrice: 25.0
+2024-10-23 15:03:21 INFO  s.e.n.i.p.s.s.PriceFilterStrategy - Price filter completed. Found 1 matching products.
+2024-10-23 15:03:21 INFO  s.e.n.i.p.service.ProductService - Filtered products count: 0
+2024-10-23 15:03:21 INFO  s.e.n.i.p.s.s.FullTextSearchStrategy - Executing similarity search for: Amazing
+2024-10-23 15:03:21 INFO  s.e.n.i.p.s.s.FullTextSearchStrategy - Found Product: Amazing Product, Similarity Score: 0.1
+2024-10-23 15:03:21 INFO  s.e.n.i.p.s.s.PincodeFilterStrategy - Initialized PincodeFilterStrategy with pincode: 12345
+2024-10-23 15:03:21 INFO  s.e.n.i.p.service.ProductService - Filtered products count: 3
+2024-10-23 15:03:21 INFO  s.e.n.i.p.s.s.PincodeFilterStrategy - Starting pincode filter for pincode: 12345
+2024-10-23 15:03:21 INFO  s.e.n.i.p.s.s.PincodeFilterStrategy - Pincode filter completed. Found 2 matching products.
+2024-10-23 15:03:21 INFO  s.e.n.i.p.service.ProductService - Filtered products count: 2
+2024-10-23 15:03:21 INFO  s.e.n.i.p.s.s.CategoryFilterStrategy - Starting category filter. Category ID: 23852666-3c81-4fa5-a1aa-2203d44a9013
+2024-10-23 15:03:21 INFO  s.e.n.i.p.s.s.CategoryFilterStrategy - Category filter completed. Found 2 matching products.
+2024-10-23 15:03:21 INFO  s.e.n.i.p.service.ProductService - Updating product with ID: c937114b-a561-4129-8177-76d80dd6cfd9
+2024-10-23 15:03:21 INFO  s.e.n.i.p.s.s.LocationFilterStrategy - Starting location filter. Target Coordinates: LatLng(lat=1.3521, lng=103.8198), Range: 3.0 km
+2024-10-23 15:03:21 INFO  s.e.n.i.p.service.ProductService - Fetching product with ID: 1b7a4a7d-4b0e-40a9-87a2-9b76e381d7cb for merchantId: 9caca099-e5e1-430c-9788-628ec4d3d1f4
+2024-10-23 15:03:21 INFO  s.e.n.i.p.service.ProductService - Adding new product: Product(productId=fa80d15f-d5b0-449c-9fa8-6e7e07e4e3bc, productName=null, category=null, imageUrl=null, productDescription=null, originalPrice=null, listingPrice=null, availableStock=0, merchantId=null, pincode=null, deleted=false, createdAt=null, updatedAt=null, createdBy=null, updatedBy=null)
+2024-10-23 15:03:21 INFO  s.e.n.i.p.service.ProductService - Deleting product with ID: 3a08c008-8ed1-4fa9-8c3b-531de862ff4e
+2024-10-23 15:03:21 INFO  s.e.n.i.p.service.ProductService - Fetching products for merchantId : 3b8047cc-acc9-4db9-ac6c-a7b53ab07e3d and categoryId : 0260263e-c610-4b1c-a294-7916da6c6ed7
+2024-10-23 15:03:21 INFO  s.e.n.i.p.service.ProductService - Fetching all products for merchantId: 6af3daee-643e-45c6-87a2-48f442350556
+2024-10-23 15:03:21 INFO  s.e.n.i.p.service.ProductService - Fetching products for merchantId: e83367a4-03af-403c-a075-cf7bddf75f90
+2024-10-23 15:03:21 WARN  s.e.n.i.p.service.CategoryService - Category with name 'NonExistentCategory' not found.
+2024-10-23 15:03:21 INFO  s.e.n.i.p.service.CategoryService - Retrieved 1 categories.
+2024-10-23 15:03:21 WARN  s.e.n.i.p.service.CategoryService - Cannot delete category with ID 88050191-48f1-4a0e-ae11-576cce4ad582 because it has associated products.
+2024-10-23 15:03:21 INFO  s.e.n.i.p.service.CategoryService - Category created successfully with ID: null
+2024-10-23 15:03:21 WARN  s.e.n.i.p.service.CategoryService - Category with name 'null' already exists.
+2024-10-23 15:03:21 INFO  s.e.n.i.p.service.CategoryService - Category saved successfully: Category(categoryId=null, categoryName=null, deleted=false, categoryDescription=null)
+2024-10-23 15:03:21 INFO  s.e.n.i.p.service.CategoryService - Category with ID fbd9529f-98fb-422e-8d11-26994525b9e7 marked as deleted.
+2024-10-23 15:03:21 INFO  s.e.n.i.p.service.CategoryService - Retrieved 1 categories in the current page.
+2024-10-23 15:03:21 INFO  s.e.n.i.p.service.CategoryService - Fetching category with ID: 80d3e15b-419d-4f98-b31f-4ae76c1d4278
+2024-10-23 15:03:21 WARN  s.e.n.i.p.service.CategoryService - Category with ID 80d3e15b-419d-4f98-b31f-4ae76c1d4278 not found.
+2024-10-23 15:03:21 INFO  s.e.n.i.p.service.CategoryService - Fetching category with ID: d7fee33e-02e9-4b6c-9932-1b95b5629de9
+2024-10-23 15:03:21 INFO  s.e.n.i.p.s.ExternalLocationService - Calling location service to get coordinates for pincode: 12345
+2024-10-23 15:03:21 ERROR s.e.n.i.p.s.ExternalLocationService - Failed to fetch coordinates for pincode 12345 from URL: null/coordinates?pincode=12345. Error: Service unavailable
+java.lang.RuntimeException: Service unavailable
+	at org.springframework.web.client.RestTemplate.getForObject(RestTemplate.java:401)
+	at sg.edu.nus.iss.product_service.service.ExternalLocationService.getCoordinatesByPincode(ExternalLocationService.java:33)
+	at sg.edu.nus.iss.product_service.service.ExternalLocationServiceTest.testGetCoordinatesByPincode_Failure(ExternalLocationServiceTest.java:48)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:728)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:218)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:214)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:139)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:198)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:169)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:93)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:58)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:141)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:57)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:103)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:85)
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47)
+	at org.apache.maven.surefire.junitplatform.LazyLauncher.execute(LazyLauncher.java:56)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.execute(JUnitPlatformProvider.java:184)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:148)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:122)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+2024-10-23 15:03:21 INFO  s.e.n.i.p.s.ExternalLocationService - Calling merchant service to get pincode for merchant ID: 51dd1441-438b-4090-b98c-fa3bca456559
+2024-10-23 15:03:21 WARN  s.e.n.i.p.s.ExternalLocationService - No merchant found with ID: 51dd1441-438b-4090-b98c-fa3bca456559
+2024-10-23 15:03:21 INFO  s.e.n.i.p.s.ExternalLocationService - Calling merchant service to get pincode for merchant ID: b7a85c92-d878-4d95-8128-54f435e3360a
+2024-10-23 15:03:21 INFO  s.e.n.i.p.s.ExternalLocationService - Received pincode '12345' for merchant ID: b7a85c92-d878-4d95-8128-54f435e3360a
+2024-10-23 15:03:21 INFO  s.e.n.i.p.s.ExternalLocationService - Calling merchant service to get pincode for merchant ID: 4273e7d3-99a2-45cb-b5fc-3b54262861aa
+2024-10-23 15:03:21 ERROR s.e.n.i.p.s.ExternalLocationService - Failed to fetch merchant data for ID 4273e7d3-99a2-45cb-b5fc-3b54262861aa from URL: null/merchants/4273e7d3-99a2-45cb-b5fc-3b54262861aa. Error: Service unavailable
+java.lang.RuntimeException: Service unavailable
+	at org.springframework.web.client.RestTemplate.getForObject(RestTemplate.java:401)
+	at sg.edu.nus.iss.product_service.service.ExternalLocationService.getPincodeByMerchantId(ExternalLocationService.java:46)
+	at sg.edu.nus.iss.product_service.service.ExternalLocationServiceTest.testGetPincodeByMerchantId_Failure(ExternalLocationServiceTest.java:93)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:728)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:218)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:214)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:139)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:198)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:169)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:93)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:58)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:141)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:57)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:103)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:85)
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47)
+	at org.apache.maven.surefire.junitplatform.LazyLauncher.execute(LazyLauncher.java:56)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.execute(JUnitPlatformProvider.java:184)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:148)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:122)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+2024-10-23 15:03:30 INFO  s.e.n.i.p.c.CategoryController - Updating product with ID: 7d2e7f0a-be6c-441e-a4e1-919a2b3bc44a for merchantId: 9afbbd10-8b9a-439c-b352-8ad26bbf7060
+2024-10-23 15:03:30 ERROR s.e.n.i.p.c.CategoryController - Product ID mismatch: 7d2e7f0a-be6c-441e-a4e1-919a2b3bc44a vs 9224afde-5dc5-4879-8dad-3309e0ed3665
+2024-10-23 15:03:30 INFO  s.e.n.i.p.c.CategoryController - Fetching product with ID: f4025690-f62e-42b8-a440-12607ffa74f8 for merchantId: e0d11221-ebbb-4a35-ba56-8f843ef2b38e
+2024-10-23 15:03:30 WARN  s.e.n.i.p.c.CategoryController - Product not found for ID: f4025690-f62e-42b8-a440-12607ffa74f8
+2024-10-23 15:03:30 INFO  s.e.n.i.p.c.CategoryController - Updating product with ID: 847cd868-80dd-4ca5-a9a2-29d7c00f386a for merchantId: e60cd4b1-4861-4634-9329-1084c056746c
+2024-10-23 15:03:30 INFO  s.e.n.i.p.c.CategoryController - Product updated successfully: Product(productId=847cd868-80dd-4ca5-a9a2-29d7c00f386a, productName=null, category=Category(categoryId=null, categoryName=null, deleted=false, categoryDescription=null), imageUrl=null, productDescription=null, originalPrice=null, listingPrice=null, availableStock=0, merchantId=null, pincode=null, deleted=false, createdAt=null, updatedAt=null, createdBy=null, updatedBy=null)
+2024-10-23 15:03:30 INFO  s.e.n.i.p.c.CategoryController - Deleting product with ID: 97e3b3eb-fe66-43c7-bb97-dd96fd55d5c7 for merchantId: eb382143-2306-4809-bbc5-92b687b3b53c
+2024-10-23 15:03:30 WARN  s.e.n.i.p.c.CategoryController - Product not found for deletion: 97e3b3eb-fe66-43c7-bb97-dd96fd55d5c7
+2024-10-23 15:03:30 INFO  s.e.n.i.p.c.CategoryController - Uploading product image: null
+2024-10-23 15:03:30 INFO  s.e.n.i.p.c.CategoryController - Image uploaded successfully: http://example.com/test.jpg
+2024-10-23 15:03:30 INFO  s.e.n.i.p.c.CategoryController - Updating product with ID: ca827ee9-3697-43b9-9399-8991429e532d for merchantId: 6fa10d57-7e46-4e35-90da-24d58c3f0d83
+2024-10-23 15:03:30 WARN  s.e.n.i.p.c.CategoryController - Product not found for update: ca827ee9-3697-43b9-9399-8991429e532d
+2024-10-23 15:03:30 INFO  s.e.n.i.p.c.CategoryController - Adding new product: Product(productId=null, productName=null, category=Category(categoryId=null, categoryName=Test Category, deleted=false, categoryDescription=null), imageUrl=null, productDescription=null, originalPrice=null, listingPrice=null, availableStock=0, merchantId=null, pincode=null, deleted=false, createdAt=null, updatedAt=null, createdBy=null, updatedBy=null)
+2024-10-23 15:03:30 WARN  s.e.n.i.p.c.CategoryController - Category not found: Test Category
+2024-10-23 15:03:30 INFO  s.e.n.i.p.c.CategoryController - Adding new product: Product(productId=null, productName=null, category=Category(categoryId=null, categoryName=Test Category, deleted=false, categoryDescription=null), imageUrl=null, productDescription=null, originalPrice=null, listingPrice=null, availableStock=0, merchantId=null, pincode=null, deleted=false, createdAt=null, updatedAt=null, createdBy=null, updatedBy=null)
+2024-10-23 15:03:30 INFO  s.e.n.i.p.c.CategoryController - Product added successfully: Product(productId=null, productName=null, category=Category(categoryId=null, categoryName=Test Category, deleted=false, categoryDescription=null), imageUrl=null, productDescription=null, originalPrice=null, listingPrice=null, availableStock=0, merchantId=null, pincode=null, deleted=false, createdAt=null, updatedAt=null, createdBy=null, updatedBy=null)
+2024-10-23 15:03:30 INFO  s.e.n.i.p.c.CategoryController - Fetching product with ID: 358f60c0-18c6-4524-838b-7f425d24ce49 for merchantId: 63318902-544c-42ba-8b6d-c5cca6638470
+2024-10-23 15:03:30 INFO  s.e.n.i.p.c.CategoryController - Product retrieved successfully: Product(productId=null, productName=null, category=null, imageUrl=null, productDescription=null, originalPrice=null, listingPrice=null, availableStock=0, merchantId=null, pincode=null, deleted=false, createdAt=null, updatedAt=null, createdBy=null, updatedBy=null)
+2024-10-23 15:03:30 INFO  s.e.n.i.p.c.CategoryController - Deleting product with ID: a7b77ace-db65-4b6f-a244-8c5b79b0443c for merchantId: 8b8a4dd4-f636-47b3-93a8-347cf537779b
+2024-10-23 15:03:30 INFO  s.e.n.i.p.c.CategoryController - Product deleted successfully: a7b77ace-db65-4b6f-a244-8c5b79b0443c
+2024-10-23 15:03:30 INFO  s.e.n.i.p.c.CategoryController - Fetching products for merchantId: cd3a5ddf-5848-489d-93e7-b1ae0ac8c7f8 in categoryId: 947de197-c265-4aac-921d-60593ac5b102
+2024-10-23 15:03:30 INFO  s.e.n.i.p.c.CategoryController - Found 1 products
+2024-10-23 15:03:30 INFO  s.e.n.i.p.c.CategoryController - Fetching all products for merchantId: d74a7622-b069-4356-893f-2ba227cec6c7
+2024-10-23 15:03:30 INFO  s.e.n.i.p.c.CategoryController - Found 1 products for merchant
+2024-10-23 15:03:30 INFO  s.e.n.i.p.c.CategoryController - Request received to retrieve category by ID: 3a29cabd-d4c8-4686-89e4-f1cb1db31940
+2024-10-23 15:03:30 INFO  s.e.n.i.p.c.CategoryController - Category retrieved successfully for ID: 3a29cabd-d4c8-4686-89e4-f1cb1db31940
+2024-10-23 15:03:31 INFO  s.e.n.i.p.c.CategoryController - Request received to retrieve all categories. Page: null, Size: null
+2024-10-23 15:03:31 INFO  s.e.n.i.p.c.CategoryController - Retrieved 2 categories without pagination
+2024-10-23 15:03:31 INFO  s.e.n.i.p.c.CategoryController - Request received to delete category with ID: 62e0e22f-a44a-4fb6-8f24-9bc6a09a82e1
+2024-10-23 15:03:31 INFO  s.e.n.i.p.c.CategoryController - Request received to update category with ID: 6d63aa0d-9211-46d1-b568-9e42258d52ff
+2024-10-23 15:03:31 INFO  s.e.n.i.p.c.CategoryController - Request received to delete category with ID: c2543bae-2223-449b-8418-ea7dd972e81f
+2024-10-23 15:03:31 INFO  s.e.n.i.p.c.CategoryController - Category deleted successfully for ID: c2543bae-2223-449b-8418-ea7dd972e81f
+2024-10-23 15:03:31 INFO  s.e.n.i.p.c.CategoryController - Request received to update category with ID: 02c68a2e-beb7-43c0-b5c4-ed82ff3ef6ee
+2024-10-23 15:03:31 INFO  s.e.n.i.p.c.CategoryController - Category updated successfully for ID: 02c68a2e-beb7-43c0-b5c4-ed82ff3ef6ee
+2024-10-23 15:03:31 INFO  s.e.n.i.p.c.CategoryController - Request received to update category with ID: ae13f1b8-b847-4182-ab5e-137c28be5ee6
+2024-10-23 15:03:31 WARN  s.e.n.i.p.c.CategoryController - Category ID mismatch. Path ID: ae13f1b8-b847-4182-ab5e-137c28be5ee6, Body ID: a088edaf-56e6-444a-bc1f-2a428d1e7174
+2024-10-23 15:03:31 INFO  s.e.n.i.p.c.CategoryController - Request received to update category with ID: 8fcbafaf-4c30-4a4b-88c8-bf059625654c
+2024-10-23 15:03:31 INFO  s.e.n.i.p.c.CategoryController - Category updated successfully for ID: 8fcbafaf-4c30-4a4b-88c8-bf059625654c
+2024-10-23 15:03:31 INFO  s.e.n.i.p.c.CategoryController - Request received to create a new category: Category(categoryId=null, categoryName=null, deleted=false, categoryDescription=null)
+2024-10-23 15:03:31 INFO  s.e.n.i.p.c.CategoryController - Category created successfully: Category(categoryId=null, categoryName=null, deleted=false, categoryDescription=null)
+2024-10-23 15:03:31 INFO  s.e.n.i.p.c.CategoryController - Request received to update category with ID: 6b73c6c8-82af-4465-a95b-8415f9f5f410
+2024-10-23 15:03:31 INFO  s.e.n.i.p.c.CategoryController - Request received to retrieve all categories. Page: 0, Size: 5
+2024-10-23 15:03:31 INFO  s.e.n.i.p.c.CategoryController - Retrieved 1 categories for page 0 with size 5
+2024-10-23 15:03:31 INFO  s.e.n.i.p.c.CategoryController - Request received to delete category with ID: 52daea6f-9c11-4f1b-9453-2af5d6e11e5b
+2024-10-23 15:03:31 INFO  s.e.n.i.p.c.CategoryController - Category deleted successfully for ID: 52daea6f-9c11-4f1b-9453-2af5d6e11e5b
+2024-10-23 15:03:31 INFO  s.e.n.i.p.c.CategoryController - Request received to delete category with ID: c637ff99-e930-4892-b2d1-d35e45060ea3
+2024-10-23 15:03:31 INFO  s.e.n.i.p.c.CategoryController - Request received to retrieve category by ID: f433d876-bbe5-4eb7-bbcd-da27dba2d987
+2024-10-23 15:03:31 INFO  s.e.n.i.p.c.CategoryController - Category retrieved successfully for ID: f433d876-bbe5-4eb7-bbcd-da27dba2d987
+2024-10-23 15:03:31 INFO  s.e.n.i.p.c.CategoryController - Request received to retrieve all categories. Page: null, Size: null
+2024-10-23 15:03:31 INFO  s.e.n.i.p.c.CategoryController - Retrieved 2 categories without pagination
+2024-10-23 15:03:31 INFO  s.e.n.i.p.c.ProductController - Filtered Products: [Product(productId=bf17a104-db38-48d5-87dc-0d85d14b81b4, productName=Product 1, category=null, imageUrl=null, productDescription=null, originalPrice=100.00, listingPrice=null, availableStock=10, merchantId=c4335e85-fe55-403d-9cf0-c4f96b2b81c0, pincode=12345, deleted=false, createdAt=null, updatedAt=null, createdBy=null, updatedBy=null)]
+2024-10-23 15:03:31 INFO  s.e.n.i.p.s.s.PriceFilterStrategy - Initialized PriceFilterStrategy with minPrice: 15.0, maxPrice: 25.0
+2024-10-23 15:03:31 INFO  s.e.n.i.p.service.ProductService - Filtered products count: 3
+2024-10-23 15:03:31 INFO  s.e.n.i.p.s.s.PriceFilterStrategy - Starting price filter with minPrice: 15.0, maxPrice: 25.0
+2024-10-23 15:03:31 INFO  s.e.n.i.p.s.s.PriceFilterStrategy - Price filter completed. Found 1 matching products.
+2024-10-23 15:03:31 INFO  s.e.n.i.p.service.ProductService - Filtered products count: 0
+2024-10-23 15:03:31 INFO  s.e.n.i.p.s.s.FullTextSearchStrategy - Executing similarity search for: Amazing
+2024-10-23 15:03:31 INFO  s.e.n.i.p.s.s.FullTextSearchStrategy - Found Product: Amazing Product, Similarity Score: 0.1
+2024-10-23 15:03:31 INFO  s.e.n.i.p.s.s.PincodeFilterStrategy - Initialized PincodeFilterStrategy with pincode: 12345
+2024-10-23 15:03:31 INFO  s.e.n.i.p.service.ProductService - Filtered products count: 3
+2024-10-23 15:03:31 INFO  s.e.n.i.p.s.s.PincodeFilterStrategy - Starting pincode filter for pincode: 12345
+2024-10-23 15:03:31 INFO  s.e.n.i.p.s.s.PincodeFilterStrategy - Pincode filter completed. Found 2 matching products.
+2024-10-23 15:03:31 INFO  s.e.n.i.p.service.ProductService - Filtered products count: 2
+2024-10-23 15:03:31 INFO  s.e.n.i.p.s.s.CategoryFilterStrategy - Starting category filter. Category ID: bc1c5ae5-e6f9-4522-a692-a74aa867817a
+2024-10-23 15:03:31 INFO  s.e.n.i.p.s.s.CategoryFilterStrategy - Category filter completed. Found 2 matching products.
+2024-10-23 15:03:31 INFO  s.e.n.i.p.service.ProductService - Updating product with ID: d1fbdca7-9ec4-418f-ae53-762a00f62df1
+2024-10-23 15:03:31 INFO  s.e.n.i.p.s.s.LocationFilterStrategy - Starting location filter. Target Coordinates: LatLng(lat=1.3521, lng=103.8198), Range: 3.0 km
+2024-10-23 15:03:31 INFO  s.e.n.i.p.service.ProductService - Fetching product with ID: b21af840-96b5-4dbd-ae33-3d2a9a4c5ec2 for merchantId: 67d84c74-f41f-4291-ab13-60bff782156b
+2024-10-23 15:03:31 INFO  s.e.n.i.p.service.ProductService - Adding new product: Product(productId=f8ea5e1b-c4a1-45ff-a11f-578c5c64a7d6, productName=null, category=null, imageUrl=null, productDescription=null, originalPrice=null, listingPrice=null, availableStock=0, merchantId=null, pincode=null, deleted=false, createdAt=null, updatedAt=null, createdBy=null, updatedBy=null)
+2024-10-23 15:03:31 INFO  s.e.n.i.p.service.ProductService - Deleting product with ID: 3aeb8945-f3d6-47b4-86c3-917e8492a3bc
+2024-10-23 15:03:31 INFO  s.e.n.i.p.service.ProductService - Fetching products for merchantId : 0be72642-c531-48e4-bfe9-3e251341f280 and categoryId : 72f988dd-5237-4a14-83cd-9e2971a5031e
+2024-10-23 15:03:31 INFO  s.e.n.i.p.service.ProductService - Fetching all products for merchantId: 94b129ad-a8bd-4d81-a014-bf8ca44c7163
+2024-10-23 15:03:31 INFO  s.e.n.i.p.service.ProductService - Fetching products for merchantId: 67c443d9-7a4b-4254-8c64-88d9d29d7047
+2024-10-23 15:03:31 WARN  s.e.n.i.p.service.CategoryService - Category with name 'NonExistentCategory' not found.
+2024-10-23 15:03:31 INFO  s.e.n.i.p.service.CategoryService - Retrieved 1 categories.
+2024-10-23 15:03:31 WARN  s.e.n.i.p.service.CategoryService - Cannot delete category with ID 9c283767-d6d7-40a7-8f40-a635ac5bb6b4 because it has associated products.
+2024-10-23 15:03:31 INFO  s.e.n.i.p.service.CategoryService - Category created successfully with ID: null
+2024-10-23 15:03:31 WARN  s.e.n.i.p.service.CategoryService - Category with name 'null' already exists.
+2024-10-23 15:03:31 INFO  s.e.n.i.p.service.CategoryService - Category saved successfully: Category(categoryId=null, categoryName=null, deleted=false, categoryDescription=null)
+2024-10-23 15:03:31 INFO  s.e.n.i.p.service.CategoryService - Category with ID 0a04f6d5-26a8-45a9-bb20-12a2f1ab1888 marked as deleted.
+2024-10-23 15:03:31 INFO  s.e.n.i.p.service.CategoryService - Retrieved 1 categories in the current page.
+2024-10-23 15:03:31 INFO  s.e.n.i.p.service.CategoryService - Fetching category with ID: 47fd0b87-9b40-435c-afe7-c2dd2c2d90ce
+2024-10-23 15:03:31 WARN  s.e.n.i.p.service.CategoryService - Category with ID 47fd0b87-9b40-435c-afe7-c2dd2c2d90ce not found.
+2024-10-23 15:03:31 INFO  s.e.n.i.p.service.CategoryService - Fetching category with ID: 42c33b0c-7984-40de-a3e1-28713841ba78
+2024-10-23 15:03:31 INFO  s.e.n.i.p.s.ExternalLocationService - Calling location service to get coordinates for pincode: 12345
+2024-10-23 15:03:31 ERROR s.e.n.i.p.s.ExternalLocationService - Failed to fetch coordinates for pincode 12345 from URL: null/coordinates?pincode=12345. Error: Service unavailable
+java.lang.RuntimeException: Service unavailable
+	at org.springframework.web.client.RestTemplate.getForObject(RestTemplate.java:401)
+	at sg.edu.nus.iss.product_service.service.ExternalLocationService.getCoordinatesByPincode(ExternalLocationService.java:33)
+	at sg.edu.nus.iss.product_service.service.ExternalLocationServiceTest.testGetCoordinatesByPincode_Failure(ExternalLocationServiceTest.java:48)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:728)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:218)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:214)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:139)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:198)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:169)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:93)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:58)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:141)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:57)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:103)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:85)
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47)
+	at org.apache.maven.surefire.junitplatform.LazyLauncher.execute(LazyLauncher.java:56)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.execute(JUnitPlatformProvider.java:184)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:148)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:122)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+2024-10-23 15:03:31 INFO  s.e.n.i.p.s.ExternalLocationService - Calling merchant service to get pincode for merchant ID: 081f2daa-6db9-4244-acb9-ecc554664cb7
+2024-10-23 15:03:31 WARN  s.e.n.i.p.s.ExternalLocationService - No merchant found with ID: 081f2daa-6db9-4244-acb9-ecc554664cb7
+2024-10-23 15:03:31 INFO  s.e.n.i.p.s.ExternalLocationService - Calling merchant service to get pincode for merchant ID: a8cc75e2-d0fa-4944-a633-fa163338c22e
+2024-10-23 15:03:31 INFO  s.e.n.i.p.s.ExternalLocationService - Received pincode '12345' for merchant ID: a8cc75e2-d0fa-4944-a633-fa163338c22e
+2024-10-23 15:03:31 INFO  s.e.n.i.p.s.ExternalLocationService - Calling merchant service to get pincode for merchant ID: 8d1a0edd-ea51-49d5-8674-bdbd6907b25f
+2024-10-23 15:03:31 ERROR s.e.n.i.p.s.ExternalLocationService - Failed to fetch merchant data for ID 8d1a0edd-ea51-49d5-8674-bdbd6907b25f from URL: null/merchants/8d1a0edd-ea51-49d5-8674-bdbd6907b25f. Error: Service unavailable
+java.lang.RuntimeException: Service unavailable
+	at org.springframework.web.client.RestTemplate.getForObject(RestTemplate.java:401)
+	at sg.edu.nus.iss.product_service.service.ExternalLocationService.getPincodeByMerchantId(ExternalLocationService.java:46)
+	at sg.edu.nus.iss.product_service.service.ExternalLocationServiceTest.testGetPincodeByMerchantId_Failure(ExternalLocationServiceTest.java:93)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:728)
+	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147)
+	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92)
+	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:218)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:214)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:139)
+	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:198)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:169)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:93)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:58)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:141)
+	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:57)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:103)
+	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:85)
+	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47)
+	at org.apache.maven.surefire.junitplatform.LazyLauncher.execute(LazyLauncher.java:56)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.execute(JUnitPlatformProvider.java:184)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:148)
+	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:122)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+2024-10-23 15:07:22 INFO  s.e.n.i.p.s.s.PriceFilterStrategy - Initialized PriceFilterStrategy with minPrice: 15.0, maxPrice: 25.0
+2024-10-23 15:07:22 INFO  s.e.n.i.p.service.ProductService - Filtered products count: 3
+2024-10-23 15:07:22 INFO  s.e.n.i.p.s.s.PriceFilterStrategy - Starting price filter with minPrice: 15.0, maxPrice: 25.0
+2024-10-23 15:07:22 INFO  s.e.n.i.p.s.s.PriceFilterStrategy - Price filter completed. Found 1 matching products.
+2024-10-23 15:07:22 INFO  s.e.n.i.p.service.ProductService - Filtered products count: 0
+2024-10-23 15:07:22 INFO  s.e.n.i.p.s.s.FullTextSearchStrategy - Executing similarity search for: Amazing
+2024-10-23 15:07:22 INFO  s.e.n.i.p.s.s.FullTextSearchStrategy - Found Product: Amazing Product, Similarity Score: 0.1
+2024-10-23 15:07:22 INFO  s.e.n.i.p.s.s.PincodeFilterStrategy - Initialized PincodeFilterStrategy with pincode: 12345
+2024-10-23 15:07:22 INFO  s.e.n.i.p.service.ProductService - Filtered products count: 3
+2024-10-23 15:07:22 INFO  s.e.n.i.p.s.s.PincodeFilterStrategy - Starting pincode filter for pincode: 12345
+2024-10-23 15:07:22 INFO  s.e.n.i.p.s.s.PincodeFilterStrategy - Pincode filter completed. Found 2 matching products.
+2024-10-23 15:07:22 INFO  s.e.n.i.p.service.ProductService - Filtered products count: 2
+2024-10-23 15:07:22 INFO  s.e.n.i.p.s.s.CategoryFilterStrategy - Starting category filter. Category ID: 353b2c7d-d026-4b59-b282-629be3d760fa
+2024-10-23 15:07:22 INFO  s.e.n.i.p.s.s.CategoryFilterStrategy - Category filter completed. Found 2 matching products.
+2024-10-23 15:07:22 INFO  s.e.n.i.p.service.ProductService - Updating product with ID: eb92949c-0d8f-4bd7-b40d-02630cf3b000
+2024-10-23 15:07:22 INFO  s.e.n.i.p.s.s.LocationFilterStrategy - Starting location filter. Target Coordinates: LatLng(lat=1.3521, lng=103.8198), Range: 3.0 km
+2024-10-23 15:07:22 INFO  s.e.n.i.p.service.ProductService - Fetching product with ID: ab9c252c-2540-4f30-9d37-5e0fa1de37ba for merchantId: 4bc1db0a-16be-4437-9414-1dac8c3c482f
+2024-10-23 15:07:22 INFO  s.e.n.i.p.service.ProductService - Adding new product: Product(productId=0c0bbb40-0102-431f-b501-6425c8e2ac1e, productName=null, category=null, imageUrl=null, productDescription=null, originalPrice=null, listingPrice=null, availableStock=0, merchantId=null, pincode=null, deleted=false, createdAt=null, updatedAt=null, createdBy=null, updatedBy=null)
+2024-10-23 15:07:22 INFO  s.e.n.i.p.service.ProductService - Deleting product with ID: dfcda578-4caa-457a-86c5-5cd0d5f52fab
+2024-10-23 15:07:22 INFO  s.e.n.i.p.service.ProductService - Fetching products for merchantId : 45614209-e133-4d57-bfd1-07615afeb481 and categoryId : 887de8db-402a-4fed-b2d6-26ff7e38af83
+2024-10-23 15:07:22 INFO  s.e.n.i.p.service.ProductService - Fetching all products for merchantId: 853fcb14-010c-49c3-a68a-61246b451217
+2024-10-23 15:07:22 INFO  s.e.n.i.p.service.ProductService - Fetching products for merchantId: 565d7730-e085-4ffa-930f-9531a2534a92

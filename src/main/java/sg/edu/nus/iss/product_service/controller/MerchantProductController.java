@@ -1,12 +1,13 @@
 package sg.edu.nus.iss.product_service.controller;
 
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -31,12 +32,13 @@ import java.util.UUID;
 @RequestMapping("/merchants")
 @Tag(name = "Merchant Product API", description = "APIs for merchants to create, read, update, and delete products")
 public class MerchantProductController {
-
     private final ProductService productService;
     private final S3Utility s3Service;
     private final ObjectMapper objectMapper;
     private final CategoryService categoryService;
     private final ProductServiceContext productServiceContext;
+
+    private static final Logger log = LoggerFactory.getLogger(CategoryController.class);
 
     @Autowired
     public MerchantProductController(ProductService productService, ObjectMapper objectMapper, S3Utility s3Service, CategoryService categoryService,ProductServiceContext productServiceContext) {
@@ -56,6 +58,7 @@ public class MerchantProductController {
     private Product validateProduct(UUID merchantId, UUID productId) {
         Product product = productService.getProductByIdAndMerchantId(merchantId, productId);
         if (product == null) {
+            log.warn("Product not found for update: {}", productId);
             throw new ResourceNotFoundException("Product not found");
         }
         return product;
@@ -69,12 +72,15 @@ public class MerchantProductController {
     @GetMapping("/{merchantId}/products")
     @Operation(summary = "Retrieve all products")
     public ResponseEntity<?> getAllProducts(@PathVariable UUID merchantId, @RequestParam(required = false) Integer page, @RequestParam(required = false) Integer size) {
+        log.info("Fetching all products for merchantId: {}", merchantId);
         Pageable pageable = createPageable(page, size);
         if (pageable.isPaged()) {
             Page<Product> products = productService.getAllProducts(merchantId, pageable);
+            log.info("Found {} products for merchant with pagination", products.getTotalElements());
             return ResponseEntity.ok(products);
         } else {
             List<Product> products = productService.getProductsByMerchantId(merchantId);
+            log.info("Found {} products for merchant", products.size());
             return ResponseEntity.ok(products);
         }
     }
@@ -82,19 +88,25 @@ public class MerchantProductController {
     @GetMapping("/{merchantId}/products/{productId}")
     @Operation(summary = "Retrieve product By ID")
     public ResponseEntity<?> getProductById(@PathVariable UUID merchantId, @PathVariable UUID productId) {
+        log.info("Fetching product with ID: {} for merchantId: {}", productId, merchantId);
         Product product = validateProduct(merchantId, productId);
+        log.info("Product retrieved successfully: {}", product);
         return ResponseEntity.ok(product);
     }
+
 
     @GetMapping("/{merchantId}/categories/{categoryId}")
     @Operation(summary = "Retrieve products by merchant ID and category ID")
     public ResponseEntity<?> getProductByMerchantIdAndCategoryId(@PathVariable UUID merchantId, @PathVariable UUID categoryId, @RequestParam(required = false) Integer page, @RequestParam(required = false) Integer size) {
+        log.info("Fetching products for merchantId: {} in categoryId: {}", merchantId, categoryId);
         Pageable pageable = createPageable(page, size);
         if (pageable.isPaged()) {
             Page<Product> products = productService.getProductsByMerchantIdAndCategoryId(merchantId, categoryId, pageable);
+            log.info("Found {} products with pagination", products.getTotalElements());
             return ResponseEntity.ok(products);
         } else {
             List<Product> products = productService.getProductsByMerchantIdAndCategoryId(merchantId, categoryId);
+            log.info("Found {} products", products.size());
             return ResponseEntity.ok(products);
         }
     }
@@ -103,11 +115,14 @@ public class MerchantProductController {
     @Operation(summary = "Add a new product")
     public ResponseEntity<?> addProduct(@Valid @RequestBody Product product) {
         Category category = categoryService.getCategoryByName(product.getCategory().getCategoryName());
+        log.info("Adding new product: {}", product);
         if (category == null) {
+            log.warn("Category not found: {}", product.getCategory().getCategoryName());
             throw new ResourceNotFoundException("Category not found, Please create category first");
         }
         product.setCategory(category);
         setMerchantProductStrategy();
+        log.info("Product added successfully");
         return ResponseEntity.ok(productServiceContext.getProductStrategy().addProduct(product));
     }
 
@@ -122,17 +137,21 @@ public class MerchantProductController {
             )
             @RequestPart("file") MultipartFile file
     ) throws IOException {
+        log.info("Uploading product image: {}", file.getOriginalFilename());
         String fileName = s3Service.uploadFile(file);
         String fileUrl = s3Service.getFileUrl(fileName);
+        log.info("Image uploaded successfully: {}", fileUrl);
         return ResponseEntity.ok(fileUrl);
     }
 
     @DeleteMapping("/{merchantId}/products/{productId}")
     @Operation(summary = "Delete product by Product ID")
     public ResponseEntity<String> deleteProduct(@PathVariable UUID merchantId, @PathVariable UUID productId) {
+        log.info("Deleting product with ID: {} for merchantId: {}", productId, merchantId);
         setMerchantProductStrategy();
         Product existingProduct = validateProduct(merchantId, productId);
         productServiceContext.getProductStrategy().deleteProduct(productId);
+        log.info("Product deleted successfully: {}", productId);
         return ResponseEntity.ok("Product deleted");
     }
 
@@ -140,13 +159,16 @@ public class MerchantProductController {
     @Operation(summary = "Update product")
     public ResponseEntity<?> updateProduct(@PathVariable UUID merchantId, @PathVariable UUID productId, @Valid @RequestBody ProductDTO dto, @Valid @RequestBody Product product) {
         setMerchantProductStrategy();
+        log.info("Updating product with ID: {} for merchantId: {}", productId, merchantId);
         Product existingProduct = validateProduct(merchantId, productId);
         if (!existingProduct.getProductId().equals(dto.getProductId())) {
+            log.error("Product ID mismatch: {} vs {}", productId, dto.getProductId());
             throw new IllegalArgumentException("Product ID mismatch");
         }
         existingProduct = objectMapper.convertValue(dto, Product.class);
         existingProduct.setProductId(productId);
         existingProduct.setCategory(categoryService.getCategoryById(dto.getCategoryId()));
+        log.info("Product updated successfully: {}", existingProduct);
         return ResponseEntity.ok(productServiceContext.getProductStrategy().updateProduct(productId, product));
     }
 }

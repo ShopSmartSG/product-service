@@ -7,8 +7,10 @@ import java.util.UUID;
 
 @Data
 public class ProductFilterDTO {
-    private String pincode;
     private UUID categoryId;
-    private BigDecimal minPrice;
     private BigDecimal maxPrice;
+    private BigDecimal minPrice;
+    private String pincode;
+    private Double rangeInKm;
+    private String searchText;
 }
