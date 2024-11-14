@@ -28,7 +28,7 @@
 	</scm>
 	<properties>
 		<java.version>21</java.version>
-		<sonar.exclusions>**/dto/**,**/model/**,**/repository/**, **/config/**, **/utility/**, **/exception/**</sonar.exclusions>
+		<sonar.exclusions>**/dto/**,**/model/**,**/repository/**, **/config/**, **/utility/**, **/exception/** **/strategy/**</sonar.exclusions>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -153,6 +153,7 @@
 						<exclude>sg/edu/nus/iss/product_service/config/**</exclude>
 						<exclude>sg/edu/nus/iss/product_service/utility/**</exclude>
 						<exclude>sg/edu/nus/iss/product_service/exception/**</exclude>
+						<exclude>sg/edu/nus/iss/product_service/service/strategy/**</exclude>
 					</excludes>
 				</configuration>
 				<executions>
