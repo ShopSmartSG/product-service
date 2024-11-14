@@ -168,6 +168,6 @@ public class MerchantProductController {
         existingProduct.setProductId(productId);
         existingProduct.setCategory(categoryService.getCategoryById(dto.getCategoryId()));
         log.info("Product updated successfully: {}", existingProduct);
-        return ResponseEntity.ok(productServiceContext.getProductStrategy().updateProduct(productId, product));
+        return ResponseEntity.ok(productServiceContext.getProductStrategy().updateProduct(productId, existingProduct));
     }
 }
