@@ -255,4 +255,81 @@ public class ProductServiceTest {
         List<Product> products = (List<Product>) response.getBody();
         assertEquals(2, products.size());
     }
+
+    @Test
+    public void testGetProductsByMerchantIdAndCategoryId_WithPagination() {
+        UUID merchantId = UUID.randomUUID();
+        UUID categoryId = UUID.randomUUID();
+        PageRequest pageable = PageRequest.of(0, 10);
+        Product product = new Product();
+        product.setProductId(UUID.randomUUID());
+        Page<Product> page = new PageImpl<>(Collections.singletonList(product));
+        when(productRepository.findByMerchantIdAndCategory_CategoryIdAndDeletedFalse(merchantId, categoryId, pageable)).thenReturn(page);
+
+        Page<Product> result = productService.getProductsByMerchantIdAndCategoryId(merchantId, categoryId, pageable);
+
+        assertEquals(1, result.getTotalElements());
+        assertEquals(product, result.getContent().get(0));
+    }
+
+    @Test
+    public void testGetFilteredProducts_WithMultipleFilters() {
+        UUID categoryId = UUID.randomUUID();
+        Category category = new Category();
+        category.setCategoryId(categoryId);
+
+        Product product1 = new Product();
+        product1.setProductId(UUID.randomUUID());
+        product1.setCategory(category);
+        product1.setOriginalPrice(BigDecimal.valueOf(10.00));
+        product1.setListingPrice(BigDecimal.valueOf(8.00));
+
+        Product product2 = new Product();
+        product2.setProductId(UUID.randomUUID());
+        product2.setCategory(category);
+        product2.setOriginalPrice(BigDecimal.valueOf(20.00));
+        product2.setListingPrice(BigDecimal.valueOf(18.00));
+
+        when(productRepository.findByDeletedFalse()).thenReturn(Arrays.asList(product1, product2));
+
+        ProductFilterDTO filterDTO = new ProductFilterDTO();
+        filterDTO.setCategoryId(categoryId);
+        filterDTO.setMinPrice(BigDecimal.valueOf(5.00));
+        filterDTO.setMaxPrice(BigDecimal.valueOf(15.00));
+
+        List<Product> filteredProducts = productService.getFilteredProducts(filterDTO);
+
+        assertEquals(1, filteredProducts.size());
+        assertEquals(product1, filteredProducts.get(0));
+    }
+
+    @Test
+    public void testGetFilteredProducts_NoFilters() {
+        Product product1 = new Product();
+        product1.setProductId(UUID.randomUUID());
+        product1.setOriginalPrice(BigDecimal.valueOf(10.00));
+        product1.setListingPrice(BigDecimal.valueOf(8.00));
+
+        Product product2 = new Product();
+        product2.setProductId(UUID.randomUUID());
+        product2.setOriginalPrice(BigDecimal.valueOf(20.00));
+        product2.setListingPrice(BigDecimal.valueOf(18.00));
+
+        when(productRepository.findByDeletedFalse()).thenReturn(Arrays.asList(product1, product2));
+
+        ProductFilterDTO filterDTO = new ProductFilterDTO();
+
+        List<Product> filteredProducts = productService.getFilteredProducts(filterDTO);
+
+        assertEquals(2, filteredProducts.size());
+    }
+
+    @Test
+    public void testGetProductsByIds_InvalidUUIDs() {
+        List<String> productIds = Arrays.asList("invalid-uuid-1", "invalid-uuid-2");
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            productService.getProductsByIds(productIds);
+        });
+    }
 }
