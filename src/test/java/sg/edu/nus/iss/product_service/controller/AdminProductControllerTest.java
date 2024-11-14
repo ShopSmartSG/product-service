@@ -159,4 +159,59 @@ class AdminProductControllerTest {
         assertEquals(product, response.getBody());
         verify(productServiceContext.getProductStrategy(), times(1)).updateProduct(productId, product);
     }
+
+
+    @Test
+    void testGetAllProducts_NoPagination() {
+        UUID merchantId = UUID.randomUUID();
+        List<Product> productList = Arrays.asList(new Product(), new Product());
+
+        when(productService.getProductsByMerchantId(merchantId)).thenReturn(productList);
+
+        ResponseEntity<?> response = adminProductController.getAllProducts(merchantId, null, null);
+
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(productList, response.getBody());
+        verify(productService, times(1)).getProductsByMerchantId(merchantId);
+    }
+
+    @Test
+    void testGetProductByMerchantIdAndCategoryId_NoPagination() {
+        UUID merchantId = UUID.randomUUID();
+        UUID categoryId = UUID.randomUUID();
+        List<Product> productList = Arrays.asList(new Product(), new Product());
+
+        when(productService.getProductsByMerchantIdAndCategoryId(merchantId, categoryId)).thenReturn(productList);
+
+        ResponseEntity<?> response = adminProductController.getProductByMerchantIdAndCategoryId(merchantId, categoryId, null, null);
+
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(productList, response.getBody());
+        verify(productService, times(1)).getProductsByMerchantIdAndCategoryId(merchantId, categoryId);
+    }
+
+    @Test
+    void testAddProduct_InvalidProduct() {
+        Product product = new Product();
+        product.setProductId(null); // Invalid product ID
+
+        when(productServiceContext.getProductStrategy()).thenReturn(mock(AdminProductStrategy.class));
+        when(productServiceContext.getProductStrategy().addProduct(product)).thenThrow(new IllegalArgumentException("Invalid product ID"));
+
+        assertThrows(IllegalArgumentException.class, () -> {
+            adminProductController.addProduct(product);
+        });
+
+        verify(productServiceContext.getProductStrategy(), times(1)).addProduct(product);
+    }
+
+    @Test
+    void testUploadImage_InvalidFile() throws IOException {
+        MultipartFile file = mock(MultipartFile.class);
+        when(file.isEmpty()).thenReturn(true);
+
+        ResponseEntity<String> response = adminProductController.uploadImage(file);
+
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+    }
 }
