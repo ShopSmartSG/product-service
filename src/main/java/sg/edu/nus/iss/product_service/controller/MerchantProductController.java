@@ -46,9 +46,9 @@ public class MerchantProductController {
         this.categoryService = categoryService;
     }
 
-    @GetMapping("/{merchantId}/products")
+    @GetMapping("/{merchant-id}/products")
     @Operation(summary = "Retrieve all products")
-    public ResponseEntity<?> getAllProducts(@PathVariable UUID merchantId, @RequestParam(required = false) Integer page, @RequestParam(required = false) Integer size) {
+    public ResponseEntity<?> getAllProducts(@PathVariable(name = "merchant-id") UUID merchantId, @RequestParam(required = false) Integer page, @RequestParam(required = false) Integer size) {
         log.info("Fetching all products for merchantId: {}", merchantId);
         if (page != null && size != null) {
             Pageable pageable = PageRequest.of(page, size);
@@ -62,9 +62,9 @@ public class MerchantProductController {
         }
     }
 
-    @GetMapping("/{merchantId}/products/{productId}")
+    @GetMapping("/{merchant-id}/products/{product-id}")
     @Operation(summary = "Retrieve product By ID")
-    public ResponseEntity<?> getProductById(@PathVariable UUID merchantId, @PathVariable UUID productId) {
+    public ResponseEntity<?> getProductById(@PathVariable(name = "merchant-id") UUID merchantId, @PathVariable(name = "product-id")UUID productId) {
         log.info("Fetching product with ID: {} for merchantId: {}", productId, merchantId);
         Product product = productService.getProductByIdAndMerchantId(merchantId, productId);
         if (product == null) {
@@ -76,9 +76,9 @@ public class MerchantProductController {
     }
 
 
-    @GetMapping("/{merchantId}/categories/{categoryId}")
+    @GetMapping("/{merchant-id}/categories/{category-id}")
     @Operation(summary = "Retrieve products by merchant ID and category ID")
-    public ResponseEntity<?> getProductByMerchantIdAndCategoryId(@PathVariable UUID merchantId, @PathVariable UUID categoryId, @RequestParam(required = false) Integer page, @RequestParam(required = false) Integer size) {
+    public ResponseEntity<?> getProductByMerchantIdAndCategoryId(@PathVariable(name = "merchant-id") UUID merchantId, @PathVariable(name = "category-id") UUID categoryId, @RequestParam(required = false) Integer page, @RequestParam(required = false) Integer size) {
         log.info("Fetching products for merchantId: {} in categoryId: {}", merchantId, categoryId);
         if (page != null && size != null) {
             Pageable pageable = PageRequest.of(page, size);
@@ -127,9 +127,9 @@ public class MerchantProductController {
         return ResponseEntity.ok(fileUrl);
     }
 
-    @DeleteMapping("/{merchantId}/products/{productId}")
+    @DeleteMapping("/{merchant-id}/products/{product-id}")
     @Operation(summary = "Delete product by Product ID")
-    public ResponseEntity<String> deleteProduct(@PathVariable UUID merchantId, @PathVariable UUID productId) {
+    public ResponseEntity<String> deleteProduct(@PathVariable(name = "merchant-id") UUID merchantId, @PathVariable(name = "product-id") UUID productId) {
         log.info("Deleting product with ID: {} for merchantId: {}", productId, merchantId);
         Product existingProduct = productService.getProductByIdAndMerchantId(merchantId, productId);
         if (existingProduct == null) {
@@ -141,9 +141,9 @@ public class MerchantProductController {
         return ResponseEntity.ok("Delete: successful");
     }
 
-    @PutMapping("/{merchantId}/products/{productId}")
+    @PutMapping("/{merchant-id}/products/{product-id}")
     @Operation(summary = "Update product")
-    public ResponseEntity<?> updateProduct(@PathVariable UUID merchantId, @PathVariable UUID productId, @Valid @RequestBody ProductDTO dto) {
+    public ResponseEntity<?> updateProduct(@PathVariable(name = "merchant-id") UUID merchantId, @PathVariable(name = "product-id") UUID productId, @Valid @RequestBody ProductDTO dto) {
         log.info("Updating product with ID: {} for merchantId: {}", productId, merchantId);
         Product existingProduct = productService.getProductByIdAndMerchantId(merchantId, productId);
         if (existingProduct == null) {
