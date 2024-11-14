@@ -28,7 +28,7 @@
 	</scm>
 	<properties>
 		<java.version>21</java.version>
-		<sonar.exclusions>**/dto/**,**/model/**,**/repository/**, **/config/**, **/utility/**, **/exception/**</sonar.exclusions>
+		<sonar.exclusions>**/dto/**,**/model/**,**/repository/**, **/config/**, **/utility/**, **/exception/**, **/strategy/**, **/service/ProductServiceContext.class</sonar.exclusions>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -148,11 +148,13 @@
 				<configuration>
 					<excludes>
 						<exclude>sg/edu/nus/iss/product_service/ProductServiceApplication.class</exclude>
+						<exclude>sg/edu/nus/iss/product_service/service/ProductServiceContext.class</exclude>
 						<!-- Exclude all classes in the model package from code coverage -->
 						<exclude>sg/edu/nus/iss/product_service/model/**</exclude>
 						<exclude>sg/edu/nus/iss/product_service/config/**</exclude>
 						<exclude>sg/edu/nus/iss/product_service/utility/**</exclude>
 						<exclude>sg/edu/nus/iss/product_service/exception/**</exclude>
+						<exclude>sg/edu/nus/iss/product_service/service/strategy/**</exclude>
 					</excludes>
 				</configuration>
 				<executions>

@@ -27,7 +27,7 @@ class ProductControllerTest {
     @Mock
     private ProductService productService;
 
-    private List<Product> products;
+    public List<Product> products;
 
     @BeforeEach
     void setUp() {
@@ -64,4 +64,6 @@ class ProductControllerTest {
         // Verify that the service was called once
         verify(productService, times(1)).getFilteredProducts(filterDTO);
     }
+
+
 }

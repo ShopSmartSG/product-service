@@ -69,9 +69,9 @@ public class MerchantProductController {
         productServiceContext.setProductStrategy("merchant");
     }
 
-    @GetMapping("/{merchantId}/products")
+    @GetMapping("/{merchant-id}/products")
     @Operation(summary = "Retrieve all products")
-    public ResponseEntity<?> getAllProducts(@PathVariable UUID merchantId, @RequestParam(required = false) Integer page, @RequestParam(required = false) Integer size) {
+    public ResponseEntity<?> getAllProducts(@PathVariable(name = "merchant-id") UUID merchantId, @RequestParam(required = false) Integer page, @RequestParam(required = false) Integer size) {
         log.info("Fetching all products for merchantId: {}", merchantId);
         Pageable pageable = createPageable(page, size);
         if (pageable.isPaged()) {
@@ -85,9 +85,9 @@ public class MerchantProductController {
         }
     }
 
-    @GetMapping("/{merchantId}/products/{productId}")
+    @GetMapping("/{merchant-id}/products/{product-id}")
     @Operation(summary = "Retrieve product By ID")
-    public ResponseEntity<?> getProductById(@PathVariable UUID merchantId, @PathVariable UUID productId) {
+    public ResponseEntity<?> getProductById(@PathVariable(name = "merchant-id") UUID merchantId, @PathVariable(name = "product-id")UUID productId) {
         log.info("Fetching product with ID: {} for merchantId: {}", productId, merchantId);
         Product product = validateProduct(merchantId, productId);
         log.info("Product retrieved successfully: {}", product);
@@ -95,9 +95,9 @@ public class MerchantProductController {
     }
 
 
-    @GetMapping("/{merchantId}/categories/{categoryId}")
+    @GetMapping("/{merchant-id}/categories/{category-id}")
     @Operation(summary = "Retrieve products by merchant ID and category ID")
-    public ResponseEntity<?> getProductByMerchantIdAndCategoryId(@PathVariable UUID merchantId, @PathVariable UUID categoryId, @RequestParam(required = false) Integer page, @RequestParam(required = false) Integer size) {
+    public ResponseEntity<?> getProductByMerchantIdAndCategoryId(@PathVariable(name = "merchant-id") UUID merchantId, @PathVariable(name = "category-id") UUID categoryId, @RequestParam(required = false) Integer page, @RequestParam(required = false) Integer size) {
         log.info("Fetching products for merchantId: {} in categoryId: {}", merchantId, categoryId);
         Pageable pageable = createPageable(page, size);
         if (pageable.isPaged()) {
@@ -144,9 +144,9 @@ public class MerchantProductController {
         return ResponseEntity.ok(fileUrl);
     }
 
-    @DeleteMapping("/{merchantId}/products/{productId}")
+    @DeleteMapping("/{merchant-id}/products/{product-id}")
     @Operation(summary = "Delete product by Product ID")
-    public ResponseEntity<String> deleteProduct(@PathVariable UUID merchantId, @PathVariable UUID productId) {
+    public ResponseEntity<String> deleteProduct(@PathVariable(name = "merchant-id") UUID merchantId, @PathVariable(name = "product-id") UUID productId) {
         log.info("Deleting product with ID: {} for merchantId: {}", productId, merchantId);
         setMerchantProductStrategy();
         Product existingProduct = validateProduct(merchantId, productId);
@@ -155,10 +155,9 @@ public class MerchantProductController {
         return ResponseEntity.ok("Product deleted");
     }
 
-    @PutMapping("/{merchantId}/products/{productId}")
+    @PutMapping("/{merchant-id}/products/{product-id}")
     @Operation(summary = "Update product")
-    public ResponseEntity<?> updateProduct(@PathVariable UUID merchantId, @PathVariable UUID productId, @Valid @RequestBody ProductDTO dto, @Valid @RequestBody Product product) {
-        setMerchantProductStrategy();
+    public ResponseEntity<?> updateProduct(@PathVariable(name = "merchant-id") UUID merchantId, @PathVariable(name = "product-id") UUID productId, @Valid @RequestBody ProductDTO dto) {
         log.info("Updating product with ID: {} for merchantId: {}", productId, merchantId);
         Product existingProduct = validateProduct(merchantId, productId);
         if (!existingProduct.getProductId().equals(dto.getProductId())) {
@@ -169,6 +168,6 @@ public class MerchantProductController {
         existingProduct.setProductId(productId);
         existingProduct.setCategory(categoryService.getCategoryById(dto.getCategoryId()));
         log.info("Product updated successfully: {}", existingProduct);
-        return ResponseEntity.ok(productServiceContext.getProductStrategy().updateProduct(productId, product));
+        return ResponseEntity.ok(productServiceContext.getProductStrategy().updateProduct(productId, existingProduct));
     }
 }

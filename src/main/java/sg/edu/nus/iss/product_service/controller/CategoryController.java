@@ -56,9 +56,9 @@ public class CategoryController {
         }
     }
 
-    @GetMapping("/{categoryId}")
+    @GetMapping("/{category-id}")
     @Operation(summary = "Retrieve category by Category ID")
-    public ResponseEntity<?> getCategoryById(@PathVariable UUID categoryId) {
+    public ResponseEntity<?> getCategoryById(@PathVariable(name = "category-id") UUID categoryId) {
         log.info("Request received to retrieve category by ID: {}", categoryId);
         try {
             Category category = categoryService.getCategoryById(categoryId);
@@ -87,9 +87,9 @@ public class CategoryController {
         }
     }
 
-    @PutMapping("/{categoryId}")
+    @PutMapping("/{category-id}")
     @Operation(summary = "Update a category")
-    public ResponseEntity<?> updateCategory(@PathVariable UUID categoryId, @Valid @RequestBody CategoryDTO categoryDTO) {
+    public ResponseEntity<?> updateCategory(@PathVariable(name = "category-id") UUID categoryId, @Valid @RequestBody CategoryDTO categoryDTO) {
         log.info("Request received to update category with ID: {}", categoryId);
         Category existingCategory = categoryService.getCategoryById(categoryId);
         if(!categoryId.equals(categoryDTO.getCategoryId())) {
@@ -105,9 +105,9 @@ public class CategoryController {
         log.info("Category updated successfully for ID: {}", categoryId);
         return  ResponseEntity.ok("Category updated successfully");
     }
-    @DeleteMapping("/{categoryId}")
+    @DeleteMapping("/{category-id}")
     @Operation(summary = "Delete a category")
-    public ResponseEntity<String> deleteCategory(@PathVariable UUID categoryId) {
+    public ResponseEntity<String> deleteCategory(@PathVariable(name = "category-id")  UUID categoryId) {
         log.info("Request received to delete category with ID: {}", categoryId);
         Category existingCategory = categoryService.getCategoryById(categoryId);
         if (existingCategory == null) {
