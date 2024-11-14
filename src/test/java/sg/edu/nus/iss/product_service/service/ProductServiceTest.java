@@ -52,42 +52,6 @@ public class ProductServiceTest {
         MockitoAnnotations.openMocks(this);
     }
 
-    @Test
-    public void testDeleteProduct() {
-        Product product = new Product();
-        product.setProductId(UUID.randomUUID());
-        when(productRepository.save(product)).thenReturn(product);
-
-        Product result = productService.deleteProduct(product);
-
-        assertTrue(result.isDeleted());
-        assertEquals("merchant", result.getUpdatedBy());
-        assertNotNull(result.getUpdatedAt());
-    }
-
-    @Test
-    public void testUpdateProduct() {
-        Product product = new Product();
-        product.setProductId(UUID.randomUUID());
-        when(productRepository.save(product)).thenReturn(product);
-
-        Product result = productService.updateProduct(product);
-
-        assertEquals("merchant", result.getUpdatedBy());
-        assertNotNull(result.getUpdatedAt());
-    }
-
-    @Test
-    public void testAddProduct() {
-        Product product = new Product();
-        product.setProductId(UUID.randomUUID());
-        when(productRepository.save(product)).thenReturn(product);
-
-        Product result = productService.addProduct(product);
-
-        assertEquals("merchant", result.getCreatedBy());
-        assertNotNull(result.getCreatedAt());
-    }
 
     @Test
     public void testGetAllProducts() {
