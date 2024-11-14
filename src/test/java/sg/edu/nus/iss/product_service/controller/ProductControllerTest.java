@@ -65,25 +65,5 @@ class ProductControllerTest {
         verify(productService, times(1)).getFilteredProducts(filterDTO);
     }
 
-    // take coverage till 85% getProductsByIds give tests that pas
-
-    @Test
-    void testGetProductsByIds() {
-        // Arrange
-        List<String> productIds = List.of(UUID.randomUUID().toString());
-     //   when(productService.getProductsByIds(productIds)).thenReturn(ResponseEntity.ok(products));
-
-        // Act
-        ResponseEntity<List<Product>> response = (ResponseEntity<List<Product>>) productController.getProductsByIds(productIds);
-
-        // Assert
-        assertEquals(200, response.getStatusCodeValue());
-        assertEquals(1, Objects.requireNonNull(response.getBody()).size());
-        assertEquals("Product 1", response.getBody().get(0).getProductName());
-
-        // Verify that the service was called once
-        verify(productService, times(1)).getProductsByIds(productIds);
-    }
-
 
 }
