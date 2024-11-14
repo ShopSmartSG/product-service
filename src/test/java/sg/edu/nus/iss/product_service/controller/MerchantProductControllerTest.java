@@ -176,25 +176,58 @@ class MerchantProductControllerTest {
         verify(merchantProductStrategy, times(1)).deleteProduct(productId);
     }
 
-//    @Test
-//    void testUpdateProduct() {
-//        UUID categoryId = UUID.randomUUID();
-//        UUID productId = UUID.randomUUID();
-//        UUID merchantId = UUID.randomUUID();
-//        ProductDTO dto = new ProductDTO(categoryId,merchantId);
-//        dto.setProductId(productId);
-//        dto.setCategoryId(UUID.randomUUID());
-//        Product product = new Product();
-//        product.setProductId(productId);
-//
-//        when(productService.getProductByIdAndMerchantId(merchantId, productId)).thenReturn(product);
-//        when(categoryService.getCategoryById(dto.getCategoryId())).thenReturn(new Category());
-//        when(merchantProductStrategy.updateProduct(productId, product)).thenReturn(product);
-//
-//        ResponseEntity<?> response = merchantProductController.updateProduct(merchantId, productId, dto);
-//
-//        assertEquals(HttpStatus.OK, response.getStatusCode());
-//        assertEquals(product, response.getBody());
-//        verify(merchantProductStrategy, times(1)).updateProduct(productId, product);
-//    }
+    @Test
+    void testGetAllProducts_NoPagination() {
+        UUID merchantId = UUID.randomUUID();
+        List<Product> productList = Arrays.asList(new Product(), new Product());
+
+        when(productService.getProductsByMerchantId(merchantId)).thenReturn(productList);
+
+        ResponseEntity<?> response = merchantProductController.getAllProducts(merchantId, null, null);
+
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(productList, response.getBody());
+        verify(productService, times(1)).getProductsByMerchantId(merchantId);
+    }
+
+    @Test
+    void testAddProduct_NonExistentCategory() {
+        Product product = new Product();
+        product.setProductId(UUID.randomUUID());
+        Category category = new Category();
+        category.setCategoryName("NonExistentCategory");
+        product.setCategory(category);
+
+        when(categoryService.getCategoryByName("NonExistentCategory")).thenReturn(null);
+
+        assertThrows(ResourceNotFoundException.class, () -> {
+            merchantProductController.addProduct(product);
+        });
+
+        verify(categoryService, times(1)).getCategoryByName("NonExistentCategory");
+        verify(merchantProductStrategy, never()).addProduct(product);
+    }
+
+    @Test
+    void testUpdateProduct() {
+        UUID categoryId = UUID.randomUUID();
+        UUID merchantId = UUID.randomUUID();
+        UUID productId = UUID.randomUUID();
+        ProductDTO productDTO = new ProductDTO(categoryId,merchantId);
+        productDTO.setProductId(productId);
+        productDTO.setCategoryId(UUID.randomUUID());
+        Product product = new Product();
+        product.setProductId(productId);
+
+        when(productService.getProductByIdAndMerchantId(merchantId, productId)).thenReturn(product);
+        when(objectMapper.convertValue(productDTO, Product.class)).thenReturn(product);
+        when(categoryService.getCategoryById(productDTO.getCategoryId())).thenReturn(new Category());
+        when(merchantProductStrategy.updateProduct(productId, product)).thenReturn(product);
+
+        ResponseEntity<?> response = merchantProductController.updateProduct(merchantId, productId, productDTO);
+
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(product, response.getBody());
+        verify(merchantProductStrategy, times(1)).updateProduct(productId, product);
+    }
 }
