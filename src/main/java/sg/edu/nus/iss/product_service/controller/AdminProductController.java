@@ -5,19 +5,15 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import sg.edu.nus.iss.product_service.service.ProductServiceContext;
-import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import sg.edu.nus.iss.product_service.dto.ProductDTO;
 import sg.edu.nus.iss.product_service.exception.ResourceNotFoundException;
-import sg.edu.nus.iss.product_service.model.Category;
 import sg.edu.nus.iss.product_service.model.Product;
 import sg.edu.nus.iss.product_service.service.CategoryService;
 import sg.edu.nus.iss.product_service.service.ProductService;
@@ -59,9 +55,9 @@ public class AdminProductController {
         }
     }
 
-    @GetMapping("/products/{productId}")
+    @GetMapping("/products/{product-id}")
     @Operation(summary = "Retrieve product By ID")
-    public ResponseEntity<?> getProductById(@RequestParam(required = false) UUID merchantId, @PathVariable UUID productId) {
+    public ResponseEntity<?> getProductById(@RequestParam(required = false) UUID merchantId, @PathVariable(name = "product-id") UUID productId) {
         Product product = productService.getProductByIdAndMerchantId(merchantId, productId);
         if (product == null) {
             throw new ResourceNotFoundException("Product not found");
@@ -70,9 +66,9 @@ public class AdminProductController {
     }
 
 
-    @GetMapping("/{merchantId}/categories/{categoryId}")
+    @GetMapping("/{merchant-id}/categories/{category-id}")
     @Operation(summary = "Retrieve products by merchant ID and category ID")
-    public ResponseEntity<?> getProductByMerchantIdAndCategoryId(@PathVariable UUID merchantId, @PathVariable UUID categoryId, @RequestParam(required = false) Integer page, @RequestParam(required = false) Integer size) {
+    public ResponseEntity<?> getProductByMerchantIdAndCategoryId(@PathVariable(name = "merchant-id") UUID merchantId, @PathVariable(name = "category-id") UUID categoryId, @RequestParam(required = false) Integer page, @RequestParam(required = false) Integer size) {
         if (page != null && size != null) {
             Pageable pageable = PageRequest.of(page, size);
             Page<Product> products = productService.getProductsByMerchantIdAndCategoryId(merchantId, categoryId, pageable);
@@ -106,17 +102,17 @@ public class AdminProductController {
         return ResponseEntity.ok(fileUrl);
     }
 
-    @DeleteMapping("/products/{productId}")
+    @DeleteMapping("/products/{product-id}")
     @Operation(summary = "Delete product by Product ID")
-    public ResponseEntity<?> deleteProduct(@PathVariable UUID productId) {
+    public ResponseEntity<?> deleteProduct(@PathVariable(name = "product-id") UUID productId) {
         productServiceContext.setProductStrategy("admin");
         productServiceContext.getProductStrategy().deleteProduct(productId);
         return ResponseEntity.ok("Product deleted");
     }
 
-    @PutMapping("/{merchantId}/products/{productId}")
+    @PutMapping("/{merchant-id}/products/{product-id}")
     @Operation(summary = "Update product")
-    public ResponseEntity<?> updateProduct(@PathVariable UUID productId, @RequestBody Product product) {
+    public ResponseEntity<?> updateProduct(@PathVariable(name = "product-id") UUID productId, @RequestBody Product product) {
         productServiceContext.setProductStrategy("admin");
         return ResponseEntity.ok(productServiceContext.getProductStrategy().updateProduct(productId, product));
     }
