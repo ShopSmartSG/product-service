@@ -21,7 +21,7 @@ import sg.edu.nus.iss.product_service.model.Category;
 import sg.edu.nus.iss.product_service.model.Product;
 import sg.edu.nus.iss.product_service.service.CategoryService;
 import sg.edu.nus.iss.product_service.service.ProductService;
-import sg.edu.nus.iss.product_service.utility.S3Utility;
+import sg.edu.nus.iss.product_service.utility.CloudStorageUtility;
 import sg.edu.nus.iss.product_service.service.ProductServiceContext;
 
 import java.io.IOException;
@@ -33,7 +33,7 @@ import java.util.UUID;
 @Tag(name = "Merchant Product API", description = "APIs for merchants to create, read, update, and delete products")
 public class MerchantProductController {
     private final ProductService productService;
-    private final S3Utility s3Service;
+    private final CloudStorageUtility cloudStorageUtility;
     private final ObjectMapper objectMapper;
     private final CategoryService categoryService;
     private final ProductServiceContext productServiceContext;
@@ -41,10 +41,10 @@ public class MerchantProductController {
     private static final Logger log = LoggerFactory.getLogger(CategoryController.class);
 
     @Autowired
-    public MerchantProductController(ProductService productService, ObjectMapper objectMapper, S3Utility s3Service, CategoryService categoryService,ProductServiceContext productServiceContext) {
+    public MerchantProductController(ProductService productService, ObjectMapper objectMapper, CloudStorageUtility cloudStorageUtility, CategoryService categoryService,ProductServiceContext productServiceContext) {
         this.productService = productService;
         this.objectMapper = objectMapper;
-        this.s3Service = s3Service;
+        this.cloudStorageUtility = cloudStorageUtility;
         this.categoryService = categoryService;
         this.productServiceContext = productServiceContext;
     }
@@ -138,8 +138,8 @@ public class MerchantProductController {
             @RequestPart("file") MultipartFile file
     ) throws IOException {
         log.info("Uploading product image: {}", file.getOriginalFilename());
-        String fileName = s3Service.uploadFile(file);
-        String fileUrl = s3Service.getFileUrl(fileName);
+        String fileName = cloudStorageUtility.uploadFile(file);
+        String fileUrl = cloudStorageUtility.getFileUrl(fileName);
         log.info("Image uploaded successfully: {}", fileUrl);
         return ResponseEntity.ok(fileUrl);
     }
