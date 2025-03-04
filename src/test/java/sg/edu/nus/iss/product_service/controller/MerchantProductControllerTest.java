@@ -19,7 +19,7 @@ import sg.edu.nus.iss.product_service.service.CategoryService;
 import sg.edu.nus.iss.product_service.service.ProductService;
 import sg.edu.nus.iss.product_service.service.ProductServiceContext;
 import sg.edu.nus.iss.product_service.service.strategy.MerchantProductStrategy;
-import sg.edu.nus.iss.product_service.utility.S3Utility;
+import sg.edu.nus.iss.product_service.utility.CloudStorageUtility;
 import sg.edu.nus.iss.product_service.dto.ProductDTO;
 import sg.edu.nus.iss.product_service.exception.ResourceNotFoundException;
 
@@ -44,7 +44,7 @@ class MerchantProductControllerTest {
     private ObjectMapper objectMapper;
 
     @Mock
-    private S3Utility s3Service;
+    private CloudStorageUtility cloudStorageUtility;
 
     @Mock
     private CategoryService categoryService;
@@ -150,15 +150,15 @@ class MerchantProductControllerTest {
         String fileName = "test.jpg";
         String fileUrl = "http://example.com/test.jpg";
 
-        when(s3Service.uploadFile(file)).thenReturn(fileName);
-        when(s3Service.getFileUrl(fileName)).thenReturn(fileUrl);
+        when(cloudStorageUtility.uploadFile(file)).thenReturn(fileName);
+        when(cloudStorageUtility.getFileUrl(fileName)).thenReturn(fileUrl);
 
         ResponseEntity<String> response = merchantProductController.uploadImage(file);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals(fileUrl, response.getBody());
-        verify(s3Service, times(1)).uploadFile(file);
-        verify(s3Service, times(1)).getFileUrl(fileName);
+        verify(cloudStorageUtility, times(1)).uploadFile(file);
+        verify(cloudStorageUtility, times(1)).getFileUrl(fileName);
     }
 
     @Test

@@ -17,7 +17,7 @@ import sg.edu.nus.iss.product_service.exception.ResourceNotFoundException;
 import sg.edu.nus.iss.product_service.model.Product;
 import sg.edu.nus.iss.product_service.service.CategoryService;
 import sg.edu.nus.iss.product_service.service.ProductService;
-import sg.edu.nus.iss.product_service.utility.S3Utility;
+import sg.edu.nus.iss.product_service.utility.CloudStorageUtility;
 
 import java.io.IOException;
 import java.util.List;
@@ -28,16 +28,16 @@ import java.util.UUID;
 @Tag(name = "Admin Product API", description = "APIs for admin to create, read, update, and delete products")
 public class AdminProductController {
     private final ProductService productService;
-    private final S3Utility s3Service;
+    private final CloudStorageUtility cloudStorageUtility;
     private final ObjectMapper objectMapper;
     private final CategoryService categoryService;
     private final ProductServiceContext productServiceContext;
 
     @Autowired
-    public AdminProductController(ProductService productService, ObjectMapper objectMapper, S3Utility s3Service, CategoryService categoryService, ProductServiceContext productServiceContext) {
+    public AdminProductController(ProductService productService, ObjectMapper objectMapper, CloudStorageUtility s3Service, CategoryService categoryService, ProductServiceContext productServiceContext) {
         this.productService = productService;
         this.objectMapper = objectMapper;
-        this.s3Service = s3Service;
+        this.cloudStorageUtility = s3Service;
         this.categoryService = categoryService;
         this.productServiceContext= productServiceContext;
     }
@@ -97,8 +97,8 @@ public class AdminProductController {
             )
             @RequestPart("file") MultipartFile file
     ) throws IOException {
-        String fileName = s3Service.uploadFile(file);
-        String fileUrl = s3Service.getFileUrl(fileName);
+        String fileName = cloudStorageUtility.uploadFile(file);
+        String fileUrl = cloudStorageUtility.getFileUrl(fileName);
         return ResponseEntity.ok(fileUrl);
     }
 
