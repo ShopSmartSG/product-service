@@ -2,10 +2,11 @@ package sg.edu.nus.iss.product_service;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration;
 import org.springframework.context.annotation.Configuration;
 
 
-@SpringBootApplication
+@SpringBootApplication(exclude = {UserDetailsServiceAutoConfiguration.class})
 @Configuration
 public class ProductServiceApplication {
 
