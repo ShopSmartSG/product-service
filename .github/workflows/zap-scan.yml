@@ -29,16 +29,16 @@ jobs:
       - name: Create Docker Network
         run: docker network create zap-network
 
-      # Step 2: Create enhanced mock keyfile
+      # Step 2: Create enhanced mock keyfile with valid PKCS#8 format
       - name: Create Mock Keyfile
         run: |
-          # Create the mock keyfile with proper GCP service account structure
+          # Create the mock keyfile with a valid private key format
           mkdir -p /tmp
           echo '{
             "type": "service_account",
             "project_id": "mock-project",
             "private_key_id": "mock-key-id",
-            "private_key": "-----BEGIN PRIVATE KEY-----\\nMOCKKEY\\n-----END PRIVATE KEY-----\\n",
+            "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCsBF+SHcAMCOGY\nKI5LZLzmM+T3IzHJOqgwqrr6yvQA8jj8kF3+reaKH5qT8MelBWm9qj8yd7BKgW8R\nBLQJOqTUuEGtgYyd29qJhv6hDPCGq0DxeAVkdqAFBIpKg/Vx4xPJhpUVIVjQjwOc\nGzwLSZnT39dEWmZcG+0mHs+LH1g0bxY5I2Q7CgEZJ8TrQfLnz5yyX4pu1rJOSjlV\nFLTxzJmYYmj0CyiLYcDrxwIDAQABAoIBAQCbzR+mIrWmZz9g\n-----END PRIVATE KEY-----\n",
             "client_email": "mock@example.com",
             "client_id": "000000000000000000000",
             "auth_uri": "https://accounts.google.com/o/oauth2/auth",
