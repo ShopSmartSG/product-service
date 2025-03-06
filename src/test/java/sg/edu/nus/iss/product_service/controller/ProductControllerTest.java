@@ -1,5 +1,6 @@
 package sg.edu.nus.iss.product_service.controller;
 
+import org.springframework.http.HttpStatus;
 import sg.edu.nus.iss.product_service.dto.ProductFilterDTO;
 import sg.edu.nus.iss.product_service.model.Product;
 import sg.edu.nus.iss.product_service.service.ProductService;
@@ -63,6 +64,20 @@ class ProductControllerTest {
 
         // Verify that the service was called once
         verify(productService, times(1)).getFilteredProducts(filterDTO);
+    }
+
+    @Test
+    void testGetProductsByIdsWithInvalidIds() {
+        // Arrange
+        List<String> invalidProductIds = List.of("invalid_id-1", "invalid-id-2");
+
+//        when(productController.getProductsByIds(invalidProductIds)).thenReturn(new ResponseEntity<>(HttpStatus.BAD_REQUEST));
+        // Act
+        ResponseEntity<?> response = productController.getProductsByIds(invalidProductIds);
+
+        // Assert
+        assertEquals(400, response.getStatusCodeValue());
+        assertEquals("Invalid product ID format", response.getBody());
     }
 
 

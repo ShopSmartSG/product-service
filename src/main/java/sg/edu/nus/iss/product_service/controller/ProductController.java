@@ -31,7 +31,7 @@ public class ProductController {
     // Updated API to fetch products by a list of UUIDs using query parameters
     @GetMapping("/ids")
     public ResponseEntity<?> getProductsByIds(@RequestParam List<String> productIds) {
-        if (productIds.stream().anyMatch(id -> !id.matches("^[a-zA-Z0-9-_]+$"))) {
+        if (productIds.stream().anyMatch(id -> !id.matches("^[a-zA-Z0-9-]+$"))) {
             return ResponseEntity.badRequest().body("Invalid product ID format");
         }
         log.info("Received request to fetch products by IDs: {}", productIds);
