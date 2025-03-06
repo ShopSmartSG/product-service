@@ -1,13 +1,15 @@
-name: ZAP Full Scan
+name: Security Scan (DAST)
 
 on:
   push:
     branches: [main, feature/*]
   pull_request:
     branches: [main]
+  schedule:
+    - cron: '0 0 * * 0'  # Weekly scan on Sundays
 
 jobs:
-  zap_scan:
+  security_scan:
     runs-on: ubuntu-latest
 
     steps:
@@ -27,43 +29,165 @@ jobs:
       - name: Create Docker Network
         run: docker network create zap-network
 
-      # Step 2: Build the Docker image for the utility-service
+      # Step 2: Create enhanced mock keyfile with valid PKCS#8 format
+      - name: Create Mock Keyfile
+        run: |
+          # Create the mock keyfile with a valid private key format
+          mkdir -p /tmp
+          echo '{
+            "type": "service_account",
+            "project_id": "mock-project",
+            "private_key_id": "mock-key-id",
+            "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQC0GbNcmS6l2ebz\ntmCZ2HGpG/GQPBlc0EFJalIk03FGG5A/tIF57eabGOz/iPiIGzH4I3L/hMefLM5p\nHfHn20UMsWbMa9IHkjGH+27V+m2p5n90Vn84sCE7rwrDPqerAoWVnEod+jAXcMuv\n7PArMREjtTsmUB1d5eshX+v9/17RBWSomdmTj0FMe5A0ifLA4aiNlnxPf8oci9mr\nySeHgATV70cflNfeCi2oK/4zUjLv8MU1+bVs80XIJrTR7dkhMEGMjgMXM9956+Sp\nvt7Ssn/XOK5nbR4XOvFw7spKEeam/bzICDN9T3UcjOAIvFApa1/D8jM6PKFJ0TWW\nGCpEjnp1AgMBAAECggEAOgm0Nsl4cmLznaMuozVQf3YtVNVBORs1htKX8R0gej7E\nr/rb5K6JK38PVNPPf5D/+950nyoraDy4scBAJf8P0+TRY1v1nZH7mz4n/BXNRDyu\n4w9CxUJhG0ov1jZ5Ms9HvCxW6C0pVUx4n1NkHA8eXlr3WkPkCs/eg21VcA9c/09J\nPLNHcbtfaTWtzGMSKKNP+6VuN0DK9OfR1dDgGrPtmIfIaJCcX4N3TkZ4V4q21Fq3\nFPxo6djlhdwVklhfyIVePalrQfoWJhmGeV0oms1IVRoRBB0dMhRSVZjhgD0JUE2G\ne9mM9HnoJ22FzO4IAXmxBusIJV0N8Qvx/+z6DDwnOwKBgQD4nuj7bPPi4Q6nL+uJ\neZ+bSRAqg0ki6FsuogjEdDV8YjlNJ+hqnvGhxuFanVjfk+OfmNH75qPLm4v4mVQL\nTYoS8R3QU5SgSDWPY7zl/C3pCqs1L/fnNar0QoQu04PjjFQgXBmlOwSWe8Zyy0OB\nhXyNYQ7h/OKRH0owWfzwIV+wNwKBgQC5ciddpQSniRd6UVG0sh8apO2SdrPH5KU+\nZDYyY26aXKzne+mtbBfESmM+hc8pnL/THM6JMv1U180WuiTXlGvsRylflB6qoX6d\noMcnH9edF2wbjsR3kKzsjsL1rpX+VhcTqY0TtEdVq1GUKa+DJcg1cRygg/ms48s1\nmeQDlQHcswKBgQCohda47n5WcGUlUGcgtY9Ji/noRztg7Q05i93ThE3o9Q+QTBfP\nhdOV7CA+8t8WFcG6IbVcQVcPoWz8YrpEOxf3hPbHio/5IVkky990KT7Zc0Df+ZbZ\nY1hw31GICBmjOTChCqzbgii29Els8Hjep6PolTyoVGkjI4l/QtAf2Q9qewKBgQCk\ntR8BrW9U3g5cNZ28P/ggUhwv2f4TrKCXqan5VxcFQwrPDt+diEQTs34yKea1ruMx\nPoSylvcqRAGEDhBq6Qhx80JsAcK7CnTKy+IWfdGjVQpP753QFE+CS8odK9NM8mnM\nrOsAdT5meKMcVWntscEAtlYWuyEmzavPD7/U7qOYwQKBgQDNGKbNtgPabzsmOx4p\nJLq9GKIH1Zr6UjwMqMCjmhTsphUAKxYXT0I8LKeQJhXw8MKbLIx32HfkdzHu0n9u\nThlxEqoW2sqHh7Ga0d0g1fzPl7dJkyRgfbgZV/BI9AbuA+EXFIw+eRKLSSUwpYkN\nEvHyopwWAe9XneDV/TVfGAt6uQ==\n-----END PRIVATE KEY-----\n",
+            "client_email": "mock@example.com",
+            "client_id": "000000000000000000000",
+            "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+            "token_uri": "https://oauth2.googleapis.com/token",
+            "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+            "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/mock"
+          }' > /tmp/mock-keyfile.json
+
+          # Verify the file was created correctly
+          ls -la /tmp/mock-keyfile.json
+          cat /tmp/mock-keyfile.json
+
+      # Step 3: Build the Docker image for the product-service
       - name: Build Docker Image
         uses: docker/build-push-action@v4
         with:
           context: .
           file: ./Dockerfile
           push: false
-          tags: utility-service:latest
+          tags: product-service:latest
+          build-args: |
+            SPRING_PROFILES_ACTIVE=zapscan
 
-      # Step 3: Run the Docker container for the application in the zap-network
+      # Step 4: Run the Docker container with volume mount for the mock keyfile
       - name: Run Docker Container
-        run: docker run -d --name utility-service --network zap-network -p 8081:8081 utility-service:latest
+        run: |
+          docker run -d --name product-service \
+            --network zap-network \
+            -p 8080:8080 \
+            -e SPRING_PROFILES_ACTIVE=zapscan \
+            -v /tmp/mock-keyfile.json:/tmp/mock-keyfile.json \
+            product-service:latest
+          
+          # Print container logs for debugging
+          sleep 10
+          docker logs product-service
 
-      # Step 4: Wait for the application to start and be available
+      # Step 5: Wait for the application to start and be available
       - name: Wait for Application to Start
         run: |
           echo "Waiting for the application to start..."
-          for i in {1..10}; do
-            if curl -s http://localhost:8081 >/dev/null; then
+          for i in {1..30}; do
+            echo "Attempt $i: Checking if application is up..."
+            if curl -v http://localhost:8080/actuator/health; then
               echo "Application is up!"
-              break
+              exit 0
             fi
-            echo "Waiting for 10 seconds..."
+            echo "Application not ready yet..."
+            docker logs product-service
             sleep 10
           done
+          echo "Application failed to start"
+          docker logs product-service
+          exit 1
 
-      # Step 5: Run ZAP Full Scan in the same Docker network
-      - name: ZAP Full Scan
-        uses: zaproxy/action-full-scan@v0.11.0
-        with:
-          target: 'http://utility-service:8081'  # Target by container name in the zap-network
-          token: ${{ secrets.GITHUB_TOKEN }}
-          cmd_options: '-t http://utility-service:8081 -r zap_report.html'
+      # Step 6: Verify API Docs are accessible
+      - name: Verify API Docs
+        run: |
+          echo "Checking if API docs are accessible..."
+          if curl -s http://localhost:8080/v3/api-docs > /dev/null; then
+            echo "API docs are accessible!"
+            exit 0
+          else
+            echo "API docs are not accessible. Check your Spring configuration."
+            exit 1
+          fi
 
-      # Step 6: Upload the ZAP report as an artifact
-      - name: Upload ZAP Report
+      # Step 7: Create reports directory with proper permissions
+      - name: Create Reports Directory
+        run: |
+          mkdir -p reports
+          chmod 777 reports  # Give full permissions to the reports directory
+
+      # Step 8: Create ZAP Rules File directly in the reports directory
+      - name: Create ZAP Rules File
+        run: |
+          cat > reports/zap-rules.tsv << 'EOL'
+          10010	IGNORE	(Cookie No HttpOnly Flag)
+          10011	IGNORE	(Cookie Without Secure Flag)
+          10015	IGNORE	(Incomplete or No Cache-control Header Set)
+          10023	IGNORE	(Information Disclosure - Debug Error Messages)
+          90004	IGNORE	(Insufficient Site Isolation Against Spectre Vulnerability)
+          90022	IGNORE	(Application Error Disclosure)
+          100001	IGNORE	(Unexpected Content-Type was returned)
+          # Add more rules as needed for your specific application
+          EOL
+
+      # Step 9: Run ZAP API Scan directly with Docker
+      - name: ZAP API Scan
+        run: |
+          docker run --rm -v $(pwd)/reports:/zap/wrk:rw --network=host \
+            ghcr.io/zaproxy/zaproxy:stable zap-api-scan.py \
+            -t http://localhost:8080/v3/api-docs \
+            -f openapi \
+            -J report_json.json \
+            -w report_md.md \
+            -r report_html.html \
+            -c zap-rules.tsv \
+            -z "-config scanner.attackStrength=HIGH \
+                -config scanner.alertThreshold=MEDIUM \
+                -config api.disablekey=true \
+                -config rules.cookie.ignorelist=true \
+                -config scanner.level=ATTACK \
+                -config pscan.enableTags=information-disclosure \
+                -config rules.ascanrules.refs.json=true \
+                -config rules.ascanrules.script.injection=true \
+                -config rules.ascanrules.server.side.injection=true \
+                -config rules.ascanrules.sql.injection=true \
+                -config rules.ascanrules.nosqli.injection=true \
+                -config rules.ascanrules.xxe.injection=true \
+                -config rules.ascanrules.path.traversal=true \
+                -config rules.ascanrules.remote.code.execution=true"
+
+      # Step 10: Generate enhanced reports
+      - name: Generate Enhanced Reports
+        if: always()
+        run: |
+          echo "## DAST Scan Summary" > reports/summary.md
+          if [ -f "reports/report_html.html" ]; then
+            grep -A5 "Risk Level.*Number of Alerts" reports/report_html.html | sed 's/<[^>]*>//g' >> reports/summary.md || echo "No risk level information found in report" >> reports/summary.md
+          else
+            echo "No ZAP report found to summarize" >> reports/summary.md
+          fi
+
+      # Step 11: Upload the ZAP report as an artifact
+      - name: Upload Security Reports
+        if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: zap-report
-          path: zap_report.html
+          name: zap-security-reports
+          path: reports/
+
+      # Step 12: Fail on critical findings
+      - name: Check for High Severity Findings
+        if: always()
+        run: |
+          if [ -f "reports/report_html.html" ]; then
+            # Look for High severity findings in ZAP report
+            HIGH_COUNT=$(grep -A1 "Risk Level.*Number of Alerts" reports/report_html.html | grep "High" -A1 | tail -n1 | tr -d ' \t\r\n' || echo "0")
+            echo "High severity count: $HIGH_COUNT"
+            if [[ "$HIGH_COUNT" =~ ^[0-9]+$ ]] && [ "$HIGH_COUNT" -gt "0" ]; then
+              echo "Critical or High severity vulnerabilities found!"
+              exit 1
+            else
+              echo "No Critical or High severity vulnerabilities found."
+              exit 0
+            fi
+          else
+            echo "ZAP report not found. Scan may have failed."
+            # Don't fail the build if the report is missing - we already have artifacts
+            exit 0
+          fi

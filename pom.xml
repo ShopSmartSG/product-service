@@ -28,7 +28,7 @@
 	</scm>
 	<properties>
 		<java.version>21</java.version>
-		<sonar.exclusions>**/dto/**,**/model/**,**/repository/**, **/config/**, **/utility/**, **/exception/**, **/strategy/**, **/service/ProductServiceContext.class</sonar.exclusions>
+		<sonar.coverage.exclusions>**/dto/**,**/model/**,**/repository/**, **/config/**/*, **/utility/**, **/exception/**, **/strategy/**, **/service/ProductServiceContext.class</sonar.coverage.exclusions>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -48,10 +48,6 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-mongodb</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -123,6 +119,20 @@
 			<groupId>com.google.cloud</groupId>
 			<artifactId>google-cloud-storage</artifactId>
 			<version>2.22.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 
 	</dependencies>
@@ -214,22 +224,17 @@
 			<plugin>
 				<groupId>org.owasp</groupId>
 				<artifactId>dependency-check-maven</artifactId>
-				<version>8.4.0</version>  <!-- Downgrade to stable version -->
+				<version>12.1.0</version>
 				<configuration>
-					<!-- NVD API Settings -->
-					<nvdApiKeyEnvironmentVariable>NVD_API_KEY</nvdApiKeyEnvironmentVariable>
-					<nvdApiDelay>5000</nvdApiDelay>
-					<nvdMaxRetryCount>10</nvdMaxRetryCount>
+					<nvdApiKey>${env.NVD_API_KEY}</nvdApiKey>
 					<autoUpdate>true</autoUpdate>
-
-					<!-- Performance Settings -->
 					<failOnError>false</failOnError>
 					<connectionTimeout>60000</connectionTimeout>
 					<readTimeout>60000</readTimeout>
-
-					<!-- Analysis Configuration -->
 					<skipTestScope>true</skipTestScope>
 					<skipProvidedScope>true</skipProvidedScope>
+					<retireJsAnalyzerEnabled>false</retireJsAnalyzerEnabled>
+					<assemblyAnalyzerEnabled>false</assemblyAnalyzerEnabled>
 				</configuration>
 				<executions>
 					<execution>
