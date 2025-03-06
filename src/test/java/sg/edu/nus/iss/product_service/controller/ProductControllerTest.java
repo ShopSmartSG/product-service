@@ -80,5 +80,22 @@ class ProductControllerTest {
         assertEquals("Invalid product ID format", response.getBody());
     }
 
+    @Test
+    void testGetProductsByValidIds() {
+        // Arrange
+        List<String> validProductId = List.of("123e4567-e89b-12d3-a456-426614174000");
+
+        when(productService.getProductsByIds(validProductId)).thenAnswer(invocation -> {
+            return ResponseEntity.ok(products);
+        });
+
+
+        ResponseEntity<?> response = productController.getProductsByIds(validProductId);
+
+        assertEquals(200, response.getStatusCodeValue());
+
+
+    }
+
 
 }
