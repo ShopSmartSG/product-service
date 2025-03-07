@@ -115,15 +115,16 @@ jobs:
       # Step 8: Create ZAP Rules File directly in the reports directory
       - name: Create ZAP Rules File
         run: |
-          cat > reports/zap-rules.tsv << 'EOL'                                                                                    
-          10010$(echo -e '\t')IGNORE$(echo -e '\t')(Cookie No HttpOnly Flag)
-          10011$(echo -e '\t')IGNORE$(echo -e '\t')(Cookie Without Secure Flag)
-          10015$(echo -e '\t')IGNORE$(echo -e '\t')(Incomplete or No Cache-control Header Set)
-          10023$(echo -e '\t')IGNORE$(echo -e '\t')(Debug Error Messages)
-          90004$(echo -e '\t')IGNORE$(echo -e '\t')(Insufficient Site Isolation Against Spectre Vulnerability)
-          90022$(echo -e '\t')IGNORE$(echo -e '\t')(Application Error Disclosure)
-          100001$(echo -e '\t')IGNORE$(echo -e '\t')(Unexpected Content-Type was returned)
-          30001$(echo -e '\t')IGNORE$(echo -e '\t')(Buffer Overflow)
+          cat > reports/zap-rules.tsv << 'EOL'
+          10010	IGNORE	(Cookie No HttpOnly Flag)
+          10011	IGNORE	(Cookie Without Secure Flag)
+          10015	IGNORE	(Incomplete or No Cache-control Header Set)
+          10023	IGNORE	(Information Disclosure - Debug Error Messages)
+          90004	IGNORE	(Insufficient Site Isolation Against Spectre Vulnerability)
+          90022	IGNORE	(Application Error Disclosure)
+          100001	IGNORE	(Unexpected Content-Type was returned)
+          30001 IGNORE  (Buffer Overflow)
+          # Add more rules as needed for your specific application
           EOL
 
       # Step 9: Run ZAP API Scan directly with Docker
