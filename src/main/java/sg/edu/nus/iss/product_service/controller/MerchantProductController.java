@@ -71,7 +71,7 @@ public class MerchantProductController {
 
     @GetMapping("/products")
     @Operation(summary = "Retrieve all products")
-    public ResponseEntity<?> getAllProducts(@RequestParam("merchant-id") String userId, @RequestParam(required = false) Integer page, @RequestParam(required = false) Integer size) {
+    public ResponseEntity<?> getAllProducts(@RequestParam("user-id") String userId, @RequestParam(required = false) Integer page, @RequestParam(required = false) Integer size) {
         if (!userId.matches("^[a-zA-Z0-9-]+$")) {
             return ResponseEntity.badRequest().body("Invalid format");
         }
@@ -91,7 +91,7 @@ public class MerchantProductController {
 
     @GetMapping("/products/{product-id}")
     @Operation(summary = "Retrieve product By ID")
-    public ResponseEntity<?> getProductById(@RequestParam("merchant-id") String userId, @PathVariable(name = "product-id")UUID productId) {
+    public ResponseEntity<?> getProductById(@RequestParam("user-id") String userId, @PathVariable(name = "product-id")UUID productId) {
         UUID merchantId = UUID.fromString(userId);
         log.info("Fetching product with ID: {} for merchantId: {}", productId, merchantId);
         Product product = validateProduct(merchantId, productId);
@@ -102,7 +102,7 @@ public class MerchantProductController {
 
     @GetMapping("/categories/{category-id}")
     @Operation(summary = "Retrieve products by merchant ID and category ID")
-    public ResponseEntity<?> getProductByMerchantIdAndCategoryId(@RequestParam("merchant-id") String userId, @PathVariable(name = "category-id") UUID categoryId, @RequestParam(required = false) Integer page, @RequestParam(required = false) Integer size) {
+    public ResponseEntity<?> getProductByMerchantIdAndCategoryId(@RequestParam("user-id") String userId, @PathVariable(name = "category-id") UUID categoryId, @RequestParam(required = false) Integer page, @RequestParam(required = false) Integer size) {
         UUID merchantId = UUID.fromString(userId);
         log.info("Fetching products for merchantId: {} in categoryId: {}", merchantId, categoryId);
         Pageable pageable = createPageable(page, size);
@@ -119,7 +119,9 @@ public class MerchantProductController {
 
     @PostMapping("/products")
     @Operation(summary = "Add a new product")
-    public ResponseEntity<?> addProduct(@Valid @RequestBody Product product) {
+    public ResponseEntity<?> addProduct(@RequestParam("user-id") String userId, @Valid @RequestBody Product product) {
+        UUID merchantId = UUID.fromString(userId);
+        product.setMerchantId(merchantId);
         Category category = categoryService.getCategoryByName(product.getCategory().getCategoryName());
         log.info("Adding new product: {}", product);
         if (category == null) {
@@ -152,7 +154,7 @@ public class MerchantProductController {
 
     @DeleteMapping("/products/{product-id}")
     @Operation(summary = "Delete product by Product ID")
-    public ResponseEntity<String> deleteProduct(@RequestParam("merchant-id") String userId, @PathVariable(name = "product-id") UUID productId) {
+    public ResponseEntity<String> deleteProduct(@RequestParam("user-id") String userId, @PathVariable(name = "product-id") UUID productId) {
         UUID merchantId = UUID.fromString(userId);
         log.info("Deleting product with ID: {} for merchantId: {}", productId, merchantId);
         setMerchantProductStrategy();
@@ -164,7 +166,7 @@ public class MerchantProductController {
 
     @PutMapping("/products/{product-id}")
     @Operation(summary = "Update product")
-    public ResponseEntity<?> updateProduct(@RequestParam("merchant-id") String userId, @PathVariable(name = "product-id") UUID productId, @Valid @RequestBody ProductDTO dto) {
+    public ResponseEntity<?> updateProduct(@RequestParam("user-id") String userId, @PathVariable(name = "product-id") UUID productId, @Valid @RequestBody ProductDTO dto) {
         UUID merchantId = UUID.fromString(userId);
         log.info("Updating product with ID: {} for merchantId: {}", productId, merchantId);
         Product existingProduct = validateProduct(merchantId, productId);

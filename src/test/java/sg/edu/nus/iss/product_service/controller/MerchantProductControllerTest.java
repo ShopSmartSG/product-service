@@ -137,7 +137,7 @@ class MerchantProductControllerTest {
         when(categoryService.getCategoryByName("Electronics")).thenReturn(category);
         when(merchantProductStrategy.addProduct(product)).thenReturn(product);
 
-        ResponseEntity<?> response = merchantProductController.addProduct(product);
+        ResponseEntity<?> response = merchantProductController.addProduct("550e8400-e29b-41d4-a716-446655440000", product);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals(product, response.getBody());
@@ -201,7 +201,7 @@ class MerchantProductControllerTest {
         when(categoryService.getCategoryByName("NonExistentCategory")).thenReturn(null);
 
         assertThrows(ResourceNotFoundException.class, () -> {
-            merchantProductController.addProduct(product);
+            merchantProductController.addProduct("550e8400-e29b-41d4-a716-446655440000", product);
         });
 
         verify(categoryService, times(1)).getCategoryByName("NonExistentCategory");
