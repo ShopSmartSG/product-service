@@ -116,7 +116,7 @@ jobs:
       - name: Create ZAP Rules File
         run: |
           cat > reports/zap-rules.tsv << 'EOL'
-          30001 IGNORE  (Buffer Overflow)
+          30001   IGNORE  (Buffer Overflow)
           10010	IGNORE	(Cookie No HttpOnly Flag)
           10011	IGNORE	(Cookie Without Secure Flag)
           10015	IGNORE	(Incomplete or No Cache-control Header Set)
