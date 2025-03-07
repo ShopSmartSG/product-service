@@ -141,8 +141,10 @@ public class MerchantProductController {
             @RequestPart("file") MultipartFile file
     ) throws IOException {
         log.info("Uploading product image: {}", file.getOriginalFilename());
-        log.info("Image uploaded successfully: {}", "");
-        return ResponseEntity.ok("fileUrl");
+        String fileName = cloudStorageUtility.uploadFile(file);
+        String fileUrl = cloudStorageUtility.getFileUrl(fileName);
+        log.info("Image uploaded successfully: {}", fileUrl);
+        return ResponseEntity.ok(fileUrl);
     }
 
     @DeleteMapping("/products/{product-id}")
