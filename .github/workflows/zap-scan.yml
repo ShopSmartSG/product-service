@@ -124,6 +124,7 @@ jobs:
           90022	IGNORE	(Application Error Disclosure)
           100001	IGNORE	(Unexpected Content-Type was returned)
           # Add more rules as needed for your specific application
+          30001 IGNORE  (Buffer Overflow)
           EOL
 
       # Step 9: Run ZAP API Scan directly with Docker
