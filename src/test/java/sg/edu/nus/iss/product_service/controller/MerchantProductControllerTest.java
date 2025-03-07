@@ -65,14 +65,14 @@ class MerchantProductControllerTest {
 
     @Test
     void testGetAllProducts() {
-        UUID merchantId = UUID.randomUUID();
+        UUID merchantId = UUID.fromString("550e8400-e29b-41d4-a716-446655440000");
         Pageable pageable = PageRequest.of(0, 10);
         List<Product> productList = Arrays.asList(new Product(), new Product());
         Page<Product> productPage = new PageImpl<>(productList);
 
         when(productService.getAllProducts(merchantId, pageable)).thenReturn(productPage);
 
-        ResponseEntity<?> response = merchantProductController.getAllProducts(merchantId, 0, 10);
+        ResponseEntity<?> response = merchantProductController.getAllProducts("550e8400-e29b-41d4-a716-446655440000", 0, 10);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals(productPage, response.getBody());
@@ -81,14 +81,14 @@ class MerchantProductControllerTest {
 
     @Test
     void testGetProductById() {
-        UUID merchantId = UUID.randomUUID();
+        UUID merchantId = UUID.fromString("550e8400-e29b-41d4-a716-446655440000");
         UUID productId = UUID.randomUUID();
         Product product = new Product();
         product.setProductId(productId);
 
         when(productService.getProductByIdAndMerchantId(merchantId, productId)).thenReturn(product);
 
-        ResponseEntity<?> response = merchantProductController.getProductById(merchantId, productId);
+        ResponseEntity<?> response = merchantProductController.getProductById("550e8400-e29b-41d4-a716-446655440000", productId);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals(product, response.getBody());
@@ -97,13 +97,13 @@ class MerchantProductControllerTest {
 
     @Test
     void testGetProductById_NotFound() {
-        UUID merchantId = UUID.randomUUID();
+        UUID merchantId = UUID.fromString("550e8400-e29b-41d4-a716-446655440000");
         UUID productId = UUID.randomUUID();
 
         when(productService.getProductByIdAndMerchantId(merchantId, productId)).thenReturn(null);
 
         assertThrows(ResourceNotFoundException.class, () -> {
-            merchantProductController.getProductById(merchantId, productId);
+            merchantProductController.getProductById("550e8400-e29b-41d4-a716-446655440000", productId);
         });
 
         verify(productService, times(1)).getProductByIdAndMerchantId(merchantId, productId);
@@ -111,7 +111,7 @@ class MerchantProductControllerTest {
 
     @Test
     void testGetProductByMerchantIdAndCategoryId() {
-        UUID merchantId = UUID.randomUUID();
+        UUID merchantId = UUID.fromString("550e8400-e29b-41d4-a716-446655440000");
         UUID categoryId = UUID.randomUUID();
         Pageable pageable = PageRequest.of(0, 10);
         List<Product> productList = Arrays.asList(new Product(), new Product());
@@ -119,7 +119,7 @@ class MerchantProductControllerTest {
 
         when(productService.getProductsByMerchantIdAndCategoryId(merchantId, categoryId, pageable)).thenReturn(productPage);
 
-        ResponseEntity<?> response = merchantProductController.getProductByMerchantIdAndCategoryId(merchantId, categoryId, 0, 10);
+        ResponseEntity<?> response = merchantProductController.getProductByMerchantIdAndCategoryId("550e8400-e29b-41d4-a716-446655440000", categoryId, 0, 10);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals(productPage, response.getBody());
@@ -164,12 +164,12 @@ class MerchantProductControllerTest {
     @Test
     void testDeleteProduct() {
         UUID productId = UUID.randomUUID();
-        UUID merchantId = UUID.randomUUID();
+        UUID merchantId = UUID.fromString("550e8400-e29b-41d4-a716-446655440000");
 
         when(productService.getProductByIdAndMerchantId(merchantId, productId)).thenReturn(new Product());
         doNothing().when(merchantProductStrategy).deleteProduct(productId);
 
-        ResponseEntity<String> response = merchantProductController.deleteProduct(merchantId, productId);
+        ResponseEntity<String> response = merchantProductController.deleteProduct("550e8400-e29b-41d4-a716-446655440000", productId);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals("Product deleted", response.getBody());
@@ -178,12 +178,12 @@ class MerchantProductControllerTest {
 
     @Test
     void testGetAllProducts_NoPagination() {
-        UUID merchantId = UUID.randomUUID();
+        UUID merchantId = UUID.fromString("550e8400-e29b-41d4-a716-446655440000");
         List<Product> productList = Arrays.asList(new Product(), new Product());
 
         when(productService.getProductsByMerchantId(merchantId)).thenReturn(productList);
 
-        ResponseEntity<?> response = merchantProductController.getAllProducts(merchantId, null, null);
+        ResponseEntity<?> response = merchantProductController.getAllProducts("550e8400-e29b-41d4-a716-446655440000", null, null);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals(productList, response.getBody());
@@ -211,7 +211,7 @@ class MerchantProductControllerTest {
     @Test
     void testUpdateProduct() {
         UUID categoryId = UUID.randomUUID();
-        UUID merchantId = UUID.randomUUID();
+        UUID merchantId = UUID.fromString("550e8400-e29b-41d4-a716-446655440000");
         UUID productId = UUID.randomUUID();
         ProductDTO productDTO = new ProductDTO(categoryId,merchantId);
         productDTO.setProductId(productId);
@@ -224,7 +224,7 @@ class MerchantProductControllerTest {
         when(categoryService.getCategoryById(productDTO.getCategoryId())).thenReturn(new Category());
         when(merchantProductStrategy.updateProduct(productId, product)).thenReturn(product);
 
-        ResponseEntity<?> response = merchantProductController.updateProduct(merchantId, productId, productDTO);
+        ResponseEntity<?> response = merchantProductController.updateProduct("550e8400-e29b-41d4-a716-446655440000", productId, productDTO);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals(product, response.getBody());

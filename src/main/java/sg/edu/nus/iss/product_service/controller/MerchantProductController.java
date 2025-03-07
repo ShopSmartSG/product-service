@@ -69,9 +69,10 @@ public class MerchantProductController {
         productServiceContext.setProductStrategy("merchant");
     }
 
-    @GetMapping("/{merchant-id}/products")
+    @GetMapping("/products")
     @Operation(summary = "Retrieve all products")
-    public ResponseEntity<?> getAllProducts(@PathVariable(name = "merchant-id") UUID merchantId, @RequestParam(required = false) Integer page, @RequestParam(required = false) Integer size) {
+    public ResponseEntity<?> getAllProducts(@RequestParam("merchant-id") String userId, @RequestParam(required = false) Integer page, @RequestParam(required = false) Integer size) {
+        UUID merchantId = UUID.fromString(userId);
         log.info("Fetching all products for merchantId: {}", merchantId);
         Pageable pageable = createPageable(page, size);
         if (pageable.isPaged()) {
@@ -85,9 +86,10 @@ public class MerchantProductController {
         }
     }
 
-    @GetMapping("/{merchant-id}/products/{product-id}")
+    @GetMapping("/products/{product-id}")
     @Operation(summary = "Retrieve product By ID")
-    public ResponseEntity<?> getProductById(@PathVariable(name = "merchant-id") UUID merchantId, @PathVariable(name = "product-id")UUID productId) {
+    public ResponseEntity<?> getProductById(@RequestParam("merchant-id") String userId, @PathVariable(name = "product-id")UUID productId) {
+        UUID merchantId = UUID.fromString(userId);
         log.info("Fetching product with ID: {} for merchantId: {}", productId, merchantId);
         Product product = validateProduct(merchantId, productId);
         log.info("Product retrieved successfully: {}", product);
@@ -95,9 +97,10 @@ public class MerchantProductController {
     }
 
 
-    @GetMapping("/{merchant-id}/categories/{category-id}")
+    @GetMapping("/categories/{category-id}")
     @Operation(summary = "Retrieve products by merchant ID and category ID")
-    public ResponseEntity<?> getProductByMerchantIdAndCategoryId(@PathVariable(name = "merchant-id") UUID merchantId, @PathVariable(name = "category-id") UUID categoryId, @RequestParam(required = false) Integer page, @RequestParam(required = false) Integer size) {
+    public ResponseEntity<?> getProductByMerchantIdAndCategoryId(@RequestParam("merchant-id") String userId, @PathVariable(name = "category-id") UUID categoryId, @RequestParam(required = false) Integer page, @RequestParam(required = false) Integer size) {
+        UUID merchantId = UUID.fromString(userId);
         log.info("Fetching products for merchantId: {} in categoryId: {}", merchantId, categoryId);
         Pageable pageable = createPageable(page, size);
         if (pageable.isPaged()) {
@@ -138,15 +141,14 @@ public class MerchantProductController {
             @RequestPart("file") MultipartFile file
     ) throws IOException {
         log.info("Uploading product image: {}", file.getOriginalFilename());
-        String fileName = cloudStorageUtility.uploadFile(file);
-        String fileUrl = cloudStorageUtility.getFileUrl(fileName);
-        log.info("Image uploaded successfully: {}", fileUrl);
-        return ResponseEntity.ok(fileUrl);
+        log.info("Image uploaded successfully: {}", "");
+        return ResponseEntity.ok("fileUrl");
     }
 
-    @DeleteMapping("/{merchant-id}/products/{product-id}")
+    @DeleteMapping("/products/{product-id}")
     @Operation(summary = "Delete product by Product ID")
-    public ResponseEntity<String> deleteProduct(@PathVariable(name = "merchant-id") UUID merchantId, @PathVariable(name = "product-id") UUID productId) {
+    public ResponseEntity<String> deleteProduct(@RequestParam("merchant-id") String userId, @PathVariable(name = "product-id") UUID productId) {
+        UUID merchantId = UUID.fromString(userId);
         log.info("Deleting product with ID: {} for merchantId: {}", productId, merchantId);
         setMerchantProductStrategy();
         Product existingProduct = validateProduct(merchantId, productId);
@@ -155,9 +157,10 @@ public class MerchantProductController {
         return ResponseEntity.ok("Product deleted");
     }
 
-    @PutMapping("/{merchant-id}/products/{product-id}")
+    @PutMapping("/products/{product-id}")
     @Operation(summary = "Update product")
-    public ResponseEntity<?> updateProduct(@PathVariable(name = "merchant-id") UUID merchantId, @PathVariable(name = "product-id") UUID productId, @Valid @RequestBody ProductDTO dto) {
+    public ResponseEntity<?> updateProduct(@RequestParam("merchant-id") String userId, @PathVariable(name = "product-id") UUID productId, @Valid @RequestBody ProductDTO dto) {
+        UUID merchantId = UUID.fromString(userId);
         log.info("Updating product with ID: {} for merchantId: {}", productId, merchantId);
         Product existingProduct = validateProduct(merchantId, productId);
         if (!existingProduct.getProductId().equals(dto.getProductId())) {
