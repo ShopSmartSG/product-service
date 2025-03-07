@@ -72,6 +72,9 @@ public class MerchantProductController {
     @GetMapping("/products")
     @Operation(summary = "Retrieve all products")
     public ResponseEntity<?> getAllProducts(@RequestParam("merchant-id") String userId, @RequestParam(required = false) Integer page, @RequestParam(required = false) Integer size) {
+        if (!userId.matches("^[a-zA-Z0-9-]+$")) {
+            return ResponseEntity.badRequest().body("Invalid format");
+        }
         UUID merchantId = UUID.fromString(userId);
         log.info("Fetching all products for merchantId: {}", merchantId);
         Pageable pageable = createPageable(page, size);
